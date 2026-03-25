@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sadtavut Kawila — UX/UI Designer based in Chiang Mai, Thailand. Crafting human-centered digital experiences.">
+  <meta property="og:title" content="Sadtavut Kawila — UX/UI Designer">
+  <meta property="og:description"
+    content="Crafting digital experiences through thoughtful design & human-centered thinking.">
+  <meta property="og:type" content="website">
+  <title>Sadtavut Kawila — UX/UI Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ─── DESIGN SYSTEM ─────────────────────────────────────── */
+    :root {
+      --cream: #F5F0E8;
+      --cream-dark: #EDE5D5;
+      --ink: #1A1A18;
+      --ink-soft: #2E2E2A;
+      --earth: #8B6F47;
+      --sand: #C4A882;
+      --sand-light: #DDD0B8;
+      --mist: rgba(245, 240, 232, 0.08);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+      --font-thai: 'Noto Sans Thai', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--font-mono);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ─────────────────────────────────────── */
+    .cursor {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--sand);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor.hover {
+      width: 40px;
+      height: 40px;
+      background: var(--cream);
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      mix-blend-mode: difference;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    /* ─── HERO SECTION ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(0.7) brightness(0.6);
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenBurns {
+      0% {
+        transform: scale(1.0) translate(0%, 0%);
+      }
+
+      100% {
+        transform: scale(1.08) translate(-1%, 1%);
+      }
+    }
+
+    /* Gradient overlays */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(26, 26, 24, 0.92) 0%, rgba(26, 26, 24, 0.3) 40%, rgba(26, 26, 24, 0.1) 70%, transparent 100%),
+        linear-gradient(to right, rgba(26, 26, 24, 0.5) 0%, transparent 60%);
+    }
+
+    /* Grain texture */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+    }
+
+    /* Hero content */
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 3rem 4rem;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 300;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.5s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--sand-light);
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+
+    .hero-desc {
+      max-width: 300px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.55);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .scroll-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.4);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--sand));
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: scaleY(0.5);
+        transform-origin: top;
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+
+    /* ─── INDEX NUMBER ─────────────────────────────────────── */
+    .hero-index {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+
+    .index-num {
+      font-family: var(--font-serif);
+      font-size: 0.7rem;
+      color: var(--sand);
+      letter-spacing: 0.1em;
+    }
+
+    .index-line {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--sand), transparent);
+    }
+
+    /* ─── SECTION: ABOUT ─────────────────────────────────────── */
+    .section-about {
+      background: var(--cream);
+      color: var(--ink);
+      padding: 10rem 3rem;
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6rem;
+      max-width: 1100px;
+    }
+
+    .about-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 3rem;
+      position: sticky;
+      top: 3rem;
+    }
+
+    .about-label span {
+      display: block;
+      font-size: 2rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--sand);
+      letter-spacing: 0;
+      text-transform: none;
+      margin-top: 0.5rem;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink-soft);
+      margin-bottom: 2.5rem;
+    }
+
+    .about-text h2 em {
+      font-style: italic;
+      color: var(--earth);
+    }
+
+    .about-text p {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 2;
+      color: rgba(26, 26, 24, 0.6);
+      max-width: 480px;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 3rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--earth);
+      border: 1px solid var(--sand-light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 0;
+    }
+
+    /* ─── SECTION: WORK ─────────────────────────────── */
+    .section-work {
+      background: var(--ink-soft);
+      padding: 8rem 3rem;
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5rem;
+      border-top: 1px solid rgba(245, 240, 232, 0.1);
+      padding-top: 2rem;
+    }
+
+    .work-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+
+    .work-header span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sand);
+      opacity: 0.5;
+    }
+
+    /* ── CASE STUDY CARD (featured) ── */
+    .case-study {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      margin-bottom: 2px;
+      overflow: hidden;
+      cursor: none;
+      transition: border-color 0.4s ease;
+    }
+
+    .case-study:hover {
+      border-color: rgba(196, 168, 130, 0.3);
+    }
+
+    .case-img {
+      position: relative;
+      overflow: hidden;
+      background: #1e1c2e;
+      min-height: 480px;
+    }
+
+    .case-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.8s ease;
+      filter: brightness(0.9);
+    }
+
+    .case-study:hover .case-img img {
+      transform: scale(1.04);
+    }
+
+    .case-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(147, 130, 180, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .case-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem;
+      background: rgba(245, 240, 232, 0.02);
+      border-left: 1px solid rgba(245, 240, 232, 0.06);
+    }
+
+
+
+    .case-num {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .case-num::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(196, 168, 130, 0.2);
+    }
+
+    .case-type {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(147, 130, 180, 0.9);
+      border: 1px solid rgba(147, 130, 180, 0.25);
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .case-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--sand);
+      margin-bottom: 1.75rem;
+    }
+
+    .case-desc {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      line-height: 1.9;
+      color: rgba(245, 240, 232, 0.45);
+      max-width: 380px;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .case-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(245, 240, 232, 0.06);
+    }
+
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.25);
+    }
+
+    .meta-value {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(245, 240, 232, 0.6);
+      text-align: right;
+    }
+
+    .meta-value.highlight {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--sand-light);
+      letter-spacing: 0;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+    }
+
+    .case-tag {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.35);
+      border: 1px solid rgba(245, 240, 232, 0.1);
+      padding: 0.3rem 0.6rem;
+    }
+
+    /* ── PLACEHOLDER GRID (remaining) ── */
+    .work-placeholder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    .work-ph-card {
+      aspect-ratio: 4/3;
+      background: rgba(245, 240, 232, 0.02);
+      border: 1px solid rgba(245, 240, 232, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+      transition: background 0.4s ease;
+    }
+
+    .work-ph-card:hover {
+      background: rgba(245, 240, 232, 0.04);
+    }
+
+    .ph-num {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      color: rgba(245, 240, 232, 0.15);
+      text-transform: uppercase;
+    }
+
+    .ph-label {
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.2);
+      margin-bottom: 0.4rem;
+    }
+
+    .ph-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245, 240, 232, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .case-study {
+        grid-template-columns: 1fr;
+      }
+
+      .case-img {
+        min-height: 280px;
+      }
+
+      .case-info {
+        padding: 2rem 1.5rem;
+        border-left: none;
+        border-top: 1px solid rgba(245, 240, 232, 0.06);
+      }
+
+      .work-placeholder-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 4rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(245, 240, 232, 0.08);
+    }
+
+    footer .foot-left {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--sand-light);
+      opacity: 0.4;
+    }
+
+    footer .foot-right {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: rgba(245, 240, 232, 0.25);
+      letter-spacing: 0.1em;
+      text-align: right;
+      line-height: 2;
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.5rem;
+      }
+
+      .hero-content {
+        padding: 0 1.5rem 3rem;
+      }
+
+      .hero-index {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-label {
+        position: static;
+      }
+
+      .section-about {
+        padding: 6rem 1.5rem;
+      }
+
+      .section-work {
+        padding: 5rem 1.5rem;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="#" class="nav-logo">Sadtavut K.</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-video-wrap" style="z-index: 0;">
+      <video id="heroVideo2" autoplay muted loop playsinline preload="auto" style="object-position: center;"
+        src="./assets/Hero03.mp4"></video>
+    </div>
+    <div class="hero-video-wrap" id="heroWrap1" style="z-index: 1;">
+      <video id="heroVideo" autoplay muted playsinline preload="auto" src="./assets/hero.mp4"></video>
+    </div>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+
+    <!-- Side index -->
+    <div class="hero-index">
+      <span class="index-num">01</span>
+      <div class="index-line"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">UX / UI Designer &amp; Creative</p>
+
+      <h1 class="hero-name">
+        Sadtavut<br>
+        <em>Kawila</em>
+      </h1>
+
+      <div class="hero-bottom">
+        <p class="hero-desc">
+          Crafting digital experiences through<br>
+          thoughtful design &amp; human-centered thinking.<br>
+          Based in Chiang Mai, Thailand.
+        </p>
+        <div class="hero-scroll">
+          <span class="scroll-label">Scroll</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="section-about" id="about">
+    <div class="about-grid">
+      <div class="about-label">
+        — 01
+        <span>About me</span>
+      </div>
+      <div class="about-text">
+        <h2>
+          UX/UI Designer who believes<br>
+          good design is <em>invisible</em>
+        </h2>
+        <p>
+          I'm Sadtavut — a UX/UI designer based in Chiang Mai, focused on
+          crafting interfaces that feel effortless to use. I work at the
+          intersection of research, visual design, and interaction — turning
+          complex problems into clear, considered experiences.
+        </p>
+        <p>
+          Every pixel has a reason. Every flow has a story. I care deeply
+          about the details that most people never notice — and that's
+          exactly the point.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">User Research</span>
+          <span class="tag">Wireframing</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">Interaction Design</span>
+          <span class="tag">Usability Testing</span>
+          <span class="tag">Visual Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WORK ── -->
+  <section class="section-work" id="work">
+    <div class="work-header">
+      <h2>Selected Work</h2>
+      <span>01 of 04</span>
+    </div>
+
+    <!-- ── CASE STUDY (Main Display) ── -->
+    <div class="case-study" id="main-case-study" style="transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;">
+      <div class="case-img"
+        style="background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+        <img src="./assets/smilecare-logo.png" alt="SmileCare App"
+          style="object-fit: contain; max-width: 60%; max-height: 50%; width: auto; height: auto; filter: none;">
+        <div class="case-img-overlay"></div>
+      </div>
+      <div class="case-info">
+        <div class="case-info-top">
+          <div class="case-num">01</div>
+          <span class="case-type">Mobile Application &amp; Website</span>
+          <h3 class="case-title">SmileCare</h3>
+          <p class="case-subtitle">SmileCare Program</p>
+          <p class="case-desc">
+            A cross-platform system connecting cleft lip and palate patient
+            records across primary care networks (sub-district health centers)
+            and families in remote Northern Thailand — enabling proactive
+            case discovery, streamlined referrals, and efficient treatment tracking.
+          </p>
+          <div class="case-tags">
+            <span class="case-tag">UX Research</span>
+            <span class="case-tag">UI Design</span>
+            <span class="case-tag">Mobile App</span>
+            <span class="case-tag">Healthcare</span>
+            <span class="case-tag">Figma</span>
+          </div>
+        </div>
+        <div class="case-meta">
+          <div class="case-meta-row">
+            <span class="meta-label">Client</span>
+            <span class="meta-value">Chiang Mai University</span>
+          </div>
+          <div class="case-meta-row">
+            <span class="meta-label">Budget</span>
+            <span class="meta-value highlight">฿ 4.7M</span>
+          </div>
+          <div class="case-meta-row">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">UX/UI Designer</span>
+          </div>
+          <div class="case-meta-row">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">iOS · Android · Web</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PLACEHOLDER CARDS ── -->
+    <div class="work-placeholder-grid" id="placeholder-grid">
+      <!-- Dynamically generated via JS -->
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="contact">
+    <div class="foot-left">Let's work<br>together.</div>
+    <div class="foot-right">
+      <a href="mailto:sadtavut2011@gmail.com"
+        style="color: inherit; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
+        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">sadtavut2011@gmail.com</a><br>
+      Chiang Mai, Thailand<br>
+      © 2025 Sadtavut Kawila
+    </div>
+  </footer>
+
+  <script>
+    // Custom cursor & Hero Parallax
+    const cursor = document.getElementById('cursor');
+    const heroWraps = document.querySelectorAll('.hero-video-wrap');
+
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+
+      // Parallax effect on hero videos (inverses the mouse movement)
+      const xOffset = (e.clientX / window.innerWidth - 0.5) * -30;
+      const yOffset = (e.clientY / window.innerHeight - 0.5) * -30;
+      heroWraps.forEach(wrap => {
+        wrap.style.transform = `scale(1.04) translate(${xOffset}px, ${yOffset}px)`;
+      });
+    });
+    document.querySelectorAll('a, .case-study, .work-ph-card, .nav-links a').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // Video loop — ensure autoplay works on mobile
+    const video1 = document.getElementById('heroVideo');
+    const video2 = document.getElementById('heroVideo2');
+    const wrap1 = document.getElementById('heroWrap1');
+
+    if (video1) {
+      video1.play().catch(() => {
+        document.addEventListener('touchstart', () => video1.play(), { once: true });
+      });
+      video1.addEventListener('ended', () => {
+        wrap1.style.transition = 'opacity 0.6s ease-in-out';
+        wrap1.style.opacity = '0';
+        setTimeout(() => wrap1.remove(), 600);
+      });
+    }
+
+    if (video2) {
+      video2.play().catch(() => {
+        document.addEventListener('touchstart', () => video2.play(), { once: true });
+      });
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.section-about, .section-work, .case-study').forEach(el => observer.observe(el));
+
+    // ── PROJECT SWAP LOGIC ──
+    window.toggleDsImage = function(e, imgId, direction = 'next') {
+        e.stopPropagation();
+        const img = document.getElementById(imgId);
+        if(!img) return;
+        
+        // Parallax out
+        const slideOut = direction === 'next' ? '-30px' : '30px';
+        img.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease';
+        img.style.transform = `translateX(${slideOut}) scale(0.95)`;
+        img.style.opacity = '0';
+        
+        setTimeout(() => {
+            // Swap image
+            if (img.src.includes('design%20system02.png') || img.src.includes('design system02.png')) {
+                img.src = './assets/design system.png';
+            } else {
+                img.src = './assets/design system02.png';
+            }
+            
+            // Instantly move to start position
+            img.style.transition = 'none';
+            const slideIn = direction === 'next' ? '30px' : '-30px';
+            img.style.transform = `translateX(${slideIn}) scale(1.05)`;
+            
+            // Animate in
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    img.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease';
+                    img.style.transform = 'translateX(0) scale(1)';
+                    img.style.opacity = '1';
+                });
+            });
+        }, 300);
+    };
+
+    const projectsData = [
+      {
+        id: 1,
+        num: "01",
+        label: "Mobile Application & Website",
+        title: "SmileCare",
+        subtitle: "SmileCare Program",
+        desc: "A cross-platform system connecting cleft lip and palate patient records across primary care networks (sub-district health centers) and families in remote Northern Thailand — enabling proactive case discovery, streamlined referrals, and efficient treatment tracking.",
+        tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"],
+        client: "Chiang Mai University",
+        budget: "฿ 4.7M",
+        role: "UX/UI Designer",
+        platform: "iOS · Android · Web",
+        imgHtml: '<img src="./assets/smilecare-logo.png" alt="SmileCare App" style="object-fit: contain; max-width: 60%; max-height: 50%; width: auto; height: auto; filter: none;">',
+        imgBg: "#ffffff",
+        phTitle: "View Project",
+        phBgHtml: '<div style="position: absolute; inset: 0; background: #ffffff; display: flex; align-items: center; justify-content: center;"><img src="./assets/smilecare-logo.png" style="width: 50%; height: auto; object-fit: contain;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
+      },
+      {
+        id: 2,
+        num: "02",
+        label: "UI Design",
+        title: "Coming soon",
+        subtitle: "Stay tuned",
+        desc: "Details for this project are being documented. Please check back later.",
+        tags: ["UI Design"],
+        client: "-", budget: "-", role: "UI Designer", platform: "-",
+        imgHtml: '',
+        imgBg: "rgba(245, 240, 232, 0.05)",
+        phTitle: "Coming soon",
+        phBgHtml: ''
+      },
+      {
+        id: 3,
+        num: "03",
+        label: "Design System",
+        title: "Design System",
+        subtitle: "Scalable Component Library",
+        desc: "A comprehensive design system created to streamline product development, ensuring visual consistency across platforms and accelerating design-to-development handoff.",
+        tags: ["Design Systems", "Figma", "Guidelines"],
+        client: "Internal", budget: "-", role: "UX/UI Designer", platform: "Web",
+        imgHtml: '<div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;"><img id="main-ds-img" src="./assets/design system.png" alt="Design System" style="object-fit: contain; max-width: 60%; max-height: 50%; width: auto; height: auto; filter: none; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;"><button onclick="toggleDsImage(event, \'main-ds-img\', \'prev\')" style="position: absolute; left: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; font-family: monospace; font-size: 1.2rem; transition: background 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.2)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.1)\'">&lt;</button><button onclick="toggleDsImage(event, \'main-ds-img\', \'next\')" style="position: absolute; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; font-family: monospace; font-size: 1.2rem; transition: background 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.2)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.1)\'">&gt;</button></div>',
+        imgBg: "#1e1c2e",
+        phTitle: "View Project",
+        phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/design system.png" style="width: 50%; height: auto; object-fit: contain;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
+      },
+      {
+        id: 4,
+        num: "04",
+        label: "Web Experience",
+        title: "Coming soon",
+        subtitle: "Stay tuned",
+        desc: "Details for this project are being documented. Please check back later.",
+        tags: ["Web Design"],
+        client: "-", budget: "-", role: "Web Designer", platform: "-",
+        imgHtml: '',
+        imgBg: "rgba(245, 240, 232, 0.05)",
+        phTitle: "Coming soon",
+        phBgHtml: ''
+      }
+    ];
+
+    let activeProjectId = 1;
+    let isAnimating = false;
+    
+    function renderMainProject(project) {
+        if(isAnimating) return;
+        isAnimating = true;
+
+        const mainCard = document.getElementById('main-case-study');
+        
+        // 1. Fade/Scale Out
+        mainCard.style.opacity = '0';
+        mainCard.style.transform = 'translateY(30px) scale(0.98)';
+        
+        setTimeout(() => {
+            // 2. Swap Content
+            mainCard.querySelector('.case-img').style.background = project.imgBg;
+            mainCard.querySelector('.case-img').innerHTML = project.imgHtml + '<div class="case-img-overlay"></div>';
+            
+            mainCard.querySelector('.case-num').innerText = project.num;
+            mainCard.querySelector('.case-type').innerText = project.label;
+            mainCard.querySelector('.case-title').innerText = project.title;
+            mainCard.querySelector('.case-subtitle').innerText = project.subtitle;
+            mainCard.querySelector('.case-desc').innerText = project.desc;
+            
+            mainCard.querySelector('.case-tags').innerHTML = project.tags.map(tag => `<span class="case-tag">${tag}</span>`).join('');
+            
+            const metaValues = mainCard.querySelectorAll('.meta-value');
+            if(metaValues.length >= 4) {
+                metaValues[0].innerText = project.client;
+                metaValues[1].innerText = project.budget;
+                metaValues[2].innerText = project.role;
+                metaValues[3].innerText = project.platform;
+            }
+            
+            // 3. Fade/Scale In
+            // We use requestAnimationFrame to ensure the browser has applied the DOM updates before transitioning back
+            requestAnimationFrame(() => {
+              mainCard.style.transform = 'translateY(-10px) scale(1.01)'; // Slight parallax bounce effect
+              
+              requestAnimationFrame(() => {
+                mainCard.style.opacity = '1';
+                mainCard.style.transform = 'translateY(0) scale(1)';
+                
+                setTimeout(() => { isAnimating = false; }, 600);
+              });
+            });
+        }, 500); // Wait for fade out to finish
+    }
+    
+    function renderGrid() {
+        const grid = document.getElementById('placeholder-grid');
+        grid.innerHTML = '';
+        
+        projectsData.forEach(p => {
+            if(p.id === activeProjectId) return;
+            
+            const card = document.createElement('div');
+            card.className = 'work-ph-card fade-in-up';
+            card.style.cursor = 'pointer';
+            
+            if(p.phBgHtml) {
+                card.style.padding = '0';
+                card.innerHTML = `
+                  ${p.phBgHtml}
+                  <span class="ph-num" style="z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.num}</span>
+                  <div style="position: relative; z-index: 2; padding: 1.5rem;">
+                    <p class="ph-label" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 0.4rem;">${p.label}</p>
+                    <p class="ph-title" style="color: #F5F0E8; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.phTitle}</p>
+                  </div>`;
+            } else {
+                card.innerHTML = `
+                  <span class="ph-num">${p.num}</span>
+                  <p class="ph-label">${p.label}</p>
+                  <p class="ph-title">${p.phTitle}</p>
+                `;
+            }
+            
+            card.addEventListener('click', () => {
+                if(isAnimating) return;
+                activeProjectId = p.id;
+                
+                // Trigger view swap
+                renderMainProject(p);
+                renderGrid();
+                
+                // Scroll to main display
+                document.getElementById('work').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            
+            // Add custom cursor hover effect
+            card.addEventListener('mouseenter', () => cursor?.classList.add('hover'));
+            card.addEventListener('mouseleave', () => cursor?.classList.remove('hover'));
+            
+            // Intersection Observers for animation
+            if(observer) observer.observe(card);
+            
+            grid.appendChild(card);
+        });
+    }
+
+    // Initialize grid
+    renderGrid();
+  </script>
+</body>
+
+</html>
