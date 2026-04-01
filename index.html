@@ -28,9 +28,38 @@
       --sand: #C4A882;
       --sand-light: #DDD0B8;
       --mist: rgba(245, 240, 232, 0.08);
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-mono: 'DM Mono', monospace;
+      --font-serif: 'Cormorant Garamond', 'Noto Sans Thai', Georgia, serif;
+      --font-mono: 'DM Mono', 'Noto Sans Thai', monospace;
       --font-thai: 'Noto Sans Thai', sans-serif;
+    }
+
+    /* ─── THAI LANGUAGE ADJUSTMENTS ─────────────────────── */
+    html[lang="th"] {
+      font-size: 96%;
+    }
+    
+    html[lang="th"] .hero-name {
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      line-height: 1.1; 
+      margin-bottom: 2rem;
+    }
+    
+    html[lang="th"] .about-text h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.3;
+    }
+    
+    html[lang="th"] .work-header h2 {
+      font-size: clamp(1.8rem, 4.5vw, 3.8rem);
+    }
+    
+    html[lang="th"] .case-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.3;
+    }
+    
+    html[lang="th"] .ph-title {
+      font-size: 1rem;
     }
 
     *,
@@ -84,7 +113,11 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      mix-blend-mode: difference;
+      pointer-events: none;
+    }
+
+    .nav-logo, .nav-links a, .lang-switch {
+      pointer-events: auto;
     }
 
     .nav-logo {
@@ -96,6 +129,7 @@
       color: var(--cream);
       text-decoration: none;
       line-height: 1;
+      mix-blend-mode: difference;
     }
 
     .nav-links {
@@ -115,10 +149,40 @@
       text-decoration: none;
       opacity: 0.6;
       transition: opacity 0.3s ease;
+      mix-blend-mode: difference;
     }
 
     .nav-links a:hover {
       opacity: 1;
+    }
+
+    .lang-switch {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: 40px;
+      padding: 0.4rem 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lang-switch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .lang-switch span {
+      pointer-events: none;
     }
 
     /* ─── HERO SECTION ─────────────────────────────────────── */
@@ -355,7 +419,7 @@
       font-size: 0.75rem;
       line-height: 2;
       color: rgba(26, 26, 24, 0.6);
-      max-width: 480px;
+      max-width: 85%;
       margin-bottom: 1.5rem;
     }
 
@@ -386,7 +450,7 @@
     .work-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-end;
       margin-bottom: 5rem;
       border-top: 1px solid rgba(245, 240, 232, 0.1);
       padding-top: 2rem;
@@ -420,6 +484,7 @@
       overflow: hidden;
       cursor: none;
       transition: border-color 0.4s ease;
+      height: 820px; 
     }
 
     .case-study:hover {
@@ -433,7 +498,8 @@
       min-height: 480px;
     }
 
-    .case-img img {
+    /* Only apply cover-style to background overlay images, not the slider main image */
+    .case-img > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -441,6 +507,16 @@
       display: block;
       transition: transform 0.8s ease;
       filter: brightness(0.9);
+    }
+
+    /* Slider main image: contain within bounds */
+    #main-slide-img {
+      object-fit: contain !important;
+      max-width: 90% !important;
+      max-height: 90% !important;
+      width: auto !important;
+      height: auto !important;
+      filter: none !important;
     }
 
     .case-study:hover .case-img img {
@@ -458,9 +534,19 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 3rem;
+      padding: 2.5rem 3rem;
       background: rgba(245, 240, 232, 0.02);
       border-left: 1px solid rgba(245, 240, 232, 0.06);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    .case-info::-webkit-scrollbar {
+      width: 4px;
+    }
+    .case-info::-webkit-scrollbar-thumb {
+      background: rgba(245, 240, 232, 0.15);
+      border-radius: 4px;
     }
 
 
@@ -516,23 +602,23 @@
 
     .case-desc {
       font-family: var(--font-mono);
-      font-size: 0.68rem;
-      line-height: 1.9;
-      color: rgba(245, 240, 232, 0.45);
-      max-width: 380px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(245, 240, 232, 0.55);
+      max-width: 85%;
     }
 
     .case-meta {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .case-meta-row {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      padding-top: 1rem;
+      align-items: flex-end;
+      padding-top: 0.75rem;
       border-top: 1px solid rgba(245, 240, 232, 0.06);
     }
 
@@ -633,6 +719,7 @@
     @media (max-width: 768px) {
       .case-study {
         grid-template-columns: 1fr;
+        height: auto;
       }
 
       .case-img {
@@ -743,6 +830,64 @@
         padding: 3rem 1.5rem;
       }
     }
+
+    /* ─── LIGHTBOX ─────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9990;
+      background: rgba(26, 26, 24, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      cursor: none;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      transform: scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
+      border-radius: 4px;
+      cursor: none;
+    }
+
+    .lightbox.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      color: var(--sand);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      opacity: 0.5;
+      transition: opacity 0.3s, transform 0.3s;
+      cursor: none;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
@@ -751,13 +896,22 @@
   <!-- Custom cursor -->
   <div class="cursor" id="cursor"></div>
 
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" id="lightbox-close">Close</button>
+    <img src="" alt="Expanded View" class="lightbox-img" id="lightbox-img" onclick="event.stopPropagation()">
+  </div>
+
   <!-- ── NAVIGATION ── -->
   <nav>
     <a href="#" class="nav-logo">Sadtavut K.</a>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
+      <a href="#work" data-en="Work" data-th="ผลงาน">Work</a>
+      <a href="#contact" data-en="Contact" data-th="ติดต่อ">Contact</a>
+      <div class="lang-switch" onclick="toggleLanguage()">
+        <span id="lang-indicator">EN</span>
+      </div>
     </div>
   </nav>
 
@@ -781,21 +935,21 @@
     </div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow">UX / UI Designer &amp; Creative</p>
+      <p class="hero-eyebrow" data-en="UX / UI Designer &amp; Creative" data-th="นักออกแบบ UX / UI และครีเอทีฟ">UX / UI Designer &amp; Creative</p>
 
       <h1 class="hero-name">
-        Sadtavut<br>
-        <em>Kawila</em>
+        <span data-en="Sadtavut" data-th="เสฎฐวุฒิ">Sadtavut</span><br>
+        <em data-en="Kawila" data-th="กาวิละ">Kawila</em>
       </h1>
 
       <div class="hero-bottom">
-        <p class="hero-desc">
+        <p class="hero-desc" data-en="Crafting digital experiences through<br>thoughtful design &amp; human-centered thinking.<br>Based in Chiang Mai, Thailand." data-th="สร้างสรรค์ประสบการณ์ดิจิทัลผ่านการออกแบบ<br>ที่ใส่ใจและยึดมนุษย์เป็นศูนย์กลาง<br>อาศัยอยู่ที่เชียงใหม่ ประเทศไทย">
           Crafting digital experiences through<br>
           thoughtful design &amp; human-centered thinking.<br>
           Based in Chiang Mai, Thailand.
         </p>
         <div class="hero-scroll">
-          <span class="scroll-label">Scroll</span>
+          <span class="scroll-label" data-en="Scroll" data-th="เลื่อน">Scroll</span>
           <div class="scroll-line"></div>
         </div>
       </div>
@@ -807,20 +961,20 @@
     <div class="about-grid">
       <div class="about-label">
         — 01
-        <span>About me</span>
+        <span data-en="About me" data-th="เกี่ยวกับฉัน">About me</span>
       </div>
       <div class="about-text">
-        <h2>
+        <h2 data-en="UX/UI Designer who believes<br>good design is <em>invisible</em>" data-th="นักออกแบบ UX/UI ที่เชื่อว่า<br>การออกแบบที่ดีคือการออกแบบที่<em>มองไม่เห็น</em>">
           UX/UI Designer who believes<br>
           good design is <em>invisible</em>
         </h2>
-        <p>
+        <p data-en="I'm Sadtavut — a UX/UI designer based in Chiang Mai, focused on crafting interfaces that feel effortless to use. I work at the intersection of research, visual design, and interaction — turning complex problems into clear, considered experiences." data-th="ผมชื่อเสฎฐวุฒิ — นักออกแบบ UX/UI ในเชียงใหม่ มุ่งเน้นไปที่การสร้างอินเทอร์เฟซที่ใช้งานได้อย่างเป็นธรรมชาติ ผมทำงานที่ผสมผสานระหว่างการวิจัย การออกแบบภาพลักษณ์ และการปฏิสัมพันธ์ — เพื่อเปลี่ยนปัญหาที่ซับซ้อนให้กลายเป็นประสบการณ์ที่ชัดเจนและรอบคอบ">
           I'm Sadtavut — a UX/UI designer based in Chiang Mai, focused on
           crafting interfaces that feel effortless to use. I work at the
           intersection of research, visual design, and interaction — turning
           complex problems into clear, considered experiences.
         </p>
-        <p>
+        <p data-en="Every pixel has a reason. Every flow has a story. I care deeply about the details that most people never notice — and that's exactly the point." data-th="ทุกพิกเซลมีเหตุผล ทุกโฟลว์มีเรื่องราว ผมใส่ใจอย่างลึกซึ้งในรายละเอียดที่คนส่วนใหญ่ไม่ทันสังเกตเห็น — และนั่นก็คือประเด็นสำคัญของการออกแบบ">
           Every pixel has a reason. Every flow has a story. I care deeply
           about the details that most people never notice — and that's
           exactly the point.
@@ -842,24 +996,26 @@
   <!-- ── WORK ── -->
   <section class="section-work" id="work">
     <div class="work-header">
-      <h2>Selected Work</h2>
+      <h2 id="work-category-title" data-en="Project" data-th="โปรเจกต์">Project</h2>
       <span>01 of 04</span>
     </div>
 
     <!-- ── CASE STUDY (Main Display) ── -->
     <div class="case-study" id="main-case-study" style="transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;">
-      <div class="case-img"
-        style="background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 2rem;">
-        <img src="./assets/smilecare-logo.png" alt="SmileCare App"
-          style="object-fit: contain; max-width: 60%; max-height: 50%; width: auto; height: auto; filter: none;">
+      <div class="case-img" id="main-case-img" style="background: #1e1c2e; position: relative; overflow: hidden;">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <img id="main-slide-img" src="./assets/Projact01.png" alt="Thai Cleft Link" style="object-fit:contain;max-width:90%;max-height:90%;width:auto;height:auto;filter:none;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.5s ease;">
+          <button onclick="toggleSlide(event,'prev')" style="position:absolute;left:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:monospace;font-size:1.2rem;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">&lt;</button>
+          <button onclick="toggleSlide(event,'next')" style="position:absolute;right:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:monospace;font-size:1.2rem;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">&gt;</button>
+        </div>
         <div class="case-img-overlay"></div>
       </div>
       <div class="case-info">
         <div class="case-info-top">
           <div class="case-num">01</div>
           <span class="case-type">Mobile Application &amp; Website</span>
-          <h3 class="case-title">SmileCare</h3>
-          <p class="case-subtitle">SmileCare Program</p>
+          <h3 class="case-title">Thai Cleft Link</h3>
+          <p class="case-subtitle">Thai Cleft Link Program</p>
           <p class="case-desc">
             A cross-platform system connecting cleft lip and palate patient
             records across primary care networks (sub-district health centers)
@@ -903,17 +1059,110 @@
 
   <!-- ── FOOTER ── -->
   <footer id="contact">
-    <div class="foot-left">Let's work<br>together.</div>
+    <div class="foot-left" data-en="Let's work<br>together." data-th="มาร่วมงาน<br>ด้วยกันเถอะ">Let's work<br>together.</div>
     <div class="foot-right">
       <a href="mailto:sadtavut2011@gmail.com"
         style="color: inherit; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">sadtavut2011@gmail.com</a><br>
-      Chiang Mai, Thailand<br>
-      © 2025 Sadtavut Kawila
+      <span data-en="Chiang Mai, Thailand" data-th="เชียงใหม่, ประเทศไทย">Chiang Mai, Thailand</span><br>
+      <span data-en="© 2025 Sadtavut Kawila" data-th="© 2025 เสฎฐวุฒิ กาวิละ">© 2025 Sadtavut Kawila</span>
     </div>
   </footer>
 
   <script>
+    // ── LANGUAGE SWITCHER ──
+    window.currentLang = localStorage.getItem('lang') || 'en';
+
+    window.toggleLanguage = function() {
+      const newLang = window.currentLang === 'en' ? 'th' : 'en';
+      setLanguage(newLang);
+    };
+
+    window.setLanguage = function(lang) {
+      window.currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+      
+      const indicator = document.getElementById('lang-indicator');
+      if (indicator) {
+        indicator.innerText = lang.toUpperCase();
+      }
+
+      const textEls = document.querySelectorAll('[data-en][data-th]');
+      textEls.forEach(el => {
+        el.innerHTML = el.getAttribute(`data-${lang}`);
+      });
+
+      // Update current project if it's already rendered
+      const mainCard = document.getElementById('main-case-study');
+      if (mainCard && typeof projectsData !== 'undefined' && typeof activeProjectId !== 'undefined') {
+          const p = projectsData.find(project => project.id === activeProjectId);
+          if (p && !isAnimating) {
+
+            const categoryTitleEl = document.getElementById('work-category-title');
+            if (categoryTitleEl && p.categoryTitle) {
+                categoryTitleEl.setAttribute('data-en', p.categoryTitle.en);
+                categoryTitleEl.setAttribute('data-th', p.categoryTitle.th);
+                categoryTitleEl.innerText = p.categoryTitle[lang];
+            }
+
+            // Use unified slides system
+            const slide = (p.slides && p.slides.length > 0) ? p.slides[activeSlideIndex[p.id] || 0] : null;
+            const displayTitle = slide ? slide.title[lang] : p.title[lang];
+            const displaySubtitle = slide ? slide.subtitle[lang] : p.subtitle[lang];
+            const displayDesc = slide ? slide.desc[lang] : p.desc[lang];
+            const displayTags = slide ? slide.tags : p.tags;
+
+            const caseType = mainCard.querySelector('.case-type');
+            if(caseType) caseType.innerText = p.label[lang];
+            const caseTitle = mainCard.querySelector('.case-title');
+            if(caseTitle) caseTitle.innerText = displayTitle;
+            const caseSubtitle = mainCard.querySelector('.case-subtitle');
+            if(caseSubtitle) caseSubtitle.innerText = displaySubtitle;
+            const caseDesc = mainCard.querySelector('.case-desc');
+            if(caseDesc) caseDesc.innerHTML = displayDesc;
+            const caseTags = mainCard.querySelector('.case-tags');
+            if(caseTags) caseTags.innerHTML = displayTags.map(t => `<span class="case-tag">${t}</span>`).join('');
+
+            const metaValues = mainCard.querySelectorAll('.meta-value');
+            if(metaValues.length >= 4) {
+                metaValues[0].innerText = p.client[lang];
+                metaValues[1].innerText = p.budget[lang];
+                metaValues[2].innerText = p.role[lang];
+                metaValues[3].innerText = p.platform[lang];
+            }
+
+            const caseMeta = mainCard.querySelector('.case-meta');
+            if (caseMeta) {
+                const showMeta = slide && slide.showMeta === true;
+                caseMeta.style.display = showMeta ? 'flex' : 'none';
+            }
+          }
+      }
+      
+      // Re-render grid using new language
+      if (typeof renderGrid === 'function') {
+        renderGrid();
+      }
+    };
+
+    // activeSlideIndex tracks the current slide per project (defined here for global hoisting)
+    var activeSlideIndex = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(window.currentLang);
+      // Initialize main project display from data
+      if (typeof projectsData !== 'undefined' && typeof buildSliderHtml === 'function') {
+          const caseImgEl = document.getElementById('main-case-img');
+          const firstProject = projectsData.find(p => p.id === 1);
+          if (caseImgEl && firstProject) {
+              caseImgEl.style.background = firstProject.imgBg;
+              caseImgEl.innerHTML = buildSliderHtml(firstProject);
+          }
+          if (typeof renderGrid === 'function') renderGrid();
+      }
+    });
+
     // Custom cursor & Hero Parallax
     const cursor = document.getElementById('cursor');
     const heroWraps = document.querySelectorAll('.hero-video-wrap');
@@ -929,7 +1178,7 @@
         wrap.style.transform = `scale(1.04) translate(${xOffset}px, ${yOffset}px)`;
       });
     });
-    document.querySelectorAll('a, .case-study, .work-ph-card, .nav-links a').forEach(el => {
+    document.querySelectorAll('a, .case-study, .work-ph-card, .nav-links a, .lightbox-close, .lightbox-img').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -968,151 +1217,265 @@
 
     document.querySelectorAll('.section-about, .section-work, .case-study').forEach(el => observer.observe(el));
 
-    // ── PROJECT SWAP LOGIC ──
-    window.toggleDsImage = function(e, imgId, direction = 'next') {
+    // ── UNIVERSAL SLIDER LOGIC ──
+    // (activeSlideIndex is declared earlier for scope hoisting)
+
+    window.toggleSlide = function(e, direction) {
         e.stopPropagation();
-        const img = document.getElementById(imgId);
-        if(!img) return;
-        
-        // Parallax out
-        const slideOut = direction === 'next' ? '-30px' : '30px';
-        img.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease';
-        img.style.transform = `translateX(${slideOut}) scale(0.95)`;
-        img.style.opacity = '0';
-        
+        const mainCard = document.getElementById('main-case-study');
+        const project = projectsData.find(p => p.id === activeProjectId);
+        if (!project || !project.slides || project.slides.length <= 1) return;
+
+        const slides = project.slides;
+        const current = activeSlideIndex[activeProjectId] || 0;
+        const next = direction === 'next'
+            ? (current + 1) % slides.length
+            : (current - 1 + slides.length) % slides.length;
+
+        // Animate image out
+        const img = mainCard.querySelector('#main-slide-img');
+        if (img) {
+            const slideOut = direction === 'next' ? '-30px' : '30px';
+            img.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease';
+            img.style.transform = `translateX(${slideOut}) scale(0.95)`;
+            img.style.opacity = '0';
+        }
+        // Fade text out
+        const textArea = mainCard.querySelector('.case-info');
+        if (textArea) { textArea.style.transition = 'opacity 0.3s ease'; textArea.style.opacity = '0'; }
+
         setTimeout(() => {
-            // Swap image
-            if (img.src.includes('design%20system02.png') || img.src.includes('design system02.png')) {
-                img.src = './assets/design system.png';
-            } else {
-                img.src = './assets/design system02.png';
-            }
-            
-            // Instantly move to start position
-            img.style.transition = 'none';
-            const slideIn = direction === 'next' ? '30px' : '-30px';
-            img.style.transform = `translateX(${slideIn}) scale(1.05)`;
-            
-            // Animate in
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    img.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease';
+            activeSlideIndex[activeProjectId] = next;
+            const slide = slides[next];
+            const lang = window.currentLang;
+
+            // Update image
+            if (img) {
+                img.src = './assets/' + slide.img;
+                img.style.transition = 'none';
+                const slideIn = direction === 'next' ? '30px' : '-30px';
+                img.style.transform = `translateX(${slideIn}) scale(1.05)`;
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    img.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease';
                     img.style.transform = 'translateX(0) scale(1)';
                     img.style.opacity = '1';
-                });
-            });
+                }));
+            }
+
+            // Update text
+            if (textArea) {
+                mainCard.querySelector('.case-title').innerText = slide.title[lang];
+                mainCard.querySelector('.case-subtitle').innerText = slide.subtitle[lang];
+                mainCard.querySelector('.case-desc').innerHTML = slide.desc[lang];
+                mainCard.querySelector('.case-tags').innerHTML = slide.tags.map(t => `<span class="case-tag">${t}</span>`).join('');
+                // caseMeta: show only if slide.showMeta === true
+                const caseMeta = mainCard.querySelector('.case-meta');
+                if (caseMeta) caseMeta.style.display = (slide.showMeta === true) ? 'flex' : 'none';
+                textArea.style.opacity = '1';
+                textArea.scrollTop = 0;
+            }
         }, 300);
     };
 
+    function buildSliderHtml(project) {
+        const firstSlide = project.slides ? project.slides[0] : null;
+        const img = firstSlide ? firstSlide.img : '';
+        const hasSlider = project.slides && project.slides.length > 1;
+        const btnStyle = `position:absolute; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; border-radius:50%; width:40px; height:40px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; font-family:monospace; font-size:1.2rem; transition:background 0.2s;`;
+        const hoverIn = `this.style.background='rgba(255,255,255,0.2)'`;
+        const hoverOut = `this.style.background='rgba(255,255,255,0.1)'`;
+        return `
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <img id="main-slide-img" src="./assets/${img}" alt="${project.title ? project.title.en : ''}" style="object-fit:contain;max-width:90%;max-height:90%;width:auto;height:auto;filter:none;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.5s ease;">
+                ${hasSlider ? `
+                <button onclick="toggleSlide(event,'prev')" style="${btnStyle}left:20px;" onmouseover="${hoverIn}" onmouseout="${hoverOut}">&lt;</button>
+                <button onclick="toggleSlide(event,'next')" style="${btnStyle}right:20px;" onmouseover="${hoverIn}" onmouseout="${hoverOut}">&gt;</button>
+                ` : ''}
+            </div>
+            <div class="case-img-overlay"></div>`;
+    }
+
+
+
     const projectsData = [
       {
-        id: 1,
-        num: "01",
-        label: "Mobile Application & Website",
-        title: "SmileCare",
-        subtitle: "SmileCare Program",
-        desc: "A cross-platform system connecting cleft lip and palate patient records across primary care networks (sub-district health centers) and families in remote Northern Thailand — enabling proactive case discovery, streamlined referrals, and efficient treatment tracking.",
+        id: 1, num: "01",
+        label: { en: "Mobile Application & Website", th: "แอปพลิเคชันมือถือ & เว็บไซต์" },
+        categoryTitle: { en: "Project", th: "โปรเจกต์" },
+        title: { en: "Thai Cleft Link", th: "Thai Cleft Link" },
+        subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" },
+        desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" },
         tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"],
-        client: "Chiang Mai University",
-        budget: "฿ 4.7M",
-        role: "UX/UI Designer",
-        platform: "iOS · Android · Web",
-        imgHtml: '<img src="./assets/smilecare-logo.png" alt="SmileCare App" style="object-fit: contain; max-width: 60%; max-height: 50%; width: auto; height: auto; filter: none;">',
-        imgBg: "#ffffff",
-        phTitle: "View Project",
-        phBgHtml: '<div style="position: absolute; inset: 0; background: #ffffff; display: flex; align-items: center; justify-content: center;"><img src="./assets/smilecare-logo.png" style="width: 50%; height: auto; object-fit: contain;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
-      },
-      {
-        id: 2,
-        num: "02",
-        label: "UI Design",
-        title: "Coming soon",
-        subtitle: "Stay tuned",
-        desc: "Details for this project are being documented. Please check back later.",
-        tags: ["UI Design"],
-        client: "-", budget: "-", role: "UI Designer", platform: "-",
-        imgHtml: '',
-        imgBg: "rgba(245, 240, 232, 0.05)",
-        phTitle: "Coming soon",
-        phBgHtml: ''
-      },
-      {
-        id: 3,
-        num: "03",
-        label: "Design System",
-        title: "Design System",
-        subtitle: "Scalable Component Library",
-        desc: "A comprehensive design system created to streamline product development, ensuring visual consistency across platforms and accelerating design-to-development handoff.",
-        tags: ["Design Systems", "Figma", "Guidelines"],
-        client: "Internal", budget: "-", role: "UX/UI Designer", platform: "Web",
-        imgHtml: '<div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;"><img id="main-ds-img" src="./assets/design system.png" alt="Design System" style="object-fit: contain; max-width: 60%; max-height: 50%; width: auto; height: auto; filter: none; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;"><button onclick="toggleDsImage(event, \'main-ds-img\', \'prev\')" style="position: absolute; left: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; font-family: monospace; font-size: 1.2rem; transition: background 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.2)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.1)\'">&lt;</button><button onclick="toggleDsImage(event, \'main-ds-img\', \'next\')" style="position: absolute; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; font-family: monospace; font-size: 1.2rem; transition: background 0.2s;" onmouseover="this.style.background=\'rgba(255,255,255,0.2)\'" onmouseout="this.style.background=\'rgba(255,255,255,0.1)\'">&gt;</button></div>',
+        client: { en: "Chiang Mai University", th: "มหาวิทยาลัยเชียงใหม่" },
+        budget: { en: "฿ 4.7M", th: "฿ 4.7M" },
+        role: { en: "UX/UI Designer", th: "นักออกแบบ UX/UI" },
+        platform: { en: "iOS · Android · Web", th: "iOS · Android · Web" },
         imgBg: "#1e1c2e",
-        phTitle: "View Project",
+        slides: [
+          { img: "Projact01.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: true },
+          { img: "projact02.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: false },
+          { img: "projact03.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: false }
+        ],
+        phTitle: { en: "Project", th: "โปรเจกต์" },
+        phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/Projact01.png" style="width: 50%; height: auto; object-fit: contain;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
+      },
+      {
+        id: 2, num: "02",
+        label: { en: "Requirements Gathering", th: "การรวบรวมความต้องการ" },
+        categoryTitle: { en: "Requirements Gathering", th: "การรวบรวมความต้องการ" },
+        title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" },
+        subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" },
+        desc: { en: "Overview of meetings, collaborative workshops, and requirement gathering sessions to ensure close alignment with client goals and user needs from the start.", th: "ภาพรวมการประชุม การทำกิจกรรมเวิร์กชอป และการรวบรวมความต้องการ เพื่อให้เป้าหมายของทีมสอดคล้องกับลูกค้าและความต้องการของผู้ใช้ตั้งแต่เริ่มต้น" },
+        tags: ["UX Research", "Workshop", "Analysis"],
+        client: { en: "Various", th: "หลากหลาย" }, budget: { en: "-", th: "-" }, role: { en: "UX/UI Designer", th: "นักออกแบบ UX/UI" }, platform: { en: "-", th: "-" },
+        imgBg: "#1e1c2e",
+        slides: [
+          { img: "req01.png", title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" }, subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" }, desc: { en: "Overview of meetings, collaborative workshops, and requirement gathering sessions to ensure close alignment with client goals and user needs from the start.", th: "ภาพรวมการประชุม การทำกิจกรรมเวิร์กชอป และการรวบรวมความต้องการ เพื่อให้เป้าหมายของทีมสอดคล้องกับลูกค้าและความต้องการของผู้ใช้ตั้งแต่เริ่มต้น" }, tags: ["UX Research", "Workshop", "Analysis"], showMeta: false }
+        ],
+        phTitle: { en: "Requirements Gathering", th: "การรวบรวมความต้องการ" },
+        phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/req01.png" style="width: 70%; height: auto; object-fit: contain; opacity: 0.8;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
+      },
+      {
+        id: 3, num: "03",
+        label: { en: "Workflow", th: "ขั้นตอนการทำงาน" },
+        categoryTitle: { en: "Workflow", th: "ขั้นตอนการทำงาน" },
+        title: { en: "Design System", th: "Design System" },
+        subtitle: { en: "Scalable Component Library", th: "คลังคอมโพเนนต์ที่ขยายได้" },
+        desc: { en: "Developing a comprehensive Design System, including style guides, reusable components, and guidelines.", th: "ออกแบบระบบโครงสร้างการดีไซน์ (Design System) ที่ครอบคลุมทั้ง Style Guide, Components และ Guidelines" },
+        tags: ["Design Systems", "Figma", "Guidelines"],
+        client: { en: "Internal", th: "ภายในองค์กร" }, budget: { en: "-", th: "-" }, role: { en: "UX/UI Designer", th: "นักออกแบบ UX/UI" }, platform: { en: "Web", th: "เว็บ" },
+        imgBg: "#1e1c2e",
+        slides: [
+          { img: "design system.png", title: { en: "Design System", th: "Design System" }, subtitle: { en: "Scalable Component Library", th: "คลังคอมโพเนนต์ที่ขยายได้" }, desc: { en: "Developing a comprehensive Design System, including style guides, reusable components, and guidelines. This serves as the primary framework to drive design quality, ensuring cross-platform consistency and seamless scalability.", th: "ออกแบบระบบโครงสร้างการดีไซน์ (Design System) ที่ครอบคลุมทั้ง Style Guide, Components และ Guidelines เพื่อเป็นฟันเฟืองหลักในการขับเคลื่อนงานออกแบบให้มีคุณภาพ สอดคล้องกันในทุกหน้าจอ และง่ายต่อการปรับขยายในอนาคต" }, tags: ["Design Systems", "Figma", "Guidelines"], showMeta: false },
+          { img: "workflow02.png", title: { en: "Frame Design", th: "Frame Design" }, subtitle: { en: "Frame Design", th: "การออกแบบหน้าจอ" }, desc: { en: "Crafting interface frames tailored to specific user roles, strictly guided by the TOR and flowcharts. I leveraged AI-assisted tools to optimize the creative process and layout generation while ensuring every design remains cohesive and compliant with the established Design System.", th: "การออกแบบหน้าจอ (Frame Design) ที่ปรับเปลี่ยนตามบทบาทผู้ใช้งาน (User Roles) โดยอ้างอิงจาก TOR และ Flowchart อย่างเคร่งครัด มีการประยุกต์ใช้ AI เพื่อช่วยเพิ่มประสิทธิภาพในการสร้างสรรค์และวางเลย์เอาต์ แต่ยังคงรักษามาตรฐานความสวยงามและฟังก์ชันให้อยู่ภายใต้กรอบของ Design System ที่กำหนดไว้" }, tags: ["Frame Design", "User Roles", "AI Assisted", "Design Systems"], showMeta: false },
+          { img: "design system02.png", title: { en: "Frontend Development & Prototyping", th: "Frontend Development & Prototyping" }, subtitle: { en: "Frontend & Prototype", th: "ผู้เชี่ยวชาญด้าน Frontend" }, desc: { en: "Proficient in building Functional Prototypes using React, TypeScript, and Tailwind CSS, with a focus on integrating Generative AI to accelerate the development lifecycle. I specialize in crafting Clean Architecture—organizing files into logical Components, Pages, and Styles—to ensure seamless handovers for downstream developers. By maintaining a disciplined workflow through Git, I deliver production-ready codebases that are scalable, well-structured, and easy to integrate into larger systems.", th: "เชี่ยวชาญการสร้าง Functional Prototype ด้วย React, TypeScript และ Tailwind CSS โดยเน้นการทำงานร่วมกับ Generative AI เพื่อเร่งกระบวนการพัฒนาให้รวดเร็วและแม่นยำ ผมให้ความสำคัญกับการวางโครงสร้างโค้ดแบบ Clean Architecture ที่แยกสัดส่วนระหว่าง Components, Pages และ Data อย่างชัดเจน เพื่อให้ง่ายต่อการนำไปพัฒนาต่อ (Handover) พร้อมทั้งจัดการระบบ Version Control ผ่าน Git เพื่อการส่งมอบงานที่เป็นระบบและพร้อมใช้งานจริงในระดับทีม Developer" }, tags: ["React", "TypeScript", "Tailwind CSS", "Generative AI", "Frontend"], showMeta: false },
+          { img: "workflow03.png", title: { en: "AI Code Reviewer", th: "AI Code Reviewer" }, subtitle: { en: "Quality Assurance", th: "การตรวจสอบคุณภาพ" }, desc: { en: "Utilizing Gemini as an AI Code Reviewer to validate the alignment between source code on GitHub and project requirements stored in NotebookLM. This process identifies missing logic or functional discrepancies before handing over to the Development (Dev) team. By implementing this AI-driven check, I significantly reduce bug-fixing time and eliminate communication gaps between the design and development phases.", th: "การใช้ Gemini ในฐานะ Code Reviewer เพื่อตรวจสอบความสอดคล้องระหว่าง Source Code บน GitHub กับเอกสารความต้องการ (Requirements) ที่จัดเก็บใน NotebookLM กระบวนการนี้ช่วยคัดกรอง Logic ที่ตกหล่นหรือฟังก์ชันที่ไม่ตรงตามข้อตกลง ก่อนจะส่งต่อให้ทีมพัฒนา (Dev) นำไปสานต่อ เพื่อลดระยะเวลาในการแก้บัค (Bug Fixing) และขจัดปัญหาการสื่อสารที่คลาดเคลื่อนระหว่างขั้นตอนการออกแบบและพัฒนา" }, tags: ["Gemini", "NotebookLM", "GitHub", "Quality Assurance"], showMeta: false }
+        ],
+        phTitle: { en: "Workflow", th: "ขั้นตอนการทำงาน" },
         phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/design system.png" style="width: 50%; height: auto; object-fit: contain;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
       },
       {
-        id: 4,
-        num: "04",
-        label: "Web Experience",
-        title: "Coming soon",
-        subtitle: "Stay tuned",
-        desc: "Details for this project are being documented. Please check back later.",
-        tags: ["Web Design"],
-        client: "-", budget: "-", role: "Web Designer", platform: "-",
-        imgHtml: '',
-        imgBg: "rgba(245, 240, 232, 0.05)",
-        phTitle: "Coming soon",
-        phBgHtml: ''
+        id: 4, num: "04",
+        label: { en: "Tools", th: "เครื่องมือที่ใช้ในการทำงาน" },
+        categoryTitle: { en: "Tools", th: "เครื่องมือที่ใช้ในการทำงาน" },
+        title: { en: "Figma make / Figma Design", th: "Figma make / Figma Design" },
+        subtitle: { en: "Design & Prototyping", th: "การออกแบบและสร้างโปรโตไทป์" },
+        desc: { en: "Designing and managing Components, Auto Layout, and Variants in Figma Design.", th: "ออกแบบและจัดการ Components, Auto Layout ใน Figma Design" },
+        tags: ["Figma Design", "Figma Make", "Prototyping", "Components"],
+        client: { en: "Internal", th: "ภายในเครื่อง" }, budget: { en: "-", th: "-" }, role: { en: "UX/UI Designer", th: "นักออกแบบ UX/UI" }, platform: { en: "Mac OS", th: "Mac OS" },
+        imgBg: "#1e1c2e",
+        slides: [
+          { img: "tools01.png", title: { en: "Figma make / Figma Design", th: "Figma make / Figma Design" }, subtitle: { en: "Design & Prototyping", th: "การออกแบบและสร้างโปรโตไทป์" }, desc: { en: "Designing and managing Components, Auto Layout, and Variants in Figma Design, as well as presenting Prototypes and Demos in Figma make.", th: "ออกแบบและจัดการ Components, Auto Layout หรือ Variants ใน Figma Design รวมถึงแสดง Prototype และ Demo ใน Figma make" }, tags: ["Figma Design", "Figma Make", "Prototyping", "Components"], showMeta: false },
+          { img: "tools02.png", title: { en: "Lovable", th: "Lovable" }, subtitle: { en: "AI-Powered UI to Web", th: "แปลงดีไซน์เป็นเว็บ Prototype ด้วย AI" }, desc: { en: "Utilized Lovable to transform UI designs into functional, high-fidelity web prototypes. By leveraging AI to automate the coding process (React & Tailwind CSS), I was able to rapidly iterate on layouts and interactions, bridging the gap between design and development.", th: "ใช้ Lovable เพื่อเปลี่ยนงานดีไซน์เป็นเว็บ Prototype ที่ใช้งานได้จริง ช่วยเร่งกระบวนการสร้าง Code และทำให้เห็นภาพรวมของ Interaction ได้ทันที" }, tags: ["Lovable", "AI Tools", "React", "Tailwind CSS"], showMeta: false },
+          { img: "tools03.png", title: { en: "Google Stitch", th: "Google Stitch" }, subtitle: { en: "Intelligent Ideation Partner", th: "ผู้ช่วยหาไอเดียด้วย AI" }, desc: { en: "Leveraged Google Stitch (NotebookLM) to analyze project requirements and generate suitable UI patterns for the 'Thai Cleft Link' platform. This tool served as an intelligent ideation partner, helping me discover diverse design solutions and establish a user-centric visual hierarchy.", th: "ใช้ Google Stitch ช่วยวิเคราะห์ความต้องการโปรเจกต์และสร้างรูปแบบ UI ที่เหมาะสม ช่วยหาไอเดียการออกแบบที่หลากหลาย และจัดลำดับความสำคัญของข้อมูลให้ตรงใจผู้ใช้" }, tags: ["Google Stitch", "NotebookLM", "Ideation", "AI Analysis"], showMeta: false },
+          { img: "tools04.png", title: { en: "NotebookLM", th: "NotebookLM" }, subtitle: { en: "UX Research Assistant", th: "ผู้ช่วยวิจัยด้าน UX" }, desc: { en: "Leveraged NotebookLM as a research assistant to bridge the gap between complex client requests and user-centered design solutions. I used the tool to summarize key feedback and compare multiple sources of project information, which allowed me to deeply understand the user's journey and translate abstract goals into concrete UX features.", th: "ใช้ NotebookLM เป็นผู้ช่วยวิจัยเพื่อเชื่อมโยงความต้องการของลูกค้าเข้ากับโซลูชันการออกแบบที่เน้นผู้ใช้เป็นศูนย์กลาง โดยการสรุป Feedback และเปรียบเทียบข้อมูลโปรเจกต์จากหลายแหล่ง เพื่อทำความเข้าใจเส้นทางการใช้งาน (User Journey) และเปลี่ยนเป้าหมายที่ซับซ้อนให้กลายเป็นฟีเจอร์ UX ที่ชัดเจน" }, tags: ["NotebookLM", "UX Research", "AI Analysis", "User Journey"], showMeta: false },
+          { img: "tools05.png", title: { en: "Gemini pro / Gemini Gem", th: "Gemini pro / Gemini Gem" }, subtitle: { en: "AI Workflow Agent", th: "ผู้ช่วยตรวจสอบคุณภาพด้วย AI" }, desc: { en: "Created an intelligent workflow using Gemini Gems to streamline the hand-off and review process. By linking technical documentation (NotebookLM) with live code repositories (GitHub), the AI Agent can automatically identify discrepancies in UI structure and code quality. This proactive approach ensures high-quality Front-end output and minimizes design debt.", th: "เพิ่มประสิทธิภาพการทำงานด้วย Gemini Gems โดยการเชื่อมต่อเอกสารทางเทคนิคเข้ากับ Code ใน GitHub เพื่อให้ AI ช่วยระบุจุดที่โค้ดไม่ตรงกับดีไซน์หรือคุณภาพไม่ได้มาตรฐาน ช่วยลดข้อผิดพลาดก่อนส่งมอบงานจริง" }, tags: ["Gemini Pro", "AI Workflow", "Design Handoff", "Quality Assurance"], showMeta: false }
+        ],
+        phTitle: { en: "Tools", th: "เครื่องมือที่ใช้ในการทำงาน" },
+        phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/tools01.png" style="width: 70%; height: auto; object-fit: contain; opacity: 0.8;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
       }
     ];
 
-    let activeProjectId = 1;
-    let isAnimating = false;
+    // activeSlideIndex tracks the current slide per project
+    var activeSlideIndex = {};
+    var activeProjectId = 1;
+    var isAnimating = false;
+
+    function getActiveSlide(project) {
+        if (!project.slides || project.slides.length === 0) return null;
+        return project.slides[activeSlideIndex[project.id] || 0];
+    }
     
     function renderMainProject(project) {
         if(isAnimating) return;
         isAnimating = true;
 
+        // Reset slide index for this project when switching categories
+        activeSlideIndex[project.id] = activeSlideIndex[project.id] || 0;
+
         const mainCard = document.getElementById('main-case-study');
+        if (!mainCard) {
+            isAnimating = false;
+            return;
+        }
         
         // 1. Fade/Scale Out
         mainCard.style.opacity = '0';
         mainCard.style.transform = 'translateY(30px) scale(0.98)';
         
         setTimeout(() => {
+            const lang = window.currentLang || 'en';
+            const slide = getActiveSlide(project);
+            const displayTitle = slide ? slide.title[lang] : project.title[lang];
+            const displaySubtitle = slide ? slide.subtitle[lang] : project.subtitle[lang];
+            const displayDesc = slide ? slide.desc[lang] : project.desc[lang];
+            const displayTags = slide ? slide.tags : project.tags;
+
             // 2. Swap Content
-            mainCard.querySelector('.case-img').style.background = project.imgBg;
-            mainCard.querySelector('.case-img').innerHTML = project.imgHtml + '<div class="case-img-overlay"></div>';
+            const categoryTitleEl = document.getElementById('work-category-title');
+            if (categoryTitleEl && project.categoryTitle) {
+                categoryTitleEl.setAttribute('data-en', project.categoryTitle.en);
+                categoryTitleEl.setAttribute('data-th', project.categoryTitle.th);
+                categoryTitleEl.innerText = project.categoryTitle[lang];
+            }
             
-            mainCard.querySelector('.case-num').innerText = project.num;
-            mainCard.querySelector('.case-type').innerText = project.label;
-            mainCard.querySelector('.case-title').innerText = project.title;
-            mainCard.querySelector('.case-subtitle').innerText = project.subtitle;
-            mainCard.querySelector('.case-desc').innerText = project.desc;
+            // Update "0X of 04" in header
+            const headerSpan = document.querySelector('.work-header span');
+            if (headerSpan) {
+                headerSpan.innerText = `${project.num} of 0${projectsData.length}`;
+            }
+
+            // Build and inject slider HTML
+            const caseImgEl = mainCard.querySelector('.case-img');
+            if (caseImgEl) {
+                caseImgEl.style.background = project.imgBg;
+                caseImgEl.innerHTML = buildSliderHtml(project);
+                console.log("Injected slider HTML for", project.id);
+            }
             
-            mainCard.querySelector('.case-tags').innerHTML = project.tags.map(tag => `<span class="case-tag">${tag}</span>`).join('');
+            const caseNum = mainCard.querySelector('.case-num');
+            if (caseNum) caseNum.innerText = project.num;
+
+            const caseType = mainCard.querySelector('.case-type');
+            if (caseType) caseType.innerText = project.label[lang];
+            const caseTitle = mainCard.querySelector('.case-title');
+            if (caseTitle) caseTitle.innerText = displayTitle;
+            const caseSubtitle = mainCard.querySelector('.case-subtitle');
+            if (caseSubtitle) caseSubtitle.innerText = displaySubtitle;
+            const caseDesc = mainCard.querySelector('.case-desc');
+            if (caseDesc) caseDesc.innerHTML = displayDesc;
+            const caseTags = mainCard.querySelector('.case-tags');
+            if (caseTags) caseTags.innerHTML = displayTags.map(tag => `<span class="case-tag">${tag}</span>`).join('');
+            
+            // Reset text area scroll position
+            const caseInfo = mainCard.querySelector('.case-info');
+            if(caseInfo) caseInfo.scrollTop = 0;
             
             const metaValues = mainCard.querySelectorAll('.meta-value');
-            if(metaValues.length >= 4) {
-                metaValues[0].innerText = project.client;
-                metaValues[1].innerText = project.budget;
-                metaValues[2].innerText = project.role;
-                metaValues[3].innerText = project.platform;
+            if(metaValues && metaValues.length >= 4) {
+                metaValues[0].innerText = project.client[lang];
+                metaValues[1].innerText = project.budget[lang];
+                metaValues[2].innerText = project.role[lang];
+                metaValues[3].innerText = project.platform[lang];
+            }
+
+            // caseMeta: show only for project id=1 && first slide has showMeta=true
+            const caseMeta = mainCard.querySelector('.case-meta');
+            if (caseMeta) {
+                const showMeta = slide && slide.showMeta === true;
+                caseMeta.style.display = showMeta ? 'flex' : 'none';
             }
             
             // 3. Fade/Scale In
-            // We use requestAnimationFrame to ensure the browser has applied the DOM updates before transitioning back
             requestAnimationFrame(() => {
-              mainCard.style.transform = 'translateY(-10px) scale(1.01)'; // Slight parallax bounce effect
-              
+              mainCard.style.transform = 'translateY(-10px) scale(1.01)';
               requestAnimationFrame(() => {
                 mainCard.style.opacity = '1';
                 mainCard.style.transform = 'translateY(0) scale(1)';
-                
                 setTimeout(() => { isAnimating = false; }, 600);
               });
             });
-        }, 500); // Wait for fade out to finish
+        }, 500);
     }
     
     function renderGrid() {
@@ -1132,14 +1495,14 @@
                   ${p.phBgHtml}
                   <span class="ph-num" style="z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.num}</span>
                   <div style="position: relative; z-index: 2; padding: 1.5rem;">
-                    <p class="ph-label" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 0.4rem;">${p.label}</p>
-                    <p class="ph-title" style="color: #F5F0E8; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.phTitle}</p>
+                    <p class="ph-label" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 0.4rem;">${p.label[window.currentLang]}</p>
+                    <p class="ph-title" style="color: #F5F0E8; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.phTitle[window.currentLang]}</p>
                   </div>`;
             } else {
                 card.innerHTML = `
                   <span class="ph-num">${p.num}</span>
-                  <p class="ph-label">${p.label}</p>
-                  <p class="ph-title">${p.phTitle}</p>
+                  <p class="ph-label">${p.label[window.currentLang]}</p>
+                  <p class="ph-title">${p.phTitle[window.currentLang]}</p>
                 `;
             }
             
@@ -1166,8 +1529,32 @@
         });
     }
 
-    // Initialize grid
-    renderGrid();
+    // ── LIGHTBOX LOGIC ──
+    document.addEventListener('click', function(e) {
+      // Open Lightbox from Main Case Image
+      const caseImg = e.target.closest('.case-img');
+      const isInnerButton = e.target.closest('button');
+      if (caseImg && !isInnerButton) {
+        const imgEl = caseImg.querySelector('img');
+        if (imgEl && imgEl.src) {
+           openLightbox(imgEl.src);
+        }
+      }
+    });
+
+    window.openLightbox = function(src) {
+      if(!src) return;
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.src = src;
+      lb.classList.add('active');
+    };
+
+    window.closeLightbox = function() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('active');
+      setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 400);
+    };
   </script>
 </body>
 
