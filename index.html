@@ -33,34 +33,8 @@
       --font-thai: 'Noto Sans Thai', sans-serif;
     }
 
-    /* ─── THAI LANGUAGE ADJUSTMENTS ─────────────────────── */
-    html[lang="th"] {
-      font-size: 96%;
-    }
-    
-    html[lang="th"] .hero-name {
-      font-size: clamp(4rem, 10vw, 8.5rem);
-      line-height: 1.1; 
-      margin-bottom: 2rem;
-    }
-    
-    html[lang="th"] .about-text h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.3;
-    }
-    
-    html[lang="th"] .work-header h2 {
-      font-size: clamp(1.8rem, 4.5vw, 3.8rem);
-    }
-    
-    html[lang="th"] .case-title {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      line-height: 1.3;
-    }
-    
-    html[lang="th"] .ph-title {
-      font-size: 1rem;
-    }
+    /* Standardized typography results in no language-specific overrides needed */
+
 
     *,
     *::before,
@@ -78,6 +52,7 @@
       background: var(--ink);
       color: var(--cream);
       font-family: var(--font-mono);
+      line-height: 1.6;
       overflow-x: hidden;
       cursor: none;
     }
@@ -130,13 +105,14 @@
       text-decoration: none;
       line-height: 1;
       mix-blend-mode: difference;
+      transition: color 0.4s ease;
     }
 
     .nav-links {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.25rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 2.5rem;
     }
 
     .nav-links a {
@@ -148,7 +124,7 @@
       color: var(--cream);
       text-decoration: none;
       opacity: 0.6;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, color 0.4s ease;
       mix-blend-mode: difference;
     }
 
@@ -157,7 +133,6 @@
     }
 
     .lang-switch {
-      margin-top: 1.5rem;
       font-family: var(--font-mono);
       font-size: 0.75rem;
       font-weight: 600;
@@ -171,9 +146,62 @@
       border-radius: 40px;
       padding: 0.4rem 1rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: none;
+      transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    }
+
+    /* ─── NAVIGATION TOGGLE ─── */
+    .nav-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: none;
+      z-index: 1200;
+      width: 44px;
+      height: 44px;
+      justify-content: center;
+      align-items: flex-end;
+      pointer-events: auto;
+    }
+
+    .nav-menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--cream);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, background 0.4s ease;
+      mix-blend-mode: difference;
+    }
+
+    nav.nav-open .nav-menu-toggle span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+      background: var(--cream);
+    }
+    nav.nav-open .nav-menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+    nav.nav-open .nav-menu-toggle span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+      background: var(--cream);
+    }
+
+    /* ─── NAVIGATION DARK MODE ─── */
+    nav.nav-dark .nav-logo {
+      color: var(--ink);
+      mix-blend-mode: normal;
+    }
+    nav.nav-dark .nav-links a {
+      color: var(--ink);
+      mix-blend-mode: normal;
+      opacity: 0.8;
+    }
+    nav.nav-dark .nav-links a:hover {
+      opacity: 1;
+    }
+    nav.nav-dark .lang-switch {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
     }
 
     .lang-switch:hover {
@@ -372,8 +400,8 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 6rem;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
       max-width: 1100px;
     }
 
@@ -401,12 +429,22 @@
 
     .about-text h2 {
       font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
       font-weight: 300;
-      line-height: 1.15;
+      line-height: 1.2;
       letter-spacing: -0.02em;
       color: var(--ink-soft);
       margin-bottom: 2.5rem;
+    }
+
+    .heading-line {
+      display: block;
+    }
+
+    @media (min-width: 992px) {
+      .heading-line {
+        white-space: nowrap;
+      }
     }
 
     .about-text h2 em {
@@ -416,18 +454,20 @@
 
     .about-text p {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      line-height: 2;
+      font-size: 14px;
+      line-height: 1.6;
       color: rgba(26, 26, 24, 0.6);
-      max-width: 85%;
+      max-width: 600px; /* Locked width for stability */
       margin-bottom: 1.5rem;
+      min-height: 3.2rem; /* Normalize height to ~2 lines if wrapping occurs */
     }
 
     .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+      gap: 0.75rem;
       margin-top: 3rem;
+      max-width: 720px; /* Lock overall width too */
     }
 
     .tag {
@@ -583,7 +623,7 @@
     }
 
     .case-title {
-      font-family: var(--font-serif);
+      font-family: 'Cormorant Garamond', Georgia, serif; /* force English serif font */
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 300;
       line-height: 1.1;
@@ -752,14 +792,14 @@
       font-size: 1.8rem;
       font-weight: 300;
       font-style: italic;
-      color: var(--sand-light);
-      opacity: 0.4;
+      color: #ffffff;
+      opacity: 1;
     }
 
     footer .foot-right {
       font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: rgba(245, 240, 232, 0.25);
+      font-size: 0.85rem;
+      color: #ffffff;
       letter-spacing: 0.1em;
       text-align: right;
       line-height: 2;
@@ -788,46 +828,147 @@
       }
     }
 
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
+      body, html {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+      }
+
       nav {
         padding: 1.5rem;
+        align-items: center;
       }
 
+      .nav-menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--ink);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        z-index: 1050;
+        pointer-events: none;
+        padding: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      nav.nav-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        font-size: 2rem;
+        opacity: 0.8;
+        mix-blend-mode: normal;
+        color: var(--cream);
+      }
+
+      .nav-links a:hover {
+        opacity: 1;
+      }
+
+      .lang-switch {
+        margin-top: 1rem;
+        transform: scale(1.2);
+      }
+
+      /* Typography & Hero Fixes */
       .hero-content {
-        padding: 0 1.5rem 3rem;
+        padding: 0 1.5rem 4rem;
       }
 
-      .hero-index {
+      .hero-name {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+        line-height: 1.1;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+
+      .hero-desc {
+        max-width: 100%;
+      }
+
+      .hero-index, .hero-scroll {
         display: none;
       }
 
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+      /* About Section Fixes */
+      .section-about {
+        padding: 4rem 1.5rem;
       }
 
       .about-label {
         position: static;
+        margin-bottom: 1.5rem;
       }
 
-      .section-about {
-        padding: 6rem 1.5rem;
+      .about-label span {
+        font-size: 1.4rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .about-text h2 {
+        font-size: clamp(1.2rem, 6vw, 1.6rem);
+        line-height: 1.4;
+        word-break: break-word;
+        max-width: 100%;
+      }
+
+      .about-text p {
+        max-width: 100%;
+        min-height: auto;
+      }
+
+      /* Skills tags grid */
+      .skill-tags {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        max-width: 100%;
+      }
+
+      /* Case Study Fixes */
+      .case-study {
+        grid-template-columns: 1fr;
+        height: auto;
       }
 
       .section-work {
         padding: 5rem 1.5rem;
       }
 
-      .work-grid {
-        grid-template-columns: 1fr;
-      }
-
       footer {
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.5rem;
         align-items: flex-start;
-        padding: 3rem 1.5rem;
+        padding: 4rem 1.5rem;
+        text-align: left;
+      }
+
+      footer .foot-right {
+        text-align: left;
       }
     }
 
@@ -905,6 +1046,11 @@
   <!-- ── NAVIGATION ── -->
   <nav>
     <a href="#" class="nav-logo">Sadtavut K.</a>
+    <div class="nav-menu-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="nav-links">
       <a href="#about" data-en="About" data-th="เกี่ยวกับ">About</a>
       <a href="#work" data-en="Work" data-th="ผลงาน">Work</a>
@@ -964,20 +1110,12 @@
         <span data-en="About me" data-th="เกี่ยวกับฉัน">About me</span>
       </div>
       <div class="about-text">
-        <h2 data-en="UX/UI Designer who believes<br>good design is <em>invisible</em>" data-th="นักออกแบบ UX/UI ที่เชื่อว่า<br>การออกแบบที่ดีคือการออกแบบที่<em>มองไม่เห็น</em>">
-          UX/UI Designer who believes<br>
-          good design is <em>invisible</em>
+        <h2 data-en="<span class='heading-line'>UX/UI Design &amp; AI Integration:</span><span class='heading-line'>Shaping the Future of Digital Experiences.</span>" data-th="<span class='heading-line'>UX/UI Design &amp; AI Integration:</span><span class='heading-line'>นวัตกรรมการออกแบบแห่งอนาคต</span>">
+          <span class='heading-line'>UX/UI Design &amp; AI Integration:</span>
+          <span class='heading-line'>Shaping the Future of Digital Experiences.</span>
         </h2>
-        <p data-en="I'm Sadtavut — a UX/UI designer based in Chiang Mai, focused on crafting interfaces that feel effortless to use. I work at the intersection of research, visual design, and interaction — turning complex problems into clear, considered experiences." data-th="ผมชื่อเสฎฐวุฒิ — นักออกแบบ UX/UI ในเชียงใหม่ มุ่งเน้นไปที่การสร้างอินเทอร์เฟซที่ใช้งานได้อย่างเป็นธรรมชาติ ผมทำงานที่ผสมผสานระหว่างการวิจัย การออกแบบภาพลักษณ์ และการปฏิสัมพันธ์ — เพื่อเปลี่ยนปัญหาที่ซับซ้อนให้กลายเป็นประสบการณ์ที่ชัดเจนและรอบคอบ">
-          I'm Sadtavut — a UX/UI designer based in Chiang Mai, focused on
-          crafting interfaces that feel effortless to use. I work at the
-          intersection of research, visual design, and interaction — turning
-          complex problems into clear, considered experiences.
-        </p>
-        <p data-en="Every pixel has a reason. Every flow has a story. I care deeply about the details that most people never notice — and that's exactly the point." data-th="ทุกพิกเซลมีเหตุผล ทุกโฟลว์มีเรื่องราว ผมใส่ใจอย่างลึกซึ้งในรายละเอียดที่คนส่วนใหญ่ไม่ทันสังเกตเห็น — และนั่นก็คือประเด็นสำคัญของการออกแบบ">
-          Every pixel has a reason. Every flow has a story. I care deeply
-          about the details that most people never notice — and that's
-          exactly the point.
+        <p data-en="I am Sadtavut Kawila, a 24-year-old UX/UI Designer dedicated to crafting intuitive and impactful digital experiences. My core strength lies in integrating Generative AI into the design workflow to enhance creativity and efficiency—from deep-diving into user requirements to building high-fidelity interactive prototypes." data-th="ผม เสฎฐวุฒิ กาวิละ อายุ 24 ปี UX/UI Designer ที่มีความหลงใหลในการสร้างสรรค์ประสบการณ์ดิจิทัลที่ใช้งานง่ายและตอบโจทย์ธุรกิจ ความเชี่ยวชาญของผมคือการผนวกกระบวนการออกแบบเข้ากับเทคโนโลยี Generative AI เพื่อเพิ่มประสิทธิภาพในการทำงาน ตั้งแต่การวิเคราะห์ User Requirement ไปจนถึงการสร้าง High-fidelity Prototype">
+          I am Sadtavut Kawila, a 24-year-old UX/UI Designer dedicated to crafting intuitive and impactful digital experiences. My core strength lies in integrating Generative AI into the design workflow to enhance creativity and efficiency—from deep-diving into user requirements to building high-fidelity interactive prototypes.
         </p>
         <div class="skill-tags">
           <span class="tag">User Research</span>
@@ -1062,8 +1200,9 @@
     <div class="foot-left" data-en="Let's work<br>together." data-th="มาร่วมงาน<br>ด้วยกันเถอะ">Let's work<br>together.</div>
     <div class="foot-right">
       <a href="mailto:sadtavut2011@gmail.com"
-        style="color: inherit; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
-        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">sadtavut2011@gmail.com</a><br>
+        style="color: inherit; text-decoration: none; opacity: 0.9; transition: opacity 0.3s;"
+        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">sadtavut2011@gmail.com</a><br>
+      <span style="opacity: 0.9;"><span data-en="Tel." data-th="โทร.">Tel.</span> 084-202-1262</span><br>
       <span data-en="Chiang Mai, Thailand" data-th="เชียงใหม่, ประเทศไทย">Chiang Mai, Thailand</span><br>
       <span data-en="© 2025 Sadtavut Kawila" data-th="© 2025 เสฎฐวุฒิ กาวิละ">© 2025 Sadtavut Kawila</span>
     </div>
@@ -1116,7 +1255,9 @@
             const caseType = mainCard.querySelector('.case-type');
             if(caseType) caseType.innerText = p.label[lang];
             const caseTitle = mainCard.querySelector('.case-title');
-            if(caseTitle) caseTitle.innerText = displayTitle;
+            // Always show title in English (locked per requirement)
+            const lockedTitle = slide ? slide.title['en'] : p.title['en'];
+            if(caseTitle) caseTitle.innerText = lockedTitle;
             const caseSubtitle = mainCard.querySelector('.case-subtitle');
             if(caseSubtitle) caseSubtitle.innerText = displaySubtitle;
             const caseDesc = mainCard.querySelector('.case-desc');
@@ -1217,6 +1358,52 @@
 
     document.querySelectorAll('.section-about, .section-work, .case-study').forEach(el => observer.observe(el));
 
+    // ── NAVIGATION DARK MODE ON SCROLL ──
+    const navbarElement = document.querySelector('nav');
+    const targetAboutSection = document.querySelector('.section-about');
+
+    if (navbarElement && targetAboutSection) {
+      const navColorObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // If the About section is under the top 80px area of the viewport
+          if (entry.isIntersecting) {
+            navbarElement.classList.add('nav-dark');
+          } else {
+            navbarElement.classList.remove('nav-dark');
+          }
+        });
+      }, {
+        // Trigger precisely when the section passes the top navigation height (approx 80px)
+        rootMargin: "-80px 0px -99% 0px"
+      });
+      navColorObserver.observe(targetAboutSection);
+    }
+
+    // ── MOBILE MENU TOGGLE ──
+    const navToggle = document.getElementById('nav-toggle');
+    const navBar = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (navToggle && navBar) {
+      navToggle.addEventListener('click', () => {
+        navBar.classList.toggle('nav-open');
+        // Prevent body scroll when menu is open
+        if (navBar.classList.contains('nav-open')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Close menu when a link is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navBar.classList.remove('nav-open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
     // ── UNIVERSAL SLIDER LOGIC ──
     // (activeSlideIndex is declared earlier for scope hoisting)
 
@@ -1264,7 +1451,7 @@
 
             // Update text
             if (textArea) {
-                mainCard.querySelector('.case-title').innerText = slide.title[lang];
+                mainCard.querySelector('.case-title').innerText = slide.title['en']; // Always English
                 mainCard.querySelector('.case-subtitle').innerText = slide.subtitle[lang];
                 mainCard.querySelector('.case-desc').innerHTML = slide.desc[lang];
                 mainCard.querySelector('.case-tags').innerHTML = slide.tags.map(t => `<span class="case-tag">${t}</span>`).join('');
@@ -1313,8 +1500,8 @@
         imgBg: "#1e1c2e",
         slides: [
           { img: "Projact01.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: true },
-          { img: "projact02.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: false },
-          { img: "projact03.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.", th: "โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: false }
+          { img: "projact02.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The Thai Cleft Primary Care-Family Link Application features six distinct user roles: 1) PCU/Health Center Staff, 2) Case Managers, 3) Hospital Personnel, 4) SCFC Officers, 5) Patients/Families, and 6) System Administrators (IT Admin). The system is developed across two primary platforms: Web and Mobile. The Mobile Application prioritizes a user-friendly and portable UI/UX design, tailored for frontline staff performing field visits and for patient families. Conversely, the Web Application is optimized for large-screen interfaces to facilitate comprehensive data dashboards and back-end management for SCFC officers and IT administrators.", th: "โครงการ Thai Cleft Primary Care-Family Link Application มีการออกแบบสิทธิ์ผู้ใช้งานทั้งหมด 6 บทบาท (Roles) ได้แก่ 1. เจ้าหน้าที่ รพ.สต. 2. Case Manager 3. เจ้าหน้าที่โรงพยาบาล 4. เจ้าหน้าที่ SCFC 5. ผู้ป่วย/ครอบครัว และ 6. ผู้บริหารระบบ (Admin IT) ระบบถูกออกแบบและพัฒนาใน 2 รูปแบบแพลตฟอร์มหลัก คือ Web Application และ Mobile Application โดย Mobile App เน้นการออกแบบ UI/UX ให้ใช้งานง่ายและพกพาสะดวก สำหรับกลุ่มผู้ปฏิบัติงานหน้างานหรือลงพื้นที่ และกลุ่มผู้ป่วย ส่วน Web App เน้นการออกแบบหน้าจอขนาดใหญ่เพื่อแสดงผล Dashboard สถิติภาพรวมและการจัดการระบบหลังบ้าน สำหรับเจ้าหน้าที่ SCFC และ Admin IT" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: false },
+          { img: "projact03.png", title: { en: "Thai Cleft Link", th: "Thai Cleft Link" }, subtitle: { en: "Thai Cleft Link Program", th: "โครงการ Thai Cleft Link" }, desc: { en: "The development of a comprehensive platform, including both Web and Mobile Applications, is designed to support the healthcare network and patients. During the process, a high-fidelity 'Clickable Prototype' or Demo was created to present to frontline users. The primary objective of this demo is to allow users to experience the actual interface and verify whether the workflow aligns with their operational practices. Throughout the testing phase, the team meticulously gathers feedback and additional requirements directly from users. This valuable insight is used to refine and finalize the design, ensuring the system is fully optimized and truly meets user needs before being handed over to the development team for the final programming stage.", th: "การสร้างแพลตฟอร์มที่ครอบคลุมทั้งรูปแบบ Web Application และ Mobile Application เพื่อรองรับการทำงานของเครือข่ายบุคลากรทางการแพทย์และผู้ป่วย ในกระบวนการทำงานได้มีการจัดทำตัวจำลองหน้าจอเสมือนจริง (Clickable Prototype) หรือตัว Demo เพื่อนำไปนำเสนอให้กับกลุ่มผู้ใช้งานหน้างาน การสร้างตัว Demo นี้มีจุดประสงค์สำคัญเพื่อให้ผู้ใช้งานได้ทดลองกดใช้งานระบบจริงและตรวจสอบลำดับขั้นตอนการทำงาน (Flow) ว่าสอดคล้องกับแนวทางการปฏิบัติงานหรือไม่ ระหว่างการทดลองใช้งาน ทีมงานจะทำการรวบรวมข้อเสนอแนะรวมถึงเก็บข้อมูลความต้องการเพิ่มเติม (Requirements) อย่างละเอียดจากผู้ใช้งานโดยตรง ข้อมูลเหล่านี้จะถูกนำมาใช้ปรับปรุงแก้ไขการออกแบบระบบให้มีความสมบูรณ์และตอบโจทย์การทำงานมากที่สุดก่อนที่จะส่งมอบให้ทีมนักพัฒนาเข้าสู่ขั้นตอนการเขียนโปรแกรมจริงต่อไป" }, tags: ["UX Research", "UI Design", "Mobile App", "Healthcare", "Figma"], showMeta: false }
         ],
         phTitle: { en: "Project", th: "โปรเจกต์" },
         phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/Projact01.png" style="width: 50%; height: auto; object-fit: contain;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
@@ -1330,7 +1517,10 @@
         client: { en: "Various", th: "หลากหลาย" }, budget: { en: "-", th: "-" }, role: { en: "UX/UI Designer", th: "นักออกแบบ UX/UI" }, platform: { en: "-", th: "-" },
         imgBg: "#1e1c2e",
         slides: [
-          { img: "req01.png", title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" }, subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" }, desc: { en: "Overview of meetings, collaborative workshops, and requirement gathering sessions to ensure close alignment with client goals and user needs from the start.", th: "ภาพรวมการประชุม การทำกิจกรรมเวิร์กชอป และการรวบรวมความต้องการ เพื่อให้เป้าหมายของทีมสอดคล้องกับลูกค้าและความต้องการของผู้ใช้ตั้งแต่เริ่มต้น" }, tags: ["UX Research", "Workshop", "Analysis"], showMeta: false }
+          { img: "req01.png", title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" }, subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" }, desc: { en: "Client workshop and UX/UI design presentation with the client and multidisciplinary team at Chiang Mai University. I presented both Wireframe Designs to showcase data structure and Clickable Prototypes for comprehensive workflow visualisation. Feedback gathered from this session will be used to refine and optimize the system design, ensuring it fully meets operational needs before proceeding to development.", th: "การประชุมวางแผนและนำเสนอผลงานออกแบบ UX/UI ร่วมกับทีมลูกค้าและสหสาขาวิชาชีพ ณ มหาวิทยาลัยเชียงใหม่ ผมได้นำเสนอทั้ง Wireframe Design เพื่อโชว์โครงสร้างข้อมูล และ Clickable Prototype เพื่อให้ผู้ใช้งานได้เห็นภาพขั้นตอนการทำงานที่ชัดเจน (Workflow Visualisation) โดยความเห็นที่ได้จากการประชุมนี้ จะถูกนำไปปรับปรุงแก้ไขการออกแบบระบบให้มีความสมบูรณ์และตอบโจทย์การทำงานจริงมากที่สุด" }, tags: ["UX Research", "Workshop", "Analysis"], showMeta: false },
+          { img: "req02.png", title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" }, subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" }, desc: { en: "A collaborative feedback session with users and clients to brainstorm and explore functional requirements and User Experience (UX) insights. I actively gathered real-world feedback to analyze and refine the system, focusing on streamlining complex workflows and enhancing operational efficiency for healthcare personnel.", th: "กิจกรรมแลกเปลี่ยนความคิดเห็นร่วมกับกลุ่มผู้ใช้งานและลูกค้า เพื่อระดมสมองและเจาะลึกถึงความต้องการที่แท้จริงในส่วนของฟังก์ชันการใช้งาน ผมและทีมได้รวบรวม Feedback ด้านประสบการณ์ผู้ใช้งาน (UX) จากหน้างานจริง เพื่อนำมาวิเคราะห์และปรับปรุงระบบให้มีความสมบูรณ์ ลดขั้นตอนที่ซับซ้อน และช่วยให้การดำเนินงานของบุคลากรทางการแพทย์มีความคล่องตัวสูงสุด" }, tags: ["UX Research", "Workshop", "Analysis"], showMeta: false },
+          { img: "req03.png", title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" }, subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" }, desc: { en: "On-site user testing and demo presentation at Fang Hospital in collaboration with the Chiang Mai University team. I presented the system workflow and conducted user observations to identify real-world operational challenges and constraints. The feedback and insights gained are being used to refine and optimize the application, ensuring it effectively meets the practical needs of healthcare professionals in remote medical settings.", th: "กิจกรรมลงพื้นที่ ณ โรงพยาบาลฝาง ร่วมกับทีมงานจากมหาวิทยาลัยเชียงใหม่ เพื่อนำตัวระบบ Demo ไปทดสอบการใช้งานจริงกับบุคลากรทางการแพทย์หน้างาน ผมได้นำเสนอขั้นตอนการทำงานและสังเกตการณ์การใช้งาน (User Observation) เพื่อระบุปัญหาและข้อจำกัดในการปฏิบัติงานจริง ข้อมูลและข้อเสนอแนะที่ได้รับจะถูกนำมาวิเคราะห์และปรับปรุงระบบให้สอดคล้องกับบริบทการทำงานของโรงพยาบาลในพื้นที่ห่างไกลให้มีประสิทธิภาพสูงสุด" }, tags: ["UX Research", "Workshop", "Analysis"], showMeta: false },
+          { img: "req04.png", title: { en: "Client Workshops", th: "เวิร์กชอปกับลูกค้า" }, subtitle: { en: "Collaborative Planning", th: "การวางแผนร่วมกัน" }, desc: { en: "Overview of meetings, collaborative workshops, and requirement gathering sessions to ensure close alignment with client goals and user needs from the start.", th: "ภาพรวมการประชุม การทำกิจกรรมเวิร์กชอป และการรวบรวมความต้องการ เพื่อให้เป้าหมายของทีมสอดคล้องกับลูกค้าและความต้องการของผู้ใช้ตั้งแต่เริ่มต้น" }, tags: ["UX Research", "Workshop", "Analysis"], showMeta: false }
         ],
         phTitle: { en: "Requirements Gathering", th: "การรวบรวมความต้องการ" },
         phBgHtml: '<div style="position: absolute; inset: 0; background: #1e1c2e; display: flex; align-items: center; justify-content: center;"><img src="./assets/req01.png" style="width: 70%; height: auto; object-fit: contain; opacity: 0.8;"></div><div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95), transparent 60%); pointer-events: none;"></div>'
@@ -1439,7 +1629,9 @@
             const caseType = mainCard.querySelector('.case-type');
             if (caseType) caseType.innerText = project.label[lang];
             const caseTitle = mainCard.querySelector('.case-title');
-            if (caseTitle) caseTitle.innerText = displayTitle;
+            // Always show title in English (locked per requirement)
+            const lockedTitle = slide ? slide.title['en'] : project.title['en'];
+            if (caseTitle) caseTitle.innerText = lockedTitle;
             const caseSubtitle = mainCard.querySelector('.case-subtitle');
             if (caseSubtitle) caseSubtitle.innerText = displaySubtitle;
             const caseDesc = mainCard.querySelector('.case-desc');
