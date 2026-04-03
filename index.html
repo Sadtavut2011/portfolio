@@ -1018,6 +1018,23 @@
       footer .foot-right {
         text-align: left;
       }
+
+      /* Disable Custom Cursor on Mobile */
+      .cursor {
+        display: none !important;
+      }
+
+      body,
+      a,
+      .case-study,
+      .work-ph-card,
+      .nav-menu-toggle,
+      .lightbox,
+      .lightbox-img,
+      .lightbox-close,
+      .lang-switch {
+        cursor: auto !important;
+      }
     }
 
     /* ─── LIGHTBOX ─────────────────────────────────────── */
@@ -1275,6 +1292,12 @@
   </footer>
 
   <script>
+    // ── SCROLL STABILITY ──
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     // ── LANGUAGE SWITCHER ──
     window.currentLang = localStorage.getItem('lang') || 'en';
 
