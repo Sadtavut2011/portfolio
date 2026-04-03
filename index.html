@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Sarabun:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
   <style>
@@ -28,9 +28,9 @@
       --sand: #C4A882;
       --sand-light: #DDD0B8;
       --mist: rgba(245, 240, 232, 0.08);
-      --font-serif: 'Cormorant Garamond', 'Noto Sans Thai', Georgia, serif;
-      --font-mono: 'DM Mono', 'Noto Sans Thai', monospace;
-      --font-thai: 'Noto Sans Thai', sans-serif;
+      --font-serif: 'Cormorant Garamond', 'Sarabun', Georgia, serif;
+      --font-mono: 'DM Mono', 'Sarabun', monospace;
+      --font-thai: 'Sarabun', sans-serif;
     }
 
     /* Standardized typography results in no language-specific overrides needed */
@@ -91,7 +91,9 @@
       pointer-events: none;
     }
 
-    .nav-logo, .nav-links a, .lang-switch {
+    .nav-logo,
+    .nav-links a,
+    .lang-switch {
       pointer-events: auto;
     }
 
@@ -177,9 +179,11 @@
       transform: translateY(7.5px) rotate(45deg);
       background: var(--cream);
     }
+
     nav.nav-open .nav-menu-toggle span:nth-child(2) {
       opacity: 0;
     }
+
     nav.nav-open .nav-menu-toggle span:nth-child(3) {
       transform: translateY(-7.5px) rotate(-45deg);
       background: var(--cream);
@@ -190,18 +194,26 @@
       color: var(--ink);
       mix-blend-mode: normal;
     }
+
     nav.nav-dark .nav-links a {
       color: var(--ink);
       mix-blend-mode: normal;
       opacity: 0.8;
     }
+
     nav.nav-dark .nav-links a:hover {
       opacity: 1;
     }
+
     nav.nav-dark .lang-switch {
       background: var(--ink);
       color: var(--cream);
       border-color: var(--ink);
+    }
+
+    nav.nav-dark:not(.nav-open) .nav-menu-toggle span {
+      background: var(--ink);
+      mix-blend-mode: normal;
     }
 
     .lang-switch:hover {
@@ -219,8 +231,7 @@
       height: 100vh;
       width: 100%;
       display: flex;
-      align-items: flex-start; /* Anchor to top for stability */
-      padding-top: clamp(10rem, 32vh, 15rem); /* Increased to move content lower */
+      align-items: flex-end;
       overflow: hidden;
     }
 
@@ -274,7 +285,7 @@
     .hero-content {
       position: relative;
       z-index: 3;
-      padding: 0 3rem;
+      padding: 0 3rem 4rem;
       width: 100%;
     }
 
@@ -286,9 +297,11 @@
       text-transform: uppercase;
       color: var(--sand);
       margin-bottom: 1.5rem;
-      height: 1rem; /* Fixed height for text box */
+      height: 1rem;
+      /* Fixed height for text box */
       display: flex;
-      align-items: flex-end; /* Align to bottom of fixed box */
+      align-items: flex-end;
+      /* Align to bottom of fixed box */
       opacity: 0;
       animation: fadeUp 1s ease 0.3s forwards;
     }
@@ -306,12 +319,26 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      min-height: 2.1em; /* Increased safety height for Thai diacritics */
+      min-height: 2.1em;
+      /* Increased safety height for Thai diacritics */
     }
 
     .hero-name em {
       font-style: italic;
       color: var(--sand-light);
+    }
+
+    /* Language-specific hero name adjustments */
+    html[lang="th"] .hero-name {
+      line-height: 1.25;
+      gap: 0.15em;
+      letter-spacing: 0;
+    }
+
+    html[lang="en"] .hero-name {
+      line-height: 1.0;
+      gap: 0.05em;
+      letter-spacing: -0.02em;
     }
 
     .hero-bottom {
@@ -466,9 +493,11 @@
       font-size: 14px;
       line-height: 1.6;
       color: rgba(26, 26, 24, 0.6);
-      max-width: 600px; /* Locked width for stability */
-      min-height: 112px; /* Lock height for 5 lines */
+      max-width: 600px;
+      /* Locked width for stability */
       margin-bottom: 1.5rem;
+      min-height: 8rem;
+      /* Update: Exactly 5 lines at 1.6 line-height */
     }
 
     .skill-tags {
@@ -476,7 +505,8 @@
       grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
       gap: 0.75rem;
       margin-top: 3rem;
-      max-width: 720px; /* Lock overall width too */
+      max-width: 720px;
+      /* Lock overall width too */
     }
 
     .tag {
@@ -533,7 +563,7 @@
       overflow: hidden;
       cursor: none;
       transition: border-color 0.4s ease;
-      height: 820px; 
+      height: 820px;
     }
 
     .case-study:hover {
@@ -548,7 +578,7 @@
     }
 
     /* Only apply cover-style to background overlay images, not the slider main image */
-    .case-img > img {
+    .case-img>img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -589,10 +619,11 @@
       overflow-y: auto;
       overflow-x: hidden;
     }
-    
+
     .case-info::-webkit-scrollbar {
       width: 4px;
     }
+
     .case-info::-webkit-scrollbar-thumb {
       background: rgba(245, 240, 232, 0.15);
       border-radius: 4px;
@@ -632,7 +663,8 @@
     }
 
     .case-title {
-      font-family: 'Cormorant Garamond', Georgia, serif; /* force English serif font */
+      font-family: 'Cormorant Garamond', 'Sarabun', Georgia, serif;
+      /* force English serif font */
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 300;
       line-height: 1.1;
@@ -839,7 +871,9 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      body, html {
+
+      body,
+      html {
         overflow-x: hidden;
         position: relative;
         width: 100%;
@@ -888,6 +922,10 @@
         color: var(--cream);
       }
 
+      nav.nav-dark .nav-links a {
+        color: var(--cream);
+      }
+
       .nav-links a:hover {
         opacity: 1;
       }
@@ -917,7 +955,8 @@
         max-width: 100%;
       }
 
-      .hero-index, .hero-scroll {
+      .hero-index,
+      .hero-scroll {
         display: none;
       }
 
@@ -1090,7 +1129,8 @@
     </div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow" data-en="UX / UI Designer &amp; Creative" data-th="นักออกแบบ UX / UI และครีเอทีฟ">UX / UI Designer &amp; Creative</p>
+      <p class="hero-eyebrow" data-en="UX / UI Designer &amp; Creative" data-th="นักออกแบบ UX / UI และครีเอทีฟ">UX / UI
+        Designer &amp; Creative</p>
 
       <h1 class="hero-name">
         <span data-en="Sadtavut" data-th="เสฎฐวุฒิ">Sadtavut</span>
@@ -1098,7 +1138,9 @@
       </h1>
 
       <div class="hero-bottom">
-        <p class="hero-desc" data-en="Crafting digital experiences through<br>thoughtful design &amp; human-centered thinking.<br>Based in Chiang Mai, Thailand." data-th="สร้างสรรค์ประสบการณ์ดิจิทัลผ่านการออกแบบ<br>ที่ใส่ใจและยึดมนุษย์เป็นศูนย์กลาง<br>อาศัยอยู่ที่เชียงใหม่ ประเทศไทย">
+        <p class="hero-desc"
+          data-en="Crafting digital experiences through<br>thoughtful design &amp; human-centered thinking.<br>Based in Chiang Mai, Thailand."
+          data-th="สร้างสรรค์ประสบการณ์ดิจิทัลผ่านการออกแบบ<br>ที่ใส่ใจและยึดมนุษย์เป็นศูนย์กลาง<br>อาศัยอยู่ที่เชียงใหม่ ประเทศไทย">
           Crafting digital experiences through<br>
           thoughtful design &amp; human-centered thinking.<br>
           Based in Chiang Mai, Thailand.
@@ -1119,16 +1161,18 @@
         <span data-en="About me" data-th="เกี่ยวกับฉัน">About me</span>
       </div>
       <div class="about-text">
-        <h2 data-en="<span class='heading-line'>UX/UI Design &amp; AI Integration:</span><span class='heading-line'>Shaping the Future of Digital Experiences.</span>" data-th="<span class='heading-line'>UX/UI Design &amp; AI Integration:</span><span class='heading-line'>นวัตกรรมการออกแบบแห่งอนาคต</span>">
+        <h2
+          data-en="<span class='heading-line'>UX/UI Design &amp; AI Integration:</span><span class='heading-line'>Shaping the Future of Digital Experiences.</span>"
+          data-th="<span class='heading-line'>UX/UI Design &amp; AI Integration:</span><span class='heading-line'>นวัตกรรมการออกแบบแห่งอนาคต</span>">
           <span class='heading-line'>UX/UI Design &amp; AI Integration:</span>
           <span class='heading-line'>Shaping the Future of Digital Experiences.</span>
         </h2>
-        <p data-en="I am Sadtavut Kawila, a 24-year-old UX/UI Designer dedicated to<br>crafting intuitive and impactful digital experiences. My core strength<br>lies in integrating Generative AI into the design workflow to<br>enhance creativity and efficiency—from deep-diving into<br>user requirements to building high-fidelity interactive prototypes." data-th="ผม เสฎฐวุฒิ กาวิละ (Sadtavut Kawila) อายุ 24 ปี UX/UI Designer<br>ที่มีความหลงใหลในการสร้างสรรค์ประสบการณ์ดิจิทัลที่ใช้งานง่าย และตอบโจทย์ธุรกิจ<br>ความเชี่ยวชาญของผมคือการผนวกกระบวนการออกแบบเข้ากับเทคโนโลยี<br>Generative AI เพื่อเพิ่มประสิทธิภาพในการทำงาน ตั้งแต่การวิเคราะห์ User<br>Requirement ไปจนถึงการสร้าง High-fidelity Prototype">
-          ผม เสฎฐวุฒิ กาวิละ (Sadtavut Kawila) อายุ 24 ปี UX/UI Designer<br>
-          ที่มีความหลงใหลในการสร้างสรรค์ประสบการณ์ดิจิทัลที่ใช้งานง่าย และตอบโจทย์ธุรกิจ<br>
-          ความเชี่ยวชาญของผมคือการผนวกกระบวนการออกแบบเข้ากับเทคโนโลยี<br>
-          Generative AI เพื่อเพิ่มประสิทธิภาพในการทำงาน ตั้งแต่การวิเคราะห์ User<br>
-          Requirement ไปจนถึงการสร้าง High-fidelity Prototype
+        <p data-en="I am Sadtavut Kawila, a 24-year-old UX/UI Designer dedicated to<br>crafting intuitive and impactful digital experiences. My core strength<br>lies in integrating Generative AI into the design workflow to enhance<br>creativity and efficiency—from deep-diving into user requirements<br>to building high-fidelity interactive prototypes."
+          data-th="ผม เสฎฐวุฒิ กาวิละ (Sadtavut Kawila) อายุ 24 ปี UX/UI Designer<br>ที่มีความหลงใหลในการสร้างสรรค์ประสบการณ์ดิจิทัลที่ใช้งานง่าย<br>และตอบโจทย์ธุรกิจ ความเชี่ยวชาญของผมคือการผนวกกระบวนการ<br>ออกแบบเข้ากับเทคโนโลยี Generative AI เพื่อเพิ่มประสิทธิภาพในการทำงาน<br>ตั้งแต่การวิเคราะห์ User Requirement ไปจนถึงการสร้าง High-fidelity Prototype">
+          I am Sadtavut Kawila, a 24-year-old UX/UI Designer dedicated to<br>crafting intuitive and impactful digital
+          experiences. My core strength<br>lies in integrating Generative AI into the design workflow to
+          enhance<br>creativity and efficiency—from deep-diving into user requirements<br>to building high-fidelity
+          interactive prototypes.
         </p>
         <div class="skill-tags">
           <span class="tag">User Research</span>
@@ -1152,12 +1196,20 @@
     </div>
 
     <!-- ── CASE STUDY (Main Display) ── -->
-    <div class="case-study" id="main-case-study" style="transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;">
+    <div class="case-study" id="main-case-study"
+      style="transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;">
       <div class="case-img" id="main-case-img" style="background: #1e1c2e; position: relative; overflow: hidden;">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <img id="main-slide-img" src="./assets/Projact01.png" alt="Thai Cleft Link" style="object-fit:contain;max-width:90%;max-height:90%;width:auto;height:auto;filter:none;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.5s ease;">
-          <button onclick="toggleSlide(event,'prev')" style="position:absolute;left:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:monospace;font-size:1.2rem;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">&lt;</button>
-          <button onclick="toggleSlide(event,'next')" style="position:absolute;right:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:monospace;font-size:1.2rem;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">&gt;</button>
+          <img id="main-slide-img" src="./assets/Projact01.png" alt="Thai Cleft Link"
+            style="object-fit:contain;max-width:90%;max-height:90%;width:auto;height:auto;filter:none;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.5s ease;">
+          <button onclick="toggleSlide(event,'prev')"
+            style="position:absolute;left:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:monospace;font-size:1.2rem;transition:background 0.2s;"
+            onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.1)'">&lt;</button>
+          <button onclick="toggleSlide(event,'next')"
+            style="position:absolute;right:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;font-family:monospace;font-size:1.2rem;transition:background 0.2s;"
+            onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.1)'">&gt;</button>
         </div>
         <div class="case-img-overlay"></div>
       </div>
@@ -1210,7 +1262,8 @@
 
   <!-- ── FOOTER ── -->
   <footer id="contact">
-    <div class="foot-left" data-en="Let's work<br>together." data-th="มาร่วมงาน<br>ด้วยกันเถอะ">Let's work<br>together.</div>
+    <div class="foot-left" data-en="Let's work<br>together." data-th="มาร่วมงาน<br>ด้วยกันเถอะ">Let's work<br>together.
+    </div>
     <div class="foot-right">
       <a href="mailto:sadtavut2011@gmail.com"
         style="color: inherit; text-decoration: none; opacity: 0.9; transition: opacity 0.3s;"
@@ -1225,16 +1278,16 @@
     // ── LANGUAGE SWITCHER ──
     window.currentLang = localStorage.getItem('lang') || 'en';
 
-    window.toggleLanguage = function() {
+    window.toggleLanguage = function () {
       const newLang = window.currentLang === 'en' ? 'th' : 'en';
       setLanguage(newLang);
     };
 
-    window.setLanguage = function(lang) {
+    window.setLanguage = function (lang) {
       window.currentLang = lang;
       localStorage.setItem('lang', lang);
       document.documentElement.lang = lang;
-      
+
       const indicator = document.getElementById('lang-indicator');
       if (indicator) {
         indicator.innerText = lang.toUpperCase();
@@ -1248,52 +1301,52 @@
       // Update current project if it's already rendered
       const mainCard = document.getElementById('main-case-study');
       if (mainCard && typeof projectsData !== 'undefined' && typeof activeProjectId !== 'undefined') {
-          const p = projectsData.find(project => project.id === activeProjectId);
-          if (p && !isAnimating) {
+        const p = projectsData.find(project => project.id === activeProjectId);
+        if (p && !isAnimating) {
 
-            const categoryTitleEl = document.getElementById('work-category-title');
-            if (categoryTitleEl && p.categoryTitle) {
-                categoryTitleEl.setAttribute('data-en', p.categoryTitle.en);
-                categoryTitleEl.setAttribute('data-th', p.categoryTitle.th);
-                categoryTitleEl.innerText = p.categoryTitle[lang];
-            }
-
-            // Use unified slides system
-            const slide = (p.slides && p.slides.length > 0) ? p.slides[activeSlideIndex[p.id] || 0] : null;
-            const displayTitle = slide ? slide.title[lang] : p.title[lang];
-            const displaySubtitle = slide ? slide.subtitle[lang] : p.subtitle[lang];
-            const displayDesc = slide ? slide.desc[lang] : p.desc[lang];
-            const displayTags = slide ? slide.tags : p.tags;
-
-            const caseType = mainCard.querySelector('.case-type');
-            if(caseType) caseType.innerText = p.label[lang];
-            const caseTitle = mainCard.querySelector('.case-title');
-            // Always show title in English (locked per requirement)
-            const lockedTitle = slide ? slide.title['en'] : p.title['en'];
-            if(caseTitle) caseTitle.innerText = lockedTitle;
-            const caseSubtitle = mainCard.querySelector('.case-subtitle');
-            if(caseSubtitle) caseSubtitle.innerText = displaySubtitle;
-            const caseDesc = mainCard.querySelector('.case-desc');
-            if(caseDesc) caseDesc.innerHTML = displayDesc;
-            const caseTags = mainCard.querySelector('.case-tags');
-            if(caseTags) caseTags.innerHTML = displayTags.map(t => `<span class="case-tag">${t}</span>`).join('');
-
-            const metaValues = mainCard.querySelectorAll('.meta-value');
-            if(metaValues.length >= 4) {
-                metaValues[0].innerText = p.client[lang];
-                metaValues[1].innerText = p.budget[lang];
-                metaValues[2].innerText = p.role[lang];
-                metaValues[3].innerText = p.platform[lang];
-            }
-
-            const caseMeta = mainCard.querySelector('.case-meta');
-            if (caseMeta) {
-                const showMeta = slide && slide.showMeta === true;
-                caseMeta.style.display = showMeta ? 'flex' : 'none';
-            }
+          const categoryTitleEl = document.getElementById('work-category-title');
+          if (categoryTitleEl && p.categoryTitle) {
+            categoryTitleEl.setAttribute('data-en', p.categoryTitle.en);
+            categoryTitleEl.setAttribute('data-th', p.categoryTitle.th);
+            categoryTitleEl.innerText = p.categoryTitle[lang];
           }
+
+          // Use unified slides system
+          const slide = (p.slides && p.slides.length > 0) ? p.slides[activeSlideIndex[p.id] || 0] : null;
+          const displayTitle = slide ? slide.title[lang] : p.title[lang];
+          const displaySubtitle = slide ? slide.subtitle[lang] : p.subtitle[lang];
+          const displayDesc = slide ? slide.desc[lang] : p.desc[lang];
+          const displayTags = slide ? slide.tags : p.tags;
+
+          const caseType = mainCard.querySelector('.case-type');
+          if (caseType) caseType.innerText = p.label[lang];
+          const caseTitle = mainCard.querySelector('.case-title');
+          // Always show title in English (locked per requirement)
+          const lockedTitle = slide ? slide.title['en'] : p.title['en'];
+          if (caseTitle) caseTitle.innerText = lockedTitle;
+          const caseSubtitle = mainCard.querySelector('.case-subtitle');
+          if (caseSubtitle) caseSubtitle.innerText = displaySubtitle;
+          const caseDesc = mainCard.querySelector('.case-desc');
+          if (caseDesc) caseDesc.innerHTML = displayDesc;
+          const caseTags = mainCard.querySelector('.case-tags');
+          if (caseTags) caseTags.innerHTML = displayTags.map(t => `<span class="case-tag">${t}</span>`).join('');
+
+          const metaValues = mainCard.querySelectorAll('.meta-value');
+          if (metaValues.length >= 4) {
+            metaValues[0].innerText = p.client[lang];
+            metaValues[1].innerText = p.budget[lang];
+            metaValues[2].innerText = p.role[lang];
+            metaValues[3].innerText = p.platform[lang];
+          }
+
+          const caseMeta = mainCard.querySelector('.case-meta');
+          if (caseMeta) {
+            const showMeta = slide && slide.showMeta === true;
+            caseMeta.style.display = showMeta ? 'flex' : 'none';
+          }
+        }
       }
-      
+
       // Re-render grid using new language
       if (typeof renderGrid === 'function') {
         renderGrid();
@@ -1307,13 +1360,13 @@
       setLanguage(window.currentLang);
       // Initialize main project display from data
       if (typeof projectsData !== 'undefined' && typeof buildSliderHtml === 'function') {
-          const caseImgEl = document.getElementById('main-case-img');
-          const firstProject = projectsData.find(p => p.id === 1);
-          if (caseImgEl && firstProject) {
-              caseImgEl.style.background = firstProject.imgBg;
-              caseImgEl.innerHTML = buildSliderHtml(firstProject);
-          }
-          if (typeof renderGrid === 'function') renderGrid();
+        const caseImgEl = document.getElementById('main-case-img');
+        const firstProject = projectsData.find(p => p.id === 1);
+        if (caseImgEl && firstProject) {
+          caseImgEl.style.background = firstProject.imgBg;
+          caseImgEl.innerHTML = buildSliderHtml(firstProject);
+        }
+        if (typeof renderGrid === 'function') renderGrid();
       }
     });
 
@@ -1420,71 +1473,71 @@
     // ── UNIVERSAL SLIDER LOGIC ──
     // (activeSlideIndex is declared earlier for scope hoisting)
 
-    window.toggleSlide = function(e, direction) {
-        e.stopPropagation();
-        const mainCard = document.getElementById('main-case-study');
-        const project = projectsData.find(p => p.id === activeProjectId);
-        if (!project || !project.slides || project.slides.length <= 1) return;
+    window.toggleSlide = function (e, direction) {
+      e.stopPropagation();
+      const mainCard = document.getElementById('main-case-study');
+      const project = projectsData.find(p => p.id === activeProjectId);
+      if (!project || !project.slides || project.slides.length <= 1) return;
 
-        const slides = project.slides;
-        const current = activeSlideIndex[activeProjectId] || 0;
-        const next = direction === 'next'
-            ? (current + 1) % slides.length
-            : (current - 1 + slides.length) % slides.length;
+      const slides = project.slides;
+      const current = activeSlideIndex[activeProjectId] || 0;
+      const next = direction === 'next'
+        ? (current + 1) % slides.length
+        : (current - 1 + slides.length) % slides.length;
 
-        // Animate image out
-        const img = mainCard.querySelector('#main-slide-img');
+      // Animate image out
+      const img = mainCard.querySelector('#main-slide-img');
+      if (img) {
+        const slideOut = direction === 'next' ? '-30px' : '30px';
+        img.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease';
+        img.style.transform = `translateX(${slideOut}) scale(0.95)`;
+        img.style.opacity = '0';
+      }
+      // Fade text out
+      const textArea = mainCard.querySelector('.case-info');
+      if (textArea) { textArea.style.transition = 'opacity 0.3s ease'; textArea.style.opacity = '0'; }
+
+      setTimeout(() => {
+        activeSlideIndex[activeProjectId] = next;
+        const slide = slides[next];
+        const lang = window.currentLang;
+
+        // Update image
         if (img) {
-            const slideOut = direction === 'next' ? '-30px' : '30px';
-            img.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease';
-            img.style.transform = `translateX(${slideOut}) scale(0.95)`;
-            img.style.opacity = '0';
+          img.src = './assets/' + slide.img;
+          img.style.transition = 'none';
+          const slideIn = direction === 'next' ? '30px' : '-30px';
+          img.style.transform = `translateX(${slideIn}) scale(1.05)`;
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            img.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease';
+            img.style.transform = 'translateX(0) scale(1)';
+            img.style.opacity = '1';
+          }));
         }
-        // Fade text out
-        const textArea = mainCard.querySelector('.case-info');
-        if (textArea) { textArea.style.transition = 'opacity 0.3s ease'; textArea.style.opacity = '0'; }
 
-        setTimeout(() => {
-            activeSlideIndex[activeProjectId] = next;
-            const slide = slides[next];
-            const lang = window.currentLang;
-
-            // Update image
-            if (img) {
-                img.src = './assets/' + slide.img;
-                img.style.transition = 'none';
-                const slideIn = direction === 'next' ? '30px' : '-30px';
-                img.style.transform = `translateX(${slideIn}) scale(1.05)`;
-                requestAnimationFrame(() => requestAnimationFrame(() => {
-                    img.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease';
-                    img.style.transform = 'translateX(0) scale(1)';
-                    img.style.opacity = '1';
-                }));
-            }
-
-            // Update text
-            if (textArea) {
-                mainCard.querySelector('.case-title').innerText = slide.title['en']; // Always English
-                mainCard.querySelector('.case-subtitle').innerText = slide.subtitle[lang];
-                mainCard.querySelector('.case-desc').innerHTML = slide.desc[lang];
-                mainCard.querySelector('.case-tags').innerHTML = slide.tags.map(t => `<span class="case-tag">${t}</span>`).join('');
-                // caseMeta: show only if slide.showMeta === true
-                const caseMeta = mainCard.querySelector('.case-meta');
-                if (caseMeta) caseMeta.style.display = (slide.showMeta === true) ? 'flex' : 'none';
-                textArea.style.opacity = '1';
-                textArea.scrollTop = 0;
-            }
-        }, 300);
+        // Update text
+        if (textArea) {
+          mainCard.querySelector('.case-title').innerText = slide.title['en']; // Always English
+          mainCard.querySelector('.case-subtitle').innerText = slide.subtitle[lang];
+          mainCard.querySelector('.case-desc').innerHTML = slide.desc[lang];
+          mainCard.querySelector('.case-tags').innerHTML = slide.tags.map(t => `<span class="case-tag">${t}</span>`).join('');
+          // caseMeta: show only if slide.showMeta === true
+          const caseMeta = mainCard.querySelector('.case-meta');
+          if (caseMeta) caseMeta.style.display = (slide.showMeta === true) ? 'flex' : 'none';
+          textArea.style.opacity = '1';
+          textArea.scrollTop = 0;
+        }
+      }, 300);
     };
 
     function buildSliderHtml(project) {
-        const firstSlide = project.slides ? project.slides[0] : null;
-        const img = firstSlide ? firstSlide.img : '';
-        const hasSlider = project.slides && project.slides.length > 1;
-        const btnStyle = `position:absolute; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; border-radius:50%; width:40px; height:40px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; font-family:monospace; font-size:1.2rem; transition:background 0.2s;`;
-        const hoverIn = `this.style.background='rgba(255,255,255,0.2)'`;
-        const hoverOut = `this.style.background='rgba(255,255,255,0.1)'`;
-        return `
+      const firstSlide = project.slides ? project.slides[0] : null;
+      const img = firstSlide ? firstSlide.img : '';
+      const hasSlider = project.slides && project.slides.length > 1;
+      const btnStyle = `position:absolute; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; border-radius:50%; width:40px; height:40px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; font-family:monospace; font-size:1.2rem; transition:background 0.2s;`;
+      const hoverIn = `this.style.background='rgba(255,255,255,0.2)'`;
+      const hoverOut = `this.style.background='rgba(255,255,255,0.1)'`;
+      return `
             <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
                 <img id="main-slide-img" src="./assets/${img}" alt="${project.title ? project.title.en : ''}" style="object-fit:contain;max-width:90%;max-height:90%;width:auto;height:auto;filter:none;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.5s ease;">
                 ${hasSlider ? `
@@ -1585,177 +1638,177 @@
     var isAnimating = false;
 
     function getActiveSlide(project) {
-        if (!project.slides || project.slides.length === 0) return null;
-        return project.slides[activeSlideIndex[project.id] || 0];
+      if (!project.slides || project.slides.length === 0) return null;
+      return project.slides[activeSlideIndex[project.id] || 0];
     }
-    
+
     function renderMainProject(project) {
-        if(isAnimating) return;
-        isAnimating = true;
+      if (isAnimating) return;
+      isAnimating = true;
 
-        // Reset slide index for this project when switching categories
-        activeSlideIndex[project.id] = activeSlideIndex[project.id] || 0;
+      // Reset slide index for this project when switching categories
+      activeSlideIndex[project.id] = activeSlideIndex[project.id] || 0;
 
-        const mainCard = document.getElementById('main-case-study');
-        if (!mainCard) {
-            isAnimating = false;
-            return;
+      const mainCard = document.getElementById('main-case-study');
+      if (!mainCard) {
+        isAnimating = false;
+        return;
+      }
+
+      // 1. Fade/Scale Out
+      mainCard.style.opacity = '0';
+      mainCard.style.transform = 'translateY(30px) scale(0.98)';
+
+      setTimeout(() => {
+        const lang = window.currentLang || 'en';
+        const slide = getActiveSlide(project);
+        const displayTitle = slide ? slide.title[lang] : project.title[lang];
+        const displaySubtitle = slide ? slide.subtitle[lang] : project.subtitle[lang];
+        const displayDesc = slide ? slide.desc[lang] : project.desc[lang];
+        const displayTags = slide ? slide.tags : project.tags;
+
+        // 2. Swap Content
+        const categoryTitleEl = document.getElementById('work-category-title');
+        if (categoryTitleEl && project.categoryTitle) {
+          categoryTitleEl.setAttribute('data-en', project.categoryTitle.en);
+          categoryTitleEl.setAttribute('data-th', project.categoryTitle.th);
+          categoryTitleEl.innerText = project.categoryTitle[lang];
         }
-        
-        // 1. Fade/Scale Out
-        mainCard.style.opacity = '0';
-        mainCard.style.transform = 'translateY(30px) scale(0.98)';
-        
-        setTimeout(() => {
-            const lang = window.currentLang || 'en';
-            const slide = getActiveSlide(project);
-            const displayTitle = slide ? slide.title[lang] : project.title[lang];
-            const displaySubtitle = slide ? slide.subtitle[lang] : project.subtitle[lang];
-            const displayDesc = slide ? slide.desc[lang] : project.desc[lang];
-            const displayTags = slide ? slide.tags : project.tags;
 
-            // 2. Swap Content
-            const categoryTitleEl = document.getElementById('work-category-title');
-            if (categoryTitleEl && project.categoryTitle) {
-                categoryTitleEl.setAttribute('data-en', project.categoryTitle.en);
-                categoryTitleEl.setAttribute('data-th', project.categoryTitle.th);
-                categoryTitleEl.innerText = project.categoryTitle[lang];
-            }
-            
-            // Update "0X of 04" in header
-            const headerSpan = document.querySelector('.work-header span');
-            if (headerSpan) {
-                headerSpan.innerText = `${project.num} of 0${projectsData.length}`;
-            }
+        // Update "0X of 04" in header
+        const headerSpan = document.querySelector('.work-header span');
+        if (headerSpan) {
+          headerSpan.innerText = `${project.num} of 0${projectsData.length}`;
+        }
 
-            // Build and inject slider HTML
-            const caseImgEl = mainCard.querySelector('.case-img');
-            if (caseImgEl) {
-                caseImgEl.style.background = project.imgBg;
-                caseImgEl.innerHTML = buildSliderHtml(project);
-                console.log("Injected slider HTML for", project.id);
-            }
-            
-            const caseNum = mainCard.querySelector('.case-num');
-            if (caseNum) caseNum.innerText = project.num;
+        // Build and inject slider HTML
+        const caseImgEl = mainCard.querySelector('.case-img');
+        if (caseImgEl) {
+          caseImgEl.style.background = project.imgBg;
+          caseImgEl.innerHTML = buildSliderHtml(project);
+          console.log("Injected slider HTML for", project.id);
+        }
 
-            const caseType = mainCard.querySelector('.case-type');
-            if (caseType) caseType.innerText = project.label[lang];
-            const caseTitle = mainCard.querySelector('.case-title');
-            // Always show title in English (locked per requirement)
-            const lockedTitle = slide ? slide.title['en'] : project.title['en'];
-            if (caseTitle) caseTitle.innerText = lockedTitle;
-            const caseSubtitle = mainCard.querySelector('.case-subtitle');
-            if (caseSubtitle) caseSubtitle.innerText = displaySubtitle;
-            const caseDesc = mainCard.querySelector('.case-desc');
-            if (caseDesc) caseDesc.innerHTML = displayDesc;
-            const caseTags = mainCard.querySelector('.case-tags');
-            if (caseTags) caseTags.innerHTML = displayTags.map(tag => `<span class="case-tag">${tag}</span>`).join('');
-            
-            // Reset text area scroll position
-            const caseInfo = mainCard.querySelector('.case-info');
-            if(caseInfo) caseInfo.scrollTop = 0;
-            
-            const metaValues = mainCard.querySelectorAll('.meta-value');
-            if(metaValues && metaValues.length >= 4) {
-                metaValues[0].innerText = project.client[lang];
-                metaValues[1].innerText = project.budget[lang];
-                metaValues[2].innerText = project.role[lang];
-                metaValues[3].innerText = project.platform[lang];
-            }
+        const caseNum = mainCard.querySelector('.case-num');
+        if (caseNum) caseNum.innerText = project.num;
 
-            // caseMeta: show only for project id=1 && first slide has showMeta=true
-            const caseMeta = mainCard.querySelector('.case-meta');
-            if (caseMeta) {
-                const showMeta = slide && slide.showMeta === true;
-                caseMeta.style.display = showMeta ? 'flex' : 'none';
-            }
-            
-            // 3. Fade/Scale In
-            requestAnimationFrame(() => {
-              mainCard.style.transform = 'translateY(-10px) scale(1.01)';
-              requestAnimationFrame(() => {
-                mainCard.style.opacity = '1';
-                mainCard.style.transform = 'translateY(0) scale(1)';
-                setTimeout(() => { isAnimating = false; }, 600);
-              });
-            });
-        }, 500);
+        const caseType = mainCard.querySelector('.case-type');
+        if (caseType) caseType.innerText = project.label[lang];
+        const caseTitle = mainCard.querySelector('.case-title');
+        // Always show title in English (locked per requirement)
+        const lockedTitle = slide ? slide.title['en'] : project.title['en'];
+        if (caseTitle) caseTitle.innerText = lockedTitle;
+        const caseSubtitle = mainCard.querySelector('.case-subtitle');
+        if (caseSubtitle) caseSubtitle.innerText = displaySubtitle;
+        const caseDesc = mainCard.querySelector('.case-desc');
+        if (caseDesc) caseDesc.innerHTML = displayDesc;
+        const caseTags = mainCard.querySelector('.case-tags');
+        if (caseTags) caseTags.innerHTML = displayTags.map(tag => `<span class="case-tag">${tag}</span>`).join('');
+
+        // Reset text area scroll position
+        const caseInfo = mainCard.querySelector('.case-info');
+        if (caseInfo) caseInfo.scrollTop = 0;
+
+        const metaValues = mainCard.querySelectorAll('.meta-value');
+        if (metaValues && metaValues.length >= 4) {
+          metaValues[0].innerText = project.client[lang];
+          metaValues[1].innerText = project.budget[lang];
+          metaValues[2].innerText = project.role[lang];
+          metaValues[3].innerText = project.platform[lang];
+        }
+
+        // caseMeta: show only for project id=1 && first slide has showMeta=true
+        const caseMeta = mainCard.querySelector('.case-meta');
+        if (caseMeta) {
+          const showMeta = slide && slide.showMeta === true;
+          caseMeta.style.display = showMeta ? 'flex' : 'none';
+        }
+
+        // 3. Fade/Scale In
+        requestAnimationFrame(() => {
+          mainCard.style.transform = 'translateY(-10px) scale(1.01)';
+          requestAnimationFrame(() => {
+            mainCard.style.opacity = '1';
+            mainCard.style.transform = 'translateY(0) scale(1)';
+            setTimeout(() => { isAnimating = false; }, 600);
+          });
+        });
+      }, 500);
     }
-    
+
     function renderGrid() {
-        const grid = document.getElementById('placeholder-grid');
-        grid.innerHTML = '';
-        
-        projectsData.forEach(p => {
-            if(p.id === activeProjectId) return;
-            
-            const card = document.createElement('div');
-            card.className = 'work-ph-card fade-in-up';
-            card.style.cursor = 'pointer';
-            
-            if(p.phBgHtml) {
-                card.style.padding = '0';
-                card.innerHTML = `
+      const grid = document.getElementById('placeholder-grid');
+      grid.innerHTML = '';
+
+      projectsData.forEach(p => {
+        if (p.id === activeProjectId) return;
+
+        const card = document.createElement('div');
+        card.className = 'work-ph-card fade-in-up';
+        card.style.cursor = 'pointer';
+
+        if (p.phBgHtml) {
+          card.style.padding = '0';
+          card.innerHTML = `
                   ${p.phBgHtml}
                   <span class="ph-num" style="z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.num}</span>
                   <div style="position: relative; z-index: 2; padding: 1.5rem;">
                     <p class="ph-label" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5); margin-bottom: 0.4rem;">${p.label[window.currentLang]}</p>
                     <p class="ph-title" style="color: #F5F0E8; font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${p.phTitle[window.currentLang]}</p>
                   </div>`;
-            } else {
-                card.innerHTML = `
+        } else {
+          card.innerHTML = `
                   <span class="ph-num">${p.num}</span>
                   <p class="ph-label">${p.label[window.currentLang]}</p>
                   <p class="ph-title">${p.phTitle[window.currentLang]}</p>
                 `;
-            }
-            
-            card.addEventListener('click', () => {
-                if(isAnimating) return;
-                activeProjectId = p.id;
-                
-                // Trigger view swap
-                renderMainProject(p);
-                renderGrid();
-                
-                // Scroll to main display
-                document.getElementById('work').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-            
-            // Add custom cursor hover effect
-            card.addEventListener('mouseenter', () => cursor?.classList.add('hover'));
-            card.addEventListener('mouseleave', () => cursor?.classList.remove('hover'));
-            
-            // Intersection Observers for animation
-            if(observer) observer.observe(card);
-            
-            grid.appendChild(card);
+        }
+
+        card.addEventListener('click', () => {
+          if (isAnimating) return;
+          activeProjectId = p.id;
+
+          // Trigger view swap
+          renderMainProject(p);
+          renderGrid();
+
+          // Scroll to main display
+          document.getElementById('work').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+
+        // Add custom cursor hover effect
+        card.addEventListener('mouseenter', () => cursor?.classList.add('hover'));
+        card.addEventListener('mouseleave', () => cursor?.classList.remove('hover'));
+
+        // Intersection Observers for animation
+        if (observer) observer.observe(card);
+
+        grid.appendChild(card);
+      });
     }
 
     // ── LIGHTBOX LOGIC ──
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       // Open Lightbox from Main Case Image
       const caseImg = e.target.closest('.case-img');
       const isInnerButton = e.target.closest('button');
       if (caseImg && !isInnerButton) {
         const imgEl = caseImg.querySelector('img');
         if (imgEl && imgEl.src) {
-           openLightbox(imgEl.src);
+          openLightbox(imgEl.src);
         }
       }
     });
 
-    window.openLightbox = function(src) {
-      if(!src) return;
+    window.openLightbox = function (src) {
+      if (!src) return;
       const lb = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightbox-img');
       lbImg.src = src;
       lb.classList.add('active');
     };
 
-    window.closeLightbox = function() {
+    window.closeLightbox = function () {
       const lb = document.getElementById('lightbox');
       lb.classList.remove('active');
       setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 400);
