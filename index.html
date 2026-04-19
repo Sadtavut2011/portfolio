@@ -1381,6 +1381,21 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       setLanguage(window.currentLang);
+      
+      // Preload all slider images to eliminate display delay when switching slides
+      if (typeof projectsData !== 'undefined') {
+        projectsData.forEach(p => {
+          if (p.slides) {
+            p.slides.forEach(slide => {
+              if (slide.img) {
+                const imagePreload = new Image();
+                imagePreload.src = './assets/' + slide.img;
+              }
+            });
+          }
+        });
+      }
+
       // Initialize main project display from data
       if (typeof projectsData !== 'undefined' && typeof buildSliderHtml === 'function') {
         const caseImgEl = document.getElementById('main-case-img');
