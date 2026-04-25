@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow — Sadtavut Kawila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Sarabun:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Workflow Page Specific Styles */
+    .page-header {
+      padding: 12rem 3rem 4rem;
+      background: var(--ink);
+      text-align: center;
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .page-desc {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--sand);
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 0 auto;
+      min-height: 3.2em;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem 8rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 4rem;
+      bottom: 8rem;
+      left: 50%;
+      width: 2px;
+      background: rgba(196, 168, 130, 0.2);
+      transform: translateX(-50%);
+    }
+
+    .timeline-step {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6rem;
+      position: relative;
+      width: 100%;
+    }
+
+    .timeline-step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-content, .timeline-image {
+      width: 45%;
+    }
+
+    .timeline-image {
+      background: #1e1c2e;
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .timeline-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Node on the line */
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--ink);
+      border: 2px solid var(--sand);
+      z-index: 1;
+      transition: background 0.4s ease;
+    }
+
+    .timeline-step:hover::before {
+      background: var(--sand);
+    }
+
+    .timeline-content h4 {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--sand);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-content h2 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .timeline-content h3 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--earth);
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-content p {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.6);
+      min-height: 24rem;
+    }
+
+    /* Simple scroll animation classes */
+    .scroll-anim {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .scroll-anim.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-step, .timeline-step:nth-child(even) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .timeline-content, .timeline-image {
+        width: 100%;
+        padding-left: 50px;
+      }
+      .timeline-step::before {
+        left: 20px;
+        top: 0;
+        transform: translate(-50%, 0);
+      }
+      .timeline-image {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor" class="cursor"></div>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-header">
+      <h1 class="page-title" data-en="Workflow" data-th="ขั้นตอนการทำงาน">Workflow</h1>
+      <p class="page-desc" data-en="A systematic approach from research and ideation<br>to design and development, powered by AI integration." data-th="แนวทางการทำงานอย่างเป็นระบบ ตั้งแต่การวิจัย การหาไอเดีย<br>การออกแบบ จนถึงการพัฒนา พร้อมประยุกต์ใช้ AI">A systematic approach from research and ideation<br>to design and development, powered by AI integration.</p>
+    </section>
+
+    <div class="timeline">
+
+      <!-- Step 1 -->
+      <div class="timeline-step scroll-anim">
+        <div class="timeline-content">
+          <h4 data-en="Phase 1: Research & Strategy" data-th="ระยะที่ 1: การวิจัยและกลยุทธ์">Phase 1: Research & Strategy</h4>
+          <h2 data-en="Design System" data-th="Design System">Design System</h2>
+          <h3 data-en="Scalable Component Library" data-th="คลังคอมโพเนนต์ที่ขยายได้">Scalable Component Library</h3>
+          <p data-en="To build a highly efficient Design System, I integrated NotebookLM as a core AI assistant to streamline the information management process. The workflow begins by feeding raw data from the TOR (Terms of Reference) and key insights from client meetings into the AI to extract and summarize critical requirements accurately.<br><br>Following the analysis, I leverage NotebookLM to generate a comprehensive PRD (Product Requirements Document). This document serves as the foundational blueprint for the entire design direction. These AI-generated insights are then translated into a robust Design System within Figma, encompassing Style Guides, Components, and detailed Guidelines. This approach ensures design consistency, precision, and seamless scalability for future project developments." data-th="ในการสร้างระบบ Design System ที่มีประสิทธิภาพ ผมได้นำเทคโนโลยี AI อย่าง NotebookLM เข้ามาเป็นผู้ช่วยหลักในการจัดการข้อมูลจำนวนมหาศาล โดยเริ่มจากการรวบรวมข้อมูลดิบจาก TOR (Terms of Reference) และสรุปประเด็นสำคัญจากการประชุมร่วมกับลูกค้า เพื่อให้มั่นใจว่าทุกความต้องการถูกจัดเก็บอย่างครบถ้วน<br><br>หลังจากนั้น ผมใช้ความสามารถของ NotebookLM ในการวิเคราะห์และร่างเอกสาร PRD (Product Requirements Document) ขึ้นมา เพื่อใช้เป็นโครงสร้างหลักในการกำหนดทิศทางของงานออกแบบ และนำข้อมูลเหล่านั้นมาพัฒนาต่อยอดเป็น Design System ภายใน Figma ซึ่งครอบคลุมทั้ง Style Guide, Components และ Guidelines ทำให้งานออกแบบมีความสอดคล้อง แม่นยำ และรองรับการขยายตัวของระบบในอนาคตได้อย่างมืออาชีพ">
+            To build a highly efficient Design System, I integrated NotebookLM as a core AI assistant to streamline the information management process. The workflow begins by feeding raw data from the TOR (Terms of Reference) and key insights from client meetings into the AI to extract and summarize critical requirements accurately.<br><br>Following the analysis, I leverage NotebookLM to generate a comprehensive PRD (Product Requirements Document). This document serves as the foundational blueprint for the entire design direction. These AI-generated insights are then translated into a robust Design System within Figma, encompassing Style Guides, Components, and detailed Guidelines. This approach ensures design consistency, precision, and seamless scalability for future project developments.
+          </p>
+        </div>
+        <div class="timeline-image">
+          <img src="./assets/design system.png" alt="Design System">
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="timeline-step scroll-anim">
+        <div class="timeline-content">
+          <h4 data-en="Phase 2: Ideate & Design" data-th="ระยะที่ 2: ระดมความคิดและการออกแบบ">Phase 2: Ideate & Design</h4>
+          <h2 data-en="Frame Design" data-th="การออกแบบหน้าจอ">Frame Design</h2>
+          <h3 data-en="Visual Layouts & Prototypes" data-th="การจัดวางภาพและโปรโตไทป์">Visual Layouts & Prototypes</h3>
+          <p data-en="To transform complex business requirements into tangible designs, my workflow begins with meticulous Frame Design in Figma. I translate analyzed flowcharts into visual layouts, ensuring the User Journey is intuitive and logically structured.<br><br>I also leverage Figma Make (AI) to accelerate the drafting process and develop high-fidelity Interactive Prototypes. This enables me to provide clients with a functional Demo for realistic user testing. By allowing clients to experience the system's actual flow, we can gather immediate feedback, visualize the final product clearly, and ensure high precision before moving into the final development phase." data-th="ในการเปลี่ยนความต้องการทางธุรกิจให้กลายเป็นงานดีไซน์ที่จับต้องได้ ผมเริ่มต้นด้วยการวาง Frame Design ภายใน Figma โดยยึดตาม Flowchart ที่ผ่านการวิเคราะห์มาอย่างถี่ถ้วน เพื่อให้ลำดับการใช้งาน (User Journey) ถูกต้องและลื่นไหลที่สุด<br><br>นอกจากนี้ ผมได้ประยุกต์ใช้ Figma Make (AI) เพื่อเพิ่มความเร็วในการขึ้นโครงสร้างและสร้าง Interactive Prototype ที่สมบูรณ์แบบ สิ่งนี้ช่วยให้ผมสามารถส่งมอบตัว Demo ที่ใกล้เคียงกับระบบจริงให้ลูกค้าได้ทดลองใช้งาน (User Testing) ทำให้ลูกค้าเห็นภาพการทำงานของระบบอย่างชัดเจน และสามารถปรับปรุงแก้ไขงานได้ทันทีจาก Feedback จริง ช่วยลดระยะเวลาและเพิ่มความแม่นยำในการพัฒนาในขั้นตอนต่อไป">
+            To transform complex business requirements into tangible designs, my workflow begins with meticulous Frame Design in Figma. I translate analyzed flowcharts into visual layouts, ensuring the User Journey is intuitive and logically structured.<br><br>I also leverage Figma Make (AI) to accelerate the drafting process and develop high-fidelity Interactive Prototypes. This enables me to provide clients with a functional Demo for realistic user testing. By allowing clients to experience the system's actual flow, we can gather immediate feedback, visualize the final product clearly, and ensure high precision before moving into the final development phase.
+          </p>
+        </div>
+        <div class="timeline-image">
+          <img src="./assets/workflow02.png" alt="Frame Design">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="timeline-step scroll-anim">
+        <div class="timeline-content">
+          <h4 data-en="Phase 3: Development Integration" data-th="ระยะที่ 3: การเชื่อมต่อการพัฒนา">Phase 3: Development Integration</h4>
+          <h2 data-en="Frontend Development & Prototyping" data-th="การพัฒนา Frontend และ Prototyping">Frontend Development & Prototyping</h2>
+          <h3 data-en="Clean & Modular Architecture" data-th="โครงสร้างที่สะอาดและเป็นระเบียบ">Clean & Modular Architecture</h3>
+          <p data-en="To ensure a smooth transition from design to development, I develop functional prototypes with a clean and modular architecture. My workflow emphasizes a strict separation between Components, Pages, and Data layers, making the codebase highly scalable and easy to navigate.<br><br>Once the UI/UX is finalized and approved by the client, I push the production-ready frontend code to GitHub. This allows developers to immediately integrate the frontend with backend services without needing to rebuild the interface from scratch. By streamlining the handover process this way, I minimize communication gaps, eliminate redundant tasks, and ensure that the final product stays 100% faithful to the approved design." data-th="เพื่อให้โปรเจกต์สามารถพัฒนาต่อได้อย่างไร้รอยต่อ ผมได้จัดทำ Functional Prototype ที่มีการแยกสัดส่วนโครงสร้างอย่างชัดเจน ทั้งในส่วนของ Components, Pages และ Data Management ซึ่งช่วยให้โค้ดมีความเป็นระเบียบและง่ายต่อการบำรุงรักษา<br><br>เมื่อส่วนของ UI และ User Experience ได้รับการยืนยันจากลูกค้าจนนิ่งแล้ว ผมจะทำการอัปโหลดซอร์สโค้ดขึ้นบน GitHub เพื่อให้ทีม Developer สามารถนำโครงสร้าง Frontend นี้ไปพัฒนาต่อยอดในส่วนของระบบหลังบ้านได้ทันที (Production-ready) วิธีการนี้ไม่เพียงแต่ช่วยลดช่องว่างระหว่างงานออกแบบและการเขียนโปรแกรม แต่ยังช่วยลดเวลาในการทำงานซ้ำซ้อน และมั่นใจได้ว่างานที่ออกมาจะตรงตามความต้องการของลูกค้าอย่างแม่นยำที่สุด">
+            To ensure a smooth transition from design to development, I develop functional prototypes with a clean and modular architecture. My workflow emphasizes a strict separation between Components, Pages, and Data layers, making the codebase highly scalable and easy to navigate.<br><br>Once the UI/UX is finalized and approved by the client, I push the production-ready frontend code to GitHub. This allows developers to immediately integrate the frontend with backend services without needing to rebuild the interface from scratch. By streamlining the handover process this way, I minimize communication gaps, eliminate redundant tasks, and ensure that the final product stays 100% faithful to the approved design.
+          </p>
+        </div>
+        <div class="timeline-image">
+          <img src="./assets/design system02.png" alt="Frontend Development">
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="timeline-step scroll-anim">
+        <div class="timeline-content">
+          <h4 data-en="Phase 4: Verification & QA" data-th="ระยะที่ 4: การตรวจสอบคุณภาพ">Phase 4: Verification & QA</h4>
+          <h2 data-en="AI Code Reviewer" data-th="AI Code Reviewer">AI Code Reviewer</h2>
+          <h3 data-en="Quality Assurance via User Simulation" data-th="การประเมินคุณภาพโดยจำลองผู้ใช้งาน">Quality Assurance via User Simulation</h3>
+          <p data-en="A critical final step in my workflow is the Quality Assurance process, powered by Google Gemini (Gems). By integrating AI directly with the GitHub repository, I can cross-reference the source code against the initial requirements stored in NotebookLM. This automated audit ensures that every feature aligns with the client’s specifications and significantly reduces the risk of missing functional details.<br><br>Beyond technical accuracy, I leverage AI to act as a UX/UI Auditor through User Simulation. This allows me to evaluate the product’s usability from an end-user’s perspective, identifying potential friction points or navigation issues before the final delivery. This dual-layered verification ensures that the final product is not only functionally perfect but also provides a seamless and high-quality user experience that fully meets business objectives." data-th="ขั้นตอนสุดท้ายที่สำคัญคือการตรวจสอบคุณภาพ (Quality Assurance) โดยผมได้ใช้ Google Gemini (Gems) เชื่อมต่อเข้ากับคลังเก็บซอร์สโค้ดใน GitHub เพื่อให้ AI ทำการวิเคราะห์โค้ดและเปรียบเทียบความถูกต้องกับเอกสารความต้องการใน NotebookLM โดยละเอียด กระบวนการนี้ช่วยการันตีว่าทุกฟังก์ชันการทำงานเป็นไปตามข้อตกลงและลดความเสี่ยงจากการตกหล่นในรายละเอียดเล็กน้อย<br><br>นอกจากด้านเทคนิคแล้ว ผมยังใช้ AI ในบทบาทของ UX/UI Auditor เพื่อจำลองเป็นผู้ใช้งานจริง (User Simulation) ในการตรวจสอบความยากง่ายของการใช้งาน (Usability) หากมีจุดไหนที่อาจทำให้ผู้ใช้สับสน AI จะช่วยระบุปัญหาเหล่านั้นก่อนที่งานจะถึงมือลูกค้า ทำให้มั่นใจได้ว่างานส่งมอบสุดท้ายไม่เพียงแต่ทำงานได้ถูกต้อง แต่ยังมอบประสบการณ์การใช้งานที่ยอดเยี่ยมและตรงตามโจทย์ทางธุรกิจมากที่สุด">
+            A critical final step in my workflow is the Quality Assurance process, powered by Google Gemini (Gems). By integrating AI directly with the GitHub repository, I can cross-reference the source code against the initial requirements stored in NotebookLM. This automated audit ensures that every feature aligns with the client’s specifications and significantly reduces the risk of missing functional details.<br><br>Beyond technical accuracy, I leverage AI to act as a UX/UI Auditor through User Simulation. This allows me to evaluate the product’s usability from an end-user’s perspective, identifying potential friction points or navigation issues before the final delivery. This dual-layered verification ensures that the final product is not only functionally perfect but also provides a seamless and high-quality user experience that fully meets business objectives.
+          </p>
+        </div>
+        <div class="timeline-image">
+          <img src="./assets/workflow03.png" alt="AI Code Reviewer">
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="./assets/js/main.js"></script>
+  <script>
+    // Intersection Observer for scroll animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

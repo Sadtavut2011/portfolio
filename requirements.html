@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requirements Gathering — Sadtavut Kawila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Sarabun:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Requirements Page Specific Styles */
+    .page-header {
+      padding: 12rem 3rem 4rem;
+      background: var(--ink);
+      text-align: center;
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .page-desc {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--sand);
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 0 auto;
+      min-height: 3.2em;
+    }
+    
+    .req-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 8rem;
+    }
+
+    .req-section {
+      margin-bottom: 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .req-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      background: #1e1c2e;
+    }
+
+    .req-content h2 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .req-content h3 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--sand);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .req-content p {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.7);
+      min-height: 12rem;
+    }
+    
+    .divider {
+      width: 50px;
+      height: 1px;
+      background: var(--sand);
+      margin: 4rem auto;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor" class="cursor"></div>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-header">
+      <h1 class="page-title" data-en="Requirements Gathering" data-th="การรวบรวมความต้องการ">Requirements Gathering</h1>
+      <p class="page-desc" data-en="A deep dive into understanding user needs, aligning with<br>client goals, and establishing project foundations." data-th="เจาะลึกความต้องการของผู้ใช้งาน สอดคล้องเป้าหมายธุรกิจ<br>และวางรากฐานโปรเจกต์">A deep dive into understanding user needs, aligning with<br>client goals, and establishing project foundations.</p>
+    </section>
+
+    <div class="req-container">
+      
+      <div class="req-section fade-in-up">
+        <img class="req-image" src="./assets/req01.png" alt="Client Workshops">
+        <div class="req-content">
+          <h2 data-en="01. Client Workshops" data-th="01. เวิร์กชอปกับลูกค้า">01. Client Workshops</h2>
+          <h3 data-en="Collaborative Planning" data-th="การวางแผนร่วมกัน">Collaborative Planning</h3>
+          <p data-en="Client workshop and UX/UI design presentation with the client and multidisciplinary team at Chiang Mai University. I presented both Wireframe Designs to showcase data structure and Clickable Prototypes for comprehensive workflow visualisation. Feedback gathered from this session will be used to refine and optimize the system design, ensuring it fully meets operational needs before proceeding to development." data-th="การประชุมวางแผนและนำเสนอผลงานออกแบบ UX/UI ร่วมกับทีมลูกค้าและสหสาขาวิชาชีพ ณ มหาวิทยาลัยเชียงใหม่ ผมได้นำเสนอทั้ง Wireframe Design เพื่อโชว์โครงสร้างข้อมูล และ Clickable Prototype เพื่อให้ผู้ใช้งานได้เห็นภาพขั้นตอนการทำงานที่ชัดเจน (Workflow Visualisation) โดยความเห็นที่ได้จากการประชุมนี้ จะถูกนำไปปรับปรุงแก้ไขการออกแบบระบบให้มีความสมบูรณ์และตอบโจทย์การทำงานจริงมากที่สุด">
+            Client workshop and UX/UI design presentation with the client and multidisciplinary team at Chiang Mai University. I presented both Wireframe Designs to showcase data structure and Clickable Prototypes for comprehensive workflow visualisation. Feedback gathered from this session will be used to refine and optimize the system design, ensuring it fully meets operational needs before proceeding to development.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="req-section fade-in-up">
+        <img class="req-image" src="./assets/req02.png" alt="Brainstorming & User Experience">
+        <div class="req-content">
+          <h2 data-en="02. Deep Dive & Brainstorming" data-th="02. เจาะลึกและระดมสมอง">02. Deep Dive & Brainstorming</h2>
+          <h3 data-en="User Experience Insights" data-th="วิเคราะห์ประสบการณ์ผู้ใช้">User Experience Insights</h3>
+          <p data-en="A collaborative feedback session with users and clients to brainstorm and explore functional requirements and User Experience (UX) insights. I actively gathered real-world feedback to analyze and refine the system, focusing on streamlining complex workflows and enhancing operational efficiency for healthcare personnel." data-th="กิจกรรมแลกเปลี่ยนความคิดเห็นร่วมกับกลุ่มผู้ใช้งานและลูกค้า เพื่อระดมสมองและเจาะลึกถึงความต้องการที่แท้จริงในส่วนของฟังก์ชันการใช้งาน ผมและทีมได้รวบรวม Feedback ด้านประสบการณ์ผู้ใช้งาน (UX) จากหน้างานจริง เพื่อนำมาวิเคราะห์และปรับปรุงระบบให้มีความสมบูรณ์ ลดขั้นตอนที่ซับซ้อน และช่วยให้การดำเนินงานของบุคลากรทางการแพทย์มีความคล่องตัวสูงสุด">
+            A collaborative feedback session with users and clients to brainstorm and explore functional requirements and User Experience (UX) insights. I actively gathered real-world feedback to analyze and refine the system, focusing on streamlining complex workflows and enhancing operational efficiency for healthcare personnel.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="req-section fade-in-up">
+        <img class="req-image" src="./assets/req03.png" alt="On-site User Testing">
+        <div class="req-content">
+          <h2 data-en="03. On-site User Testing" data-th="03. การทดสอบกับผู้ใช้งานจริงหน้างาน">03. On-site User Testing</h2>
+          <h3 data-en="Real-world Observation" data-th="การสังเกตการณ์สถานที่จริง">Real-world Observation</h3>
+          <p data-en="On-site user testing and demo presentation at Fang Hospital in collaboration with the Chiang Mai University team. I presented the system workflow and conducted user observations to identify real-world operational challenges and constraints. The feedback and insights gained are being used to refine and optimize the application, ensuring it effectively meets the practical needs of healthcare professionals in remote medical settings." data-th="กิจกรรมลงพื้นที่ ณ โรงพยาบาลฝาง ร่วมกับทีมงานจากมหาวิทยาลัยเชียงใหม่ เพื่อนำตัวระบบ Demo ไปทดสอบการใช้งานจริงกับบุคลากรทางการแพทย์หน้างาน ผมได้นำเสนอขั้นตอนการทำงานและสังเกตการณ์การใช้งาน (User Observation) เพื่อระบุปัญหาและข้อจำกัดในการปฏิบัติงานจริง ข้อมูลและข้อเสนอแนะที่ได้รับจะถูกนำมาวิเคราะห์และปรับปรุงระบบให้สอดคล้องกับบริบทการทำงานของโรงพยาบาลในพื้นที่ห่างไกลให้มีประสิทธิภาพสูงสุด">
+            On-site user testing and demo presentation at Fang Hospital in collaboration with the Chiang Mai University team. I presented the system workflow and conducted user observations to identify real-world operational challenges and constraints. The feedback and insights gained are being used to refine and optimize the application, ensuring it effectively meets the practical needs of healthcare professionals in remote medical settings.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="req-section fade-in-up">
+        <img class="req-image" src="./assets/req04.png" alt="Aligning Goals">
+        <div class="req-content">
+          <h2 data-en="04. Analysis & Alignment" data-th="04. การวิเคราะห์และปรับให้สอดคล้อง">04. Analysis & Alignment</h2>
+          <h3 data-en="Establishing the Foundation" data-th="สร้างรากฐานที่แข็งแกร่ง">Establishing the Foundation</h3>
+          <p data-en="Overview of meetings, collaborative workshops, and requirement gathering sessions to ensure close alignment with client goals and user needs from the start." data-th="ภาพรวมการประชุม การทำกิจกรรมเวิร์กชอป และการรวบรวมความต้องการ เพื่อให้เป้าหมายของทีมสอดคล้องกับลูกค้าและความต้องการของผู้ใช้ตั้งแต่เริ่มต้น">
+            Overview of meetings, collaborative workshops, and requirement gathering sessions to ensure close alignment with client goals and user needs from the start.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Sadtavut Kawila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Sarabun:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Projects Page Specific Styles */
+    .page-header {
+      padding: 12rem 3rem 4rem;
+      background: var(--ink);
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .page-desc {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--sand);
+      max-width: 600px;
+      line-height: 1.6;
+      min-height: 4.8em;
+    }
+    
+    .projects-grid {
+      padding: 0 3rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      background: rgba(245, 240, 232, 0.02);
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.4s ease, transform 0.4s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(196, 168, 130, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .project-img-wrapper {
+      position: relative;
+      background: #1e1c2e;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .project-img-wrapper img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover .project-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .project-info {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-meta-top {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--sand);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .project-meta-top::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: rgba(196, 168, 130, 0.3);
+    }
+
+    .project-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--earth);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-desc {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.6);
+      margin-bottom: 2.5rem;
+      min-height: 18rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid rgba(245, 240, 232, 0.15);
+      color: rgba(245, 240, 232, 0.5);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 992px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+      .project-info {
+        padding: 2.5rem;
+      }
+      .page-header {
+        padding: 8rem 1.5rem 3rem;
+      }
+      .projects-grid {
+        padding: 0 1.5rem 4rem;
+      }
+      .prototype-cta {
+        padding: 0 1.5rem 6rem;
+      }
+    }
+
+    /* Prototype CTA Button */
+    .prototype-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 3rem 8rem;
+    }
+
+    .prototype-note {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.5);
+      max-width: 600px;
+      text-align: center;
+      line-height: 1.6;
+      min-height: 4.8em;
+    }
+
+    .btn-prototype {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--ink);
+      background: var(--cream);
+      padding: 1rem 4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      cursor: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-prototype:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(245, 240, 232, 0.15);
+      background: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor" class="cursor"></div>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-header">
+      <h1 class="page-title" data-en="Thai Cleft Link" data-th="Thai Cleft Link">Thai Cleft Link</h1>
+      <p class="page-desc" data-en="A comprehensive digital platform connecting<br>healthcare networks for cleft lip and craniofacial<br>patients of Chiang Mai University." data-th="แพลตฟอร์มดิจิทัลที่เชื่อมโยงเครือข่ายการรักษา<br>ผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า<br>ของมหาวิทยาลัยเชียงใหม่">A comprehensive digital platform connecting<br>healthcare networks for cleft lip and craniofacial<br>patients of Chiang Mai University.</p>
+    </section>
+
+    <section class="projects-grid">
+      <!-- Project 1: Thai Cleft Link -->
+      <article class="project-card fade-in-up">
+        <div class="project-img-wrapper">
+          <img src="./assets/Projact01.png" alt="Thai Cleft Link">
+        </div>
+        <div class="project-info">
+          <div class="project-meta-top">
+            <span data-en="Mobile Application & Website" data-th="แอปพลิเคชันมือถือ & เว็บไซต์">Mobile Application & Website</span>
+          </div>
+          <h2 class="project-title" data-en="Project Overview" data-th="ภาพรวมโครงการ">Project Overview</h2>
+          <p class="project-subtitle" data-en="Primary Care-Family Link Application" data-th="แอปพลิเคชันเชื่อมโยงการดูแลปฐมภูมิ-ครอบครัว">Primary Care-Family Link Application</p>
+          <p class="project-desc" data-en="The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families." data-th="โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ">
+            The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">UX Research</span>
+            <span class="project-tag">UI Design</span>
+            <span class="project-tag">Mobile App</span>
+            <span class="project-tag">Healthcare</span>
+            <span class="project-tag">Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sub slides / additional features of Thai Cleft Link as another row to show grid -->
+      <article class="project-card fade-in-up" style="animation-delay: 0.2s;">
+        <div class="project-info" style="order: 2;">
+          <div class="project-meta-top">
+            <span data-en="System Roles & Architecture" data-th="สิทธิ์ผู้ใช้งานและโครงสร้าง">System Roles & Architecture</span>
+          </div>
+          <h2 class="project-title" data-en="Comprehensive Roles" data-th="ครอบคลุมทุกบทบาท">Comprehensive Roles</h2>
+          <p class="project-subtitle" data-en="Tailored for every user" data-th="ออกแบบเฉพาะสำหรับทุกผู้ใช้">Tailored for every user</p>
+          <p class="project-desc" data-en="The Thai Cleft Primary Care-Family Link Application features six distinct user roles: 1) PCU/Health Center Staff, 2) Case Managers, 3) Hospital Personnel, 4) SCFC Officers, 5) Patients/Families, and 6) System Administrators (IT Admin). The system is developed across two primary platforms: Web and Mobile. The Mobile Application prioritizes a user-friendly and portable UI/UX design, tailored for frontline staff performing field visits and for patient families. Conversely, the Web Application is optimized for large-screen interfaces to facilitate comprehensive data dashboards and back-end management for SCFC officers and IT administrators." data-th="โครงการ Thai Cleft Primary Care-Family Link Application มีการออกแบบสิทธิ์ผู้ใช้งานทั้งหมด 6 บทบาท (Roles) ได้แก่ 1. เจ้าหน้าที่ รพ.สต. 2. Case Manager 3. เจ้าหน้าที่โรงพยาบาล 4. เจ้าหน้าที่ SCFC 5. ผู้ป่วย/ครอบครัว และ 6. ผู้บริหารระบบ (Admin IT) ระบบถูกออกแบบและพัฒนาใน 2 รูปแบบแพลตฟอร์มหลัก คือ Web Application และ Mobile Application โดย Mobile App เน้นการออกแบบ UI/UX ให้ใช้งานง่ายและพกพาสะดวก สำหรับกลุ่มผู้ปฏิบัติงานหน้างานหรือลงพื้นที่ และกลุ่มผู้ป่วย ส่วน Web App เน้นการออกแบบหน้าจอขนาดใหญ่เพื่อแสดงผล Dashboard สถิติภาพรวมและการจัดการระบบหลังบ้าน สำหรับเจ้าหน้าที่ SCFC และ Admin IT">
+            The Thai Cleft Primary Care-Family Link Application features six distinct user roles: 1) PCU/Health Center Staff, 2) Case Managers, 3) Hospital Personnel, 4) SCFC Officers, 5) Patients/Families, and 6) System Administrators (IT Admin). The system is developed across two primary platforms: Web and Mobile. The Mobile Application prioritizes a user-friendly and portable UI/UX design, tailored for frontline staff performing field visits and for patient families. Conversely, the Web Application is optimized for large-screen interfaces to facilitate comprehensive data dashboards and back-end management for SCFC officers and IT administrators.
+          </p>
+        </div>
+        <div class="project-img-wrapper" style="order: 1;">
+          <img src="./assets/projact02.png" alt="Thai Cleft Link Roles">
+        </div>
+      </article>
+      
+      <article class="project-card fade-in-up" style="animation-delay: 0.4s;">
+        <div class="project-img-wrapper">
+          <img src="./assets/projact03.png" alt="Thai Cleft Link Prototype">
+        </div>
+        <div class="project-info">
+          <div class="project-meta-top">
+            <span data-en="Testing & Validation" data-th="การทดสอบและตรวจสอบ">Testing & Validation</span>
+          </div>
+          <h2 class="project-title" data-en="Clickable Prototype" data-th="โปรโตไทป์จำลอง">Clickable Prototype</h2>
+          <p class="project-subtitle" data-en="Iterative Development" data-th="การพัฒนาแบบวนซ้ำ">Iterative Development</p>
+          <p class="project-desc" data-en="The development of a comprehensive platform, including both Web and Mobile Applications, is designed to support the healthcare network and patients. During the process, a high-fidelity 'Clickable Prototype' or Demo was created to present to frontline users. The primary objective of this demo is to allow users to experience the actual interface and verify whether the workflow aligns with their operational practices. Throughout the testing phase, the team meticulously gathers feedback and additional requirements directly from users. This valuable insight is used to refine and finalize the design, ensuring the system is fully optimized and truly meets user needs before being handed over to the development team for the final programming stage." data-th="การสร้างแพลตฟอร์มที่ครอบคลุมทั้งรูปแบบ Web Application และ Mobile Application เพื่อรองรับการทำงานของเครือข่ายบุคลากรทางการแพทย์และผู้ป่วย ในกระบวนการทำงานได้มีการจัดทำตัวจำลองหน้าจอเสมือนจริง (Clickable Prototype) หรือตัว Demo เพื่อนำไปนำเสนอให้กับกลุ่มผู้ใช้งานหน้างาน การสร้างตัว Demo นี้มีจุดประสงค์สำคัญเพื่อให้ผู้ใช้งานได้ทดลองกดใช้งานระบบจริงและตรวจสอบลำดับขั้นตอนการทำงาน (Flow) ว่าสอดคล้องกับแนวทางการปฏิบัติงานหรือไม่ ระหว่างการทดลองใช้งาน ทีมงานจะทำการรวบรวมข้อเสนอแนะรวมถึงเก็บข้อมูลความต้องการเพิ่มเติม (Requirements) อย่างละเอียดจากผู้ใช้งานโดยตรง ข้อมูลเหล่านี้จะถูกนำมาใช้ปรับปรุงแก้ไขการออกแบบระบบให้มีความสมบูรณ์และตอบโจทย์การทำงานมากที่สุดก่อนที่จะส่งมอบให้ทีมนักพัฒนาเข้าสู่ขั้นตอนการเขียนโปรแกรมจริงต่อไป">
+            The development of a comprehensive platform, including both Web and Mobile Applications, is designed to support the healthcare network and patients. During the process, a high-fidelity 'Clickable Prototype' or Demo was created to present to frontline users. The primary objective of this demo is to allow users to experience the actual interface and verify whether the workflow aligns with their operational practices. Throughout the testing phase, the team meticulously gathers feedback and additional requirements directly from users. This valuable insight is used to refine and finalize the design, ensuring the system is fully optimized and truly meets user needs before being handed over to the development team for the final programming stage.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Call to Action -->
+    <section class="prototype-cta fade-in-up" style="animation-delay: 0.6s;">
+      <a href="https://bugle-boat-58594449.figma.site/" target="_blank" rel="noopener noreferrer" class="btn-prototype" data-en="View Prototype" data-th="ดู prototype">View Prototype</a>
+      <p class="prototype-note" data-en="Note: This is a functional prototype for user flow demonstration.<br>Certain roles are optimized for Web or Mobile displays specifically,<br>reflecting their intended real-world usage." data-th="หมายเหตุ: Prototype นี้เป็นแบบจำลองเพื่อแสดง User Flow เท่านั้น<br>การแสดงผลบางบทบาท (Role) จะถูกจำกัดเฉพาะหน้าจอ Web หรือ Mobile App<br>ตามการใช้งานจริง">Note: This is a functional prototype for user flow demonstration.<br>Certain roles are optimized for Web or Mobile displays specifically,<br>reflecting their intended real-world usage.</p>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

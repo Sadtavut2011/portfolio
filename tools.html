@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools — Sadtavut Kawila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Sarabun:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Tools Page Specific Styles */
+    .page-header {
+      padding: 12rem 3rem 4rem;
+      background: var(--ink);
+      text-align: center;
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .page-desc {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--sand);
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 0 auto;
+      min-height: 3.2em;
+    }
+
+    .tools-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem 8rem;
+    }
+
+    .tools-group {
+      margin-bottom: 6rem;
+    }
+
+    .tools-group-title {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: var(--sand);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .tools-group-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(196, 168, 130, 0.2);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .tool-card {
+      background: rgba(245, 240, 232, 0.02);
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(196, 168, 130, 0.4);
+    }
+
+    .tool-img {
+      height: 220px;
+      background: #1e1c2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .tool-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tool-card:hover .tool-img img {
+      transform: scale(1.05);
+    }
+
+    .tool-info {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tool-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .tool-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-desc {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: rgba(245, 240, 232, 0.6);
+      margin-bottom: 2rem;
+      flex: 1;
+      min-height: 10rem;
+    }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .tool-tag {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid rgba(245, 240, 232, 0.15);
+      color: rgba(245, 240, 232, 0.4);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .tools-group-title {
+        font-size: 2rem;
+      }
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor" class="cursor"></div>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-header">
+      <h1 class="page-title" data-en="My Toolbox" data-th="เครื่องมือที่ใช้">My Toolbox</h1>
+      <p class="page-desc" data-en="A curated selection of modern design, development,<br>and AI tools that power my workflow." data-th="รวบรวมเครื่องมือด้านการออกแบบ การพัฒนา<br>และ AI สมัยใหม่ที่เป็นตัวช่วยในกระบวนการทำงาน">A curated selection of modern design, development,<br>and AI tools that power my workflow.</p>
+    </section>
+
+    <div class="tools-container">
+
+      <!-- Design Group -->
+      <div class="tools-group fade-in-up">
+        <h2 class="tools-group-title" data-en="Design & Prototyping" data-th="การออกแบบและการสร้างโปรโตไทป์">Design & Prototyping</h2>
+        <div class="tools-grid">
+          
+          <div class="tool-card">
+            <div class="tool-img">
+              <img src="./assets/tools01.png" alt="Figma">
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-title" data-en="Figma Design / Figma Make" data-th="Figma Design / Figma Make">Figma Design / Figma Make</h3>
+              <p class="tool-subtitle" data-en="Design System Builder" data-th="ระบบสร้างงานออกแบบ">Design System Builder</p>
+              <p class="tool-desc" data-en="Designing and managing Components, Auto Layout, and Variants in Figma Design, as well as presenting Prototypes and Demos in Figma make." data-th="ออกแบบและจัดการ Components, Auto Layout หรือ Variants ใน Figma Design รวมถึงแสดง Prototype และ Demo ใน Figma make">
+                Designing and managing Components, Auto Layout, and Variants in Figma Design, as well as presenting Prototypes and Demos in Figma make.
+              </p>
+              <div class="tool-tags">
+                <span class="tool-tag">Figma Design</span>
+                <span class="tool-tag">Figma Make</span>
+                <span class="tool-tag">Prototyping</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Development Group -->
+      <div class="tools-group fade-in-up" style="animation-delay: 0.2s;">
+        <h2 class="tools-group-title" data-en="Development" data-th="การพัฒนาแอปพลิเคชัน">Development</h2>
+        <div class="tools-grid">
+          
+          <div class="tool-card">
+            <div class="tool-img">
+              <img src="./assets/tools02.png" alt="Lovable">
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-title" data-en="Lovable" data-th="Lovable">Lovable</h3>
+              <p class="tool-subtitle" data-en="AI-Powered UI to Web" data-th="แปลงดีไซน์เป็นเว็บด้วย AI">AI-Powered UI to Web</p>
+              <p class="tool-desc" data-en="Utilized Lovable to transform UI designs into functional, high-fidelity web prototypes. By leveraging AI to automate the coding process (React & Tailwind CSS), I was able to rapidly iterate on layouts and interactions, bridging the gap between design and development." data-th="ใช้ Lovable เพื่อเปลี่ยนงานดีไซน์เป็นเว็บ Prototype ที่ใช้งานได้จริง ช่วยเร่งกระบวนการสร้าง Code และทำให้เห็นภาพรวมของ Interaction ได้ทันที">
+                Utilized Lovable to transform UI designs into functional, high-fidelity web prototypes. By leveraging AI to automate the coding process (React & Tailwind CSS), I was able to rapidly iterate on layouts and interactions, bridging the gap between design and development.
+              </p>
+              <div class="tool-tags">
+                <span class="tool-tag">Lovable</span>
+                <span class="tool-tag">React</span>
+                <span class="tool-tag">Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-img">
+              <!-- No specific image for windsurf in projectsData, using generic style -->
+              <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--sand); font-family: var(--font-mono); font-size: 2rem;">&lt;/&gt;</div>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-title" data-en="Windsurf" data-th="Windsurf">Windsurf</h3>
+              <p class="tool-subtitle" data-en="AI IDE" data-th="เครื่องมือเขียนโค้ดด้วย AI">AI IDE</p>
+              <p class="tool-desc" data-en="Advanced AI-powered integrated development environment used for building modern, responsive frontends and fine-tuning AI-generated code." data-th="โปรแกรมสำหรับเขียนและแก้ไขโค้ดที่มี AI เป็นผู้ช่วย เพื่อพัฒนาหน้าเว็บไซต์ให้สวยงามและตอบสนองได้รวดเร็ว">
+                Advanced AI-powered integrated development environment used for building modern, responsive frontends and fine-tuning AI-generated code.
+              </p>
+              <div class="tool-tags">
+                <span class="tool-tag">Windsurf</span>
+                <span class="tool-tag">Coding</span>
+                <span class="tool-tag">AI Assistant</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AI Group -->
+      <div class="tools-group fade-in-up" style="animation-delay: 0.4s;">
+        <h2 class="tools-group-title" data-en="AI & Research" data-th="ปัญญาประดิษฐ์และการวิจัย">AI & Research</h2>
+        <div class="tools-grid">
+          
+          <div class="tool-card">
+            <div class="tool-img">
+              <img src="./assets/tools03.png" alt="Google Stitch">
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-title" data-en="Google Stitch" data-th="Google Stitch">Google Stitch</h3>
+              <p class="tool-subtitle" data-en="Intelligent Ideation Partner" data-th="ผู้ช่วยหาไอเดียด้วย AI">Intelligent Ideation Partner</p>
+              <p class="tool-desc" data-en="Leveraged Google Stitch (NotebookLM) to analyze project requirements and generate suitable UI patterns for the 'Thai Cleft Link' platform. This tool served as an intelligent ideation partner, helping me discover diverse design solutions and establish a user-centric visual hierarchy." data-th="ใช้ Google Stitch ช่วยวิเคราะห์ความต้องการโปรเจกต์และสร้างรูปแบบ UI ที่เหมาะสม ช่วยหาไอเดียการออกแบบที่หลากหลาย และจัดลำดับความสำคัญของข้อมูลให้ตรงใจผู้ใช้">
+                Leveraged Google Stitch (NotebookLM) to analyze project requirements and generate suitable UI patterns for the 'Thai Cleft Link' platform. This tool served as an intelligent ideation partner, helping me discover diverse design solutions and establish a user-centric visual hierarchy.
+              </p>
+              <div class="tool-tags">
+                <span class="tool-tag">Ideation</span>
+                <span class="tool-tag">AI Analysis</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-img">
+              <img src="./assets/tools04.png" alt="NotebookLM">
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-title" data-en="NotebookLM" data-th="NotebookLM">NotebookLM</h3>
+              <p class="tool-subtitle" data-en="UX Research Assistant" data-th="ผู้ช่วยวิจัยด้าน UX">UX Research Assistant</p>
+              <p class="tool-desc" data-en="Leveraged NotebookLM as a research assistant to bridge the gap between complex client requests and user-centered design solutions. I used the tool to summarize key feedback and compare multiple sources of project information, which allowed me to deeply understand the user's journey and translate abstract goals into concrete UX features." data-th="ใช้ NotebookLM เป็นผู้ช่วยวิจัยเพื่อเชื่อมโยงความต้องการของลูกค้าเข้ากับโซลูชันการออกแบบที่เน้นผู้ใช้เป็นศูนย์กลาง โดยการสรุป Feedback และเปรียบเทียบข้อมูลโปรเจกต์จากหลายแหล่ง เพื่อทำความเข้าใจเส้นทางการใช้งาน (User Journey) และเปลี่ยนเป้าหมายที่ซับซ้อนให้กลายเป็นฟีเจอร์ UX ที่ชัดเจน">
+                Leveraged NotebookLM as a research assistant to bridge the gap between complex client requests and user-centered design solutions. I used the tool to summarize key feedback and compare multiple sources of project information, which allowed me to deeply understand the user's journey and translate abstract goals into concrete UX features.
+              </p>
+              <div class="tool-tags">
+                <span class="tool-tag">NotebookLM</span>
+                <span class="tool-tag">UX Research</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-img">
+              <img src="./assets/tools05.png" alt="Gemini Gems">
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-title" data-en="Gemini Pro / Gemini Gem" data-th="Gemini Pro / Gemini Gem">Gemini Pro / Gemini Gem</h3>
+              <p class="tool-subtitle" data-en="AI Workflow Agent" data-th="ผู้ช่วยตรวจสอบคุณภาพด้วย AI">AI Workflow Agent</p>
+              <p class="tool-desc" data-en="Created an intelligent workflow using Gemini Gems to streamline the hand-off and review process. By linking technical documentation (NotebookLM) with live code repositories (GitHub), the AI Agent can automatically identify discrepancies in UI structure and code quality. This proactive approach ensures high-quality Front-end output and minimizes design debt." data-th="เพิ่มประสิทธิภาพการทำงานด้วย Gemini Gems โดยการเชื่อมต่อเอกสารทางเทคนิคเข้ากับ Code ใน GitHub เพื่อให้ AI ช่วยระบุจุดที่โค้ดไม่ตรงกับดีไซน์หรือคุณภาพไม่ได้มาตรฐาน ช่วยลดข้อผิดพลาดก่อนส่งมอบงานจริง">
+                Created an intelligent workflow using Gemini Gems to streamline the hand-off and review process. By linking technical documentation (NotebookLM) with live code repositories (GitHub), the AI Agent can automatically identify discrepancies in UI structure and code quality. This proactive approach ensures high-quality Front-end output and minimizes design debt.
+              </p>
+              <div class="tool-tags">
+                <span class="tool-tag">Gemini Pro</span>
+                <span class="tool-tag">Design Handoff</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
