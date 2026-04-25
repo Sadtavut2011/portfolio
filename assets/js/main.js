@@ -4,7 +4,7 @@ if ('scrollRestoration' in history) {
 }
 
 // ── LANGUAGE SWITCHER ──
-window.currentLang = localStorage.getItem('lang') || 'en';
+window.currentLang = sessionStorage.getItem('lang') || 'en';
 
 window.toggleLanguage = function () {
   const newLang = window.currentLang === 'en' ? 'th' : 'en';
@@ -13,7 +13,7 @@ window.toggleLanguage = function () {
 
 window.setLanguage = function (lang) {
   window.currentLang = lang;
-  localStorage.setItem('lang', lang);
+  sessionStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
 
   const indicator = document.getElementById('lang-indicator');
