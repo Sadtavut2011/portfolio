@@ -162,6 +162,292 @@
       }
     }
 
+    /* ── AI-Driven Problem Solving Section ── */
+    .ai-section {
+      padding: 6rem 3rem 2rem;
+      position: relative;
+    }
+
+    .ai-section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .ai-section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--earth);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .ai-section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .ai-section-title em {
+      font-style: italic;
+      color: var(--earth);
+    }
+
+    .ai-section-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto;
+      min-height: 5.1em;
+    }
+
+    /* Timeline wrapper */
+    .ai-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ai-phases::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(196,168,130,0.3) 10%, rgba(196,168,130,0.3) 90%, transparent);
+      transform: translateX(-50%);
+    }
+
+    /* Phase Card */
+    .ai-phase {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      gap: 0;
+      align-items: start;
+      padding: 3rem 0;
+    }
+
+    .ai-phase:nth-child(even) .ai-phase-card {
+      grid-column: 3;
+    }
+
+    .ai-phase:nth-child(even) .ai-phase-spacer {
+      grid-column: 1;
+      order: -2;
+    }
+
+    /* Phase connector dot */
+    .ai-phase-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ai-dot-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--ink);
+      border: 1px solid rgba(196,168,130,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ai-dot-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--earth);
+      letter-spacing: 0.05em;
+    }
+
+    /* Phase card content */
+    .ai-phase-card {
+      background: rgba(245, 240, 232, 0.02);
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      border-radius: 10px;
+      padding: 2.5rem;
+      transition: border-color 0.4s ease, transform 0.4s ease, background 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-phase-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(196,168,130,0.05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .ai-phase-card:hover {
+      border-color: rgba(196, 168, 130, 0.35);
+      transform: translateY(-4px);
+      background: rgba(245, 240, 232, 0.04);
+    }
+
+    .ai-phase-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    .ai-phase-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Sub-section: Challenge / AI Solution / Impact */
+    .ai-block {
+      margin-bottom: 1.5rem;
+    }
+
+    .ai-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .ai-block-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .ai-block-label.challenge {
+      background: rgba(200, 90, 90, 0.12);
+      color: rgba(220, 130, 130, 0.9);
+      border: 1px solid rgba(200, 90, 90, 0.2);
+    }
+
+    .ai-block-label.solution {
+      background: rgba(90, 160, 200, 0.1);
+      color: rgba(130, 190, 220, 0.9);
+      border: 1px solid rgba(90, 160, 200, 0.2);
+    }
+
+    .ai-block-label.impact {
+      background: rgba(100, 190, 130, 0.1);
+      color: rgba(130, 210, 160, 0.9);
+      border: 1px solid rgba(100, 190, 130, 0.2);
+    }
+
+    .ai-block-text {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: rgba(245, 240, 232, 0.6);
+    }
+
+    /* Impact bullet list */
+    .ai-impact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .ai-impact-list li {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.6);
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .ai-impact-list li::before {
+      content: '→';
+      color: var(--earth);
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    /* Tool badge */
+    .ai-tool-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.2rem;
+    }
+
+    .ai-badge {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(196,168,130,0.25);
+      border-radius: 50px;
+      color: rgba(196,168,130,0.75);
+    }
+
+    /* Divider between ai-section and CTA */
+    .ai-divider {
+      width: 1px;
+      height: 6rem;
+      background: linear-gradient(to bottom, rgba(196,168,130,0.3), transparent);
+      margin: 0 auto 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .ai-section {
+        padding: 4rem 1.5rem 1rem;
+      }
+
+      .ai-phases::before {
+        display: none;
+      }
+
+      .ai-phase {
+        grid-template-columns: 1fr;
+        padding: 0;
+        gap: 0;
+      }
+
+      .ai-phase-dot {
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 1rem;
+        padding: 1.5rem 0 0;
+      }
+
+      .ai-phase:nth-child(even) .ai-phase-card {
+        grid-column: 1;
+      }
+
+      .ai-phase-spacer {
+        display: none;
+      }
+    }
+
     /* Prototype CTA Button */
     .prototype-cta {
       display: flex;
@@ -271,6 +557,220 @@
       </article>
 
     </section>
+
+    <!-- AI-Driven Problem Solving Section -->
+    <section class="ai-section fade-in-up" style="animation-delay: 0.5s;">
+      <div class="ai-section-header">
+        <span class="ai-section-eyebrow" data-en="Thai Cleft Link Project" data-th="โครงการ Thai Cleft Link">Thai Cleft Link Project</span>
+        <h2 class="ai-section-title">
+          <span data-en="AI-Driven" data-th="">AI-Driven</span> <em><span data-en="Problem Solving" data-th="">Problem Solving</span></em>
+          <span data-en="" data-th="การแก้ไขปัญหาด้วย <em>AI</em>"></span>
+        </h2>
+        <p class="ai-section-subtitle"
+           data-en="An AI-Augmented Workflow for Managing and Designing a Highly Complex, Multi-Role Healthcare Coordination Platform."
+           data-th="แนวคิดและการแก้ไขปัญหาด้วย AI Workflow ในการบริหารจัดการระบบประสานงานทางการแพทย์ที่มีความซับซ้อนสูง (Multi-role Healthcare Platform)">
+          An AI-Augmented Workflow for Managing and Designing a Highly Complex, Multi-Role Healthcare Coordination Platform.
+        </p>
+      </div>
+
+      <div class="ai-phases">
+
+        <!-- Phase 1 -->
+        <div class="ai-phase fade-in-up" style="animation-delay: 0.6s;">
+          <!-- Left: card -->
+          <div class="ai-phase-card">
+            <span class="ai-phase-label">Phase 01</span>
+            <h3 class="ai-phase-name"
+                data-en="Information Synthesis &amp; Scope Alignment"
+                data-th="Information Synthesis &amp; Scope Alignment">Information Synthesis &amp; Scope Alignment</h3>
+
+            <div class="ai-block">
+              <span class="ai-block-label challenge" data-en="Challenge" data-th="ปัญหา">Challenge</span>
+              <p class="ai-block-text"
+                 data-en="The project's Terms of Reference (TOR) and system flowcharts were highly complex, expansive, and involved intricate multi-role logic. Additionally, critical user feedback was scattered across numerous weekly stakeholder meeting recordings."
+                 data-th="เอกสารข้อกำหนดขอบเขตงาน (TOR) และ Flowchart ของระบบมีขนาดใหญ่ ฟังก์ชันการทำงานมีความซับซ้อนสูง และมีข้อมูล Feedback ที่กระจัดกระจายจากการประชุมหลายภาคส่วน">
+                The project's Terms of Reference (TOR) and system flowcharts were highly complex, expansive, and involved intricate multi-role logic. Additionally, critical user feedback was scattered across numerous weekly stakeholder meeting recordings.
+              </p>
+            </div>
+
+            <div class="ai-block">
+              <span class="ai-block-label solution" data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</span>
+              <p class="ai-block-text"
+                 data-en="Established a Single Source of Truth by utilizing NotebookLM. I consolidated all raw data—ranging from the official TOR to audio recordings of client feedback sessions—into a centralized knowledge base."
+                 data-th="สร้าง Single Source of Truth โดยการใช้ NotebookLM รวบรวมและวิเคราะห์ข้อมูลดิบทั้งหมด ตั้งแต่เอกสาร TOR ไปจนถึงไฟล์บันทึกเสียงการประชุมในแต่ละสัปดาห์ เพื่อประมวลผลข้อมูลร่วมกันในที่เดียว">
+                Established a Single Source of Truth by utilizing NotebookLM. I consolidated all raw data—ranging from the official TOR to audio recordings of client feedback sessions—into a centralized knowledge base.
+              </p>
+            </div>
+
+            <div class="ai-block">
+              <span class="ai-block-label impact" data-en="Impact" data-th="ผลลัพธ์">Impact</span>
+              <ul class="ai-impact-list">
+                <li data-en="Drastically reduced the time required for manual information parsing and complex data synthesis."
+                    data-th="ลดเวลาในการสกัดและวิเคราะห์ข้อมูล (Information Parsing) ได้อย่างมหาศาล">
+                  Drastically reduced the time required for manual information parsing and complex data synthesis.
+                </li>
+                <li data-en="Eliminated feature leakage and misunderstanding by leveraging AI for instant, contextual QA regarding system requirements."
+                    data-th="ป้องกันการตกหล่นของฟังก์ชันสำคัญ (Feature Leakage) และลดความสับสนในการตีความระบบ">
+                  Eliminated feature leakage and misunderstanding by leveraging AI for instant, contextual QA regarding system requirements.
+                </li>
+                <li data-en="Enabled immediate deep-dive queries against cross-referenced AI resources to ensure absolute accuracy."
+                    data-th="สามารถสอบถามข้อมูลอ้างอิงเชิงลึกจาก AI เพื่อตรวจสอบความถูกต้องของระบบได้ทันที">
+                  Enabled immediate deep-dive queries against cross-referenced AI resources to ensure absolute accuracy.
+                </li>
+              </ul>
+            </div>
+
+            <div class="ai-tool-badges">
+              <span class="ai-badge">NotebookLM</span>
+              <span class="ai-badge">TOR Analysis</span>
+              <span class="ai-badge">Meeting Transcripts</span>
+              <span class="ai-badge">Knowledge Base</span>
+            </div>
+          </div>
+
+          <!-- Center dot -->
+          <div class="ai-phase-dot">
+            <div class="ai-dot-circle">
+              <span class="ai-dot-num">01</span>
+            </div>
+          </div>
+
+          <!-- Right: spacer -->
+          <div class="ai-phase-spacer"></div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="ai-phase fade-in-up" style="animation-delay: 0.7s;">
+          <!-- Left: spacer -->
+          <div class="ai-phase-spacer"></div>
+
+          <!-- Center dot -->
+          <div class="ai-phase-dot">
+            <div class="ai-dot-circle">
+              <span class="ai-dot-num">02</span>
+            </div>
+          </div>
+
+          <!-- Right: card -->
+          <div class="ai-phase-card">
+            <span class="ai-phase-label">Phase 02</span>
+            <h3 class="ai-phase-name"
+                data-en="Agile Prototyping &amp; Parallel Design Workflows"
+                data-th="Agile Prototyping &amp; Parallel Design Workflows">Agile Prototyping &amp; Parallel Design Workflows</h3>
+
+            <div class="ai-block">
+              <span class="ai-block-label challenge" data-en="Challenge" data-th="ปัญหา">Challenge</span>
+              <p class="ai-block-text"
+                 data-en="Stakeholders required a granular, frame-by-frame UI review while simultaneously demanding interactive prototypes and system demos for user flow testing. Traditional linear workflows (Waterfall) would have created severe delivery bottlenecks."
+                 data-th="ลูกค้าต้องการตรวจงานแบบละเอียดหน้าต่อหน้า (Frame-by-Frame) แต่ในขณะเดียวกันก็จำเป็นต้องเห็น Interactive Prototype และระบบ Demo เพื่อทดสอบ User Flow ควบคู่กันไป ทำให้กระบวนการทำงานแบบเดิม (Waterfall) เกิดคอขวด">
+                Stakeholders required a granular, frame-by-frame UI review while simultaneously demanding interactive prototypes and system demos for user flow testing. Traditional linear workflows (Waterfall) would have created severe delivery bottlenecks.
+              </p>
+            </div>
+
+            <div class="ai-block">
+              <span class="ai-block-label solution" data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</span>
+              <p class="ai-block-text"
+                 data-en="Implemented an Agile Design Workflow by leveraging Figma AI to generate interactive prototypes directly from wireframes. This enabled rapid asset duplication and real-time syncing within the Figma design space as updates occurred."
+                 data-th="เปลี่ยนมาใช้ Agile Design Workflow โดยนำ Figma AI มาช่วยแปลง Wireframe ให้เป็น Interactive Prototype โดยตรงใน Figma Design และใช้ความสามารถในการ Sync/Copy Design เพื่ออัปเดตหน้างานแบบ Real-time">
+                Implemented an Agile Design Workflow by leveraging Figma AI to generate interactive prototypes directly from wireframes. This enabled rapid asset duplication and real-time syncing within the Figma design space as updates occurred.
+              </p>
+            </div>
+
+            <div class="ai-block">
+              <span class="ai-block-label impact" data-en="Impact" data-th="ผลลัพธ์">Impact</span>
+              <ul class="ai-impact-list">
+                <li data-en="Broke the traditional dependency where prototyping could only begin after final UI design approval."
+                    data-th="ทลายข้อจำกัดเดิมที่ต้องรอให้งาน UI Design เสร็จสมบูรณ์ 100% จึงจะเริ่มทำ Prototype ได้">
+                  Broke the traditional dependency where prototyping could only begin after final UI design approval.
+                </li>
+                <li data-en="Enabled parallel delivery of static screens and interactive demos, allowing for weekly client updates and faster feedback loops."
+                    data-th="สามารถส่งมอบงานออกแบบและส่งมอบตัว Demo ให้ลูกค้าทดสอบระบบ (User Testing) ได้แบบสัปดาห์ต่อสัปดาห์ (Weekly Updates)">
+                  Enabled parallel delivery of static screens and interactive demos, allowing for weekly client updates and faster feedback loops.
+                </li>
+                <li data-en="Accelerated the overall user testing phase by keeping design iterations synchronized with physical demo requirements."
+                    data-th="เร่งกระบวนการทดสอบระบบกับผู้ใช้จริง (User Testing) ให้เร็วขึ้นจากการที่ตัว Demo ซิงค์ตรงกับงานดีไซน์ตลอดเวลา">
+                  Accelerated the overall user testing phase by keeping design iterations synchronized with physical demo requirements.
+                </li>
+              </ul>
+            </div>
+
+            <div class="ai-tool-badges">
+              <span class="ai-badge">Figma AI</span>
+              <span class="ai-badge">Interactive Prototype</span>
+              <span class="ai-badge">Agile Workflow</span>
+              <span class="ai-badge">Weekly Sprints</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="ai-phase fade-in-up" style="animation-delay: 0.8s;">
+          <!-- Left: card -->
+          <div class="ai-phase-card">
+            <span class="ai-phase-label">Phase 03</span>
+            <h3 class="ai-phase-name"
+                data-en="Requirement Tracking &amp; Cross-Platform Alignment"
+                data-th="Requirement Tracking &amp; Cross-Platform Alignment">Requirement Tracking &amp; Cross-Platform Alignment</h3>
+
+            <div class="ai-block">
+              <span class="ai-block-label challenge" data-en="Challenge" data-th="ปัญหา">Challenge</span>
+              <p class="ai-block-text"
+                 data-en="Due to the platform's large scale and diverse user roles, client requirements shifted frequently during live discussions, occasionally diverging from the original TOR. This created a high risk of misalignment between the latest feedback, UI designs, and the codebase on GitHub."
+                 data-th="ระบบมีผู้ใช้งานหลายบทบาท (Multi-role) และลูกค้ามีการปรับเปลี่ยนความต้องการ (Requirements) ตลอดเวลาตามสถานการณ์จริง ซึ่งบางครั้งอาจไม่ตรงกับเอกสาร TOR เดิม ทำให้เสี่ยงต่อการเกิดความคลาดเคลื่อนระหว่างงาน Design และ Code บน GitHub">
+                Due to the platform's large scale and diverse user roles, client requirements shifted frequently during live discussions, occasionally diverging from the original TOR. This created a high risk of misalignment between the latest feedback, UI designs, and the codebase on GitHub.
+              </p>
+            </div>
+
+            <div class="ai-block">
+              <span class="ai-block-label solution" data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</span>
+              <p class="ai-block-text"
+                 data-en="Architected an Automated Quality Gate by creating a custom Gemini Gem. This AI agent bridged the gap between NotebookLM (containing the latest meeting summaries) and GitHub (the codebase). The Gem automatically cross-referenced the current code against the latest client requirements."
+                 data-th="ออกแบบระบบตรวจสอบความถูกต้องอัตโนมัติ (Automated Quality Gate) โดยสร้าง Gemini Gem (Custom AI) ทำหน้าที่เชื่อมโยงข้อมูลระหว่าง NotebookLM (ข้อมูลสรุปการประชุมล่าสุด) และ GitHub (Codebase) เพื่อคอยตรวจสอบและเปรียบเทียบ Code ของระบบว่าตรงกับความต้องการล่าสุดของลูกค้าหรือไม่">
+                Architected an Automated Quality Gate by creating a custom Gemini Gem. This AI agent bridged the gap between NotebookLM (containing the latest meeting summaries) and GitHub (the codebase). The Gem automatically cross-referenced the current code against the latest client requirements.
+              </p>
+            </div>
+
+            <div class="ai-block">
+              <span class="ai-block-label impact" data-en="Impact" data-th="ผลลัพธ์">Impact</span>
+              <ul class="ai-impact-list">
+                <li data-en="Enabled continuous alignment and rapid conflict detection (Discrepancy Detection) between shifting requirements, designs, and production code."
+                    data-th="มีระบบช่วยตรวจจับความไม่สอดคล้อง (Discrepancy Detection) ระหว่าง Requirement, Design และ Code ได้ทันที">
+                  Enabled continuous alignment and rapid conflict detection (Discrepancy Detection) between shifting requirements, designs, and production code.
+                </li>
+                <li data-en="Ensured that the final implementation accurately fulfilled the stakeholders' evolving needs, despite ongoing changes."
+                    data-th="ช่วยให้ระบบพัฒนาไปในทิศทางที่ตอบโจทย์ความต้องการจริงของลูกค้าและผู้ใช้ (Stakeholders) ได้อย่างแม่นยำ แม้จะมีการเปลี่ยนแปลงตลอดเวลาก็ตาม">
+                  Ensured that the final implementation accurately fulfilled the stakeholders' evolving needs, despite ongoing changes.
+                </li>
+                <li data-en="Maintained absolute deployment integrity by keeping developer and designer pipelines continuously synchronized with live stakeholder inputs."
+                    data-th="รักษาความถูกต้องในการ Deploy ระบบ โดยควบคุมให้ทีม Developer และ Designer ทำงานซิงค์ตรงกับความต้องการล่าสุดอยู่เสมอ">
+                  Maintained absolute deployment integrity by keeping developer and designer pipelines continuously synchronized with live stakeholder inputs.
+                </li>
+              </ul>
+            </div>
+
+            <div class="ai-tool-badges">
+              <span class="ai-badge">Gemini Gem</span>
+              <span class="ai-badge">NotebookLM</span>
+              <span class="ai-badge">GitHub</span>
+              <span class="ai-badge">Quality Gate</span>
+            </div>
+          </div>
+
+          <!-- Center dot -->
+          <div class="ai-phase-dot">
+            <div class="ai-dot-circle">
+              <span class="ai-dot-num">03</span>
+            </div>
+          </div>
+
+          <!-- Right: spacer -->
+          <div class="ai-phase-spacer"></div>
+        </div>
+
+      </div><!-- /.ai-phases -->
+    </section>
+
+    <div class="ai-divider"></div>
 
     <!-- Call to Action -->
     <section class="prototype-cta fade-in-up" style="animation-delay: 0.6s;">
