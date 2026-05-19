@@ -419,28 +419,63 @@
 
     @media (max-width: 992px) {
       .ai-section {
-        padding: 4rem 1.5rem 1rem;
+        padding: 4rem 0.75rem 1rem;
       }
 
+      /* Add left gutter for the timeline line + dot */
+      .ai-phases {
+        padding-left: 0;
+        position: relative;
+      }
+
+      /* Replace centre line with a left-side line */
       .ai-phases::before {
-        display: none;
+        display: block;
+        left: 26px;        /* sit under the centre of the 52px dot */
+        transform: none;
+        width: 1px;
       }
 
+      /* Each phase: dot (left col) + card (right col) side by side */
       .ai-phase {
-        grid-template-columns: 1fr;
-        padding: 0;
-        gap: 0;
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        grid-template-areas: "dot card";
+        padding: 1.5rem 0 0;
+        gap: 0 0.75rem;
+        align-items: start;
       }
 
       .ai-phase-dot {
-        flex-direction: row;
+        grid-area: dot;
+        position: static;
+        flex-direction: column;
+        align-items: center;
         justify-content: flex-start;
-        margin-bottom: 1rem;
-        padding: 1.5rem 0 0;
+        margin: 0;
+        padding: 0;
+        width: 52px;
+        order: unset;
       }
 
+      .ai-phase-card {
+        grid-area: card;
+        order: unset;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        /* ensure card doesn't exceed available width */
+        min-width: 0;
+        width: 100%;
+      }
+
+      /* Reset even-phase grid overrides */
       .ai-phase:nth-child(even) .ai-phase-card {
-        grid-column: 1;
+        grid-column: unset;
+        grid-area: card;
+      }
+
+      .ai-phase:nth-child(even) .ai-phase-spacer {
+        order: unset;
       }
 
       .ai-phase-spacer {
