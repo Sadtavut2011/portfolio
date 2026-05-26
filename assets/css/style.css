@@ -321,6 +321,14 @@
       color: var(--sand-light);
     }
 
+    /* Language-specific overrides */
+    html[lang="th"] .project-title,
+    html[lang="th"] .detail-title,
+    html[lang="th"] .detail-subtitle,
+    html[lang="th"] .detail-body h4 {
+      font-family: var(--font-thai);
+    }
+
     /* Language-specific hero name adjustments */
     html[lang="th"] .hero-name {
       line-height: 1.25;

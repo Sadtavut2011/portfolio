@@ -111,7 +111,7 @@ function initCursor() {
   const addHover = () => cursor.classList.add('hover');
   const removeHover = () => cursor.classList.remove('hover');
 
-  document.querySelectorAll('a, button, .lang-switch, .work-ph-card, .case-study, .nav-menu-toggle, .lightbox-close')
+  document.querySelectorAll('a, button, .lang-switch, .work-ph-card, .case-study, .chapter-card, .nav-menu-toggle, .lightbox-close')
     .forEach(el => {
       el.addEventListener('mouseenter', addHover);
       el.addEventListener('mouseleave', removeHover);

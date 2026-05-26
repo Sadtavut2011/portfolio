@@ -17,6 +17,7 @@
       padding: 12rem 3rem 4rem;
       background: var(--ink);
     }
+
     .page-title {
       font-family: var(--font-serif);
       font-size: clamp(3rem, 8vw, 6rem);
@@ -24,6 +25,7 @@
       color: var(--cream);
       margin-bottom: 1rem;
     }
+
     .page-desc {
       font-family: var(--font-mono);
       font-size: 1rem;
@@ -32,7 +34,7 @@
       line-height: 1.6;
       min-height: 4.8em;
     }
-    
+
     .projects-grid {
       padding: 0 3rem 8rem;
       display: grid;
@@ -96,6 +98,7 @@
       align-items: center;
       gap: 1rem;
     }
+
     .project-meta-top::after {
       content: '';
       height: 1px;
@@ -148,15 +151,19 @@
       .project-card {
         grid-template-columns: 1fr;
       }
+
       .project-info {
         padding: 2.5rem;
       }
+
       .page-header {
         padding: 8rem 1.5rem 3rem;
       }
+
       .projects-grid {
         padding: 0 1.5rem 4rem;
       }
+
       .prototype-cta {
         padding: 0 1.5rem 6rem;
       }
@@ -224,7 +231,7 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(196,168,130,0.3) 10%, rgba(196,168,130,0.3) 90%, transparent);
+      background: linear-gradient(to bottom, transparent, rgba(196, 168, 130, 0.3) 10%, rgba(196, 168, 130, 0.3) 90%, transparent);
       transform: translateX(-50%);
     }
 
@@ -261,7 +268,7 @@
       height: 52px;
       border-radius: 50%;
       background: var(--ink);
-      border: 1px solid rgba(196,168,130,0.5);
+      border: 1px solid rgba(196, 168, 130, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -290,7 +297,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at top left, rgba(196,168,130,0.05), transparent 60%);
+      background: radial-gradient(ellipse at top left, rgba(196, 168, 130, 0.05), transparent 60%);
       pointer-events: none;
     }
 
@@ -404,16 +411,16 @@
       font-size: 0.6rem;
       letter-spacing: 0.1em;
       padding: 0.3rem 0.7rem;
-      border: 1px solid rgba(196,168,130,0.25);
+      border: 1px solid rgba(196, 168, 130, 0.25);
       border-radius: 50px;
-      color: rgba(196,168,130,0.75);
+      color: rgba(196, 168, 130, 0.75);
     }
 
     /* Divider between ai-section and CTA */
     .ai-divider {
       width: 1px;
       height: 6rem;
-      background: linear-gradient(to bottom, rgba(196,168,130,0.3), transparent);
+      background: linear-gradient(to bottom, rgba(196, 168, 130, 0.3), transparent);
       margin: 0 auto 2rem;
     }
 
@@ -431,7 +438,8 @@
       /* Replace centre line with a left-side line */
       .ai-phases::before {
         display: block;
-        left: 26px;        /* sit under the centre of the 52px dot */
+        left: 26px;
+        /* sit under the centre of the 52px dot */
         transform: none;
         width: 1px;
       }
@@ -520,6 +528,212 @@
       box-shadow: 0 12px 30px rgba(245, 240, 232, 0.15);
       background: #ffffff;
     }
+
+    /* ── VIEW SWITCHING TRANSITIONS ── */
+    #projects-list-view, #project-detail-view {
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* ── CHAPTER CARD STYLES ── */
+    .chapter-card {
+      position: relative;
+      cursor: pointer;
+    }
+    .chapter-card:hover .btn-read-more {
+      color: var(--cream);
+      gap: 0.8rem;
+    }
+    
+    .chapter-number {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(196, 168, 130, 0.12);
+      line-height: 1;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .btn-read-more {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--earth);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease, gap 0.3s ease;
+      margin-top: 1rem;
+    }
+    .btn-read-more:hover {
+      color: var(--cream);
+      gap: 0.8rem;
+    }
+    
+    /* ── DETAIL VIEW STYLES ── */
+    .detail-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .btn-back {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--earth);
+      background: none;
+      border: 1px solid rgba(196, 168, 130, 0.25);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .btn-back:hover {
+      color: var(--cream);
+      background: rgba(196, 168, 130, 0.08);
+      border-color: rgba(196, 168, 130, 0.5);
+      transform: translateX(-4px);
+    }
+    
+    .chapter-detail-content {
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .detail-header {
+      border-bottom: 1px solid rgba(196, 168, 130, 0.15);
+      padding-bottom: 2rem;
+      margin-bottom: 3.5rem;
+    }
+    .detail-header .detail-chapter-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--earth);
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+    .detail-header .detail-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .detail-header .detail-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--sand);
+      font-size: 1.3rem;
+    }
+    
+    .detail-body {
+      font-family: var(--font-mono);
+      color: rgba(245, 240, 232, 0.7);
+      line-height: 1.8;
+    }
+    .detail-body h4 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-top: 3.5rem;
+      margin-bottom: 1.2rem;
+      border-left: 2px solid var(--earth);
+      padding-left: 1.2rem;
+    }
+    .detail-body h4:first-child {
+      margin-top: 0;
+    }
+    .detail-body p {
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      color: rgba(245, 240, 232, 0.65);
+    }
+    .detail-body p strong {
+      color: var(--cream);
+    }
+    
+    /* Grid & Cards inside details */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .detail-card {
+      background: rgba(245, 240, 232, 0.03);
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.3s ease;
+    }
+    .detail-card:hover {
+      border-color: rgba(196, 168, 130, 0.25);
+    }
+    .detail-card h5 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--earth);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .detail-card p {
+      font-size: 0.85rem;
+      margin-bottom: 0;
+      line-height: 1.6;
+      color: rgba(245, 240, 232, 0.6);
+    }
+    
+    /* Table inside details */
+    .detail-table-wrapper {
+      overflow-x: auto;
+      margin: 2.5rem 0;
+      border: 1px solid rgba(245, 240, 232, 0.08);
+      border-radius: 8px;
+    }
+    .detail-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .detail-table th, .detail-table td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    }
+    .detail-table th {
+      background: rgba(245, 240, 232, 0.03);
+      color: var(--cream);
+      font-weight: 500;
+    }
+    .detail-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    @media (max-width: 768px) {
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+      .detail-header .detail-title {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 
@@ -528,293 +742,494 @@
   <div id="header-placeholder"></div>
 
   <main>
-    <section class="page-header">
-      <h1 class="page-title" data-en="Thai Cleft Link" data-th="Thai Cleft Link">Thai Cleft Link</h1>
-      <p class="page-desc" data-en="A comprehensive digital platform connecting<br>healthcare networks for cleft lip and craniofacial<br>patients of Chiang Mai University." data-th="แพลตฟอร์มดิจิทัลที่เชื่อมโยงเครือข่ายการรักษา<br>ผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า<br>ของมหาวิทยาลัยเชียงใหม่">A comprehensive digital platform connecting<br>healthcare networks for cleft lip and craniofacial<br>patients of Chiang Mai University.</p>
-    </section>
-
-    <section class="projects-grid">
-      <!-- Project 1: Thai Cleft Link -->
-      <article class="project-card fade-in-up">
-        <div class="project-img-wrapper">
-          <img src="./assets/Projact01.png" alt="Thai Cleft Link">
-        </div>
-        <div class="project-info">
-          <div class="project-meta-top">
-            <span data-en="Mobile Application & Website" data-th="แอปพลิเคชันมือถือ & เว็บไซต์">Mobile Application & Website</span>
+    <div id="projects-list-view" style="transition: opacity 0.4s ease;">
+      <section class="page-header">
+        <h1 class="page-title" data-en="Thai Cleft Link" data-th="Thai Cleft Link">Thai Cleft Link</h1>
+        <p class="page-desc"
+          data-en="A comprehensive digital platform connecting<br>healthcare networks for cleft lip and craniofacial<br>patients of Chiang Mai University."
+          data-th="แพลตฟอร์มดิจิทัลที่เชื่อมโยงเครือข่ายการรักษา<br>ผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า<br>ของมหาวิทยาลัยเชียงใหม่">
+          A comprehensive digital platform connecting<br>healthcare networks for cleft lip and craniofacial<br>patients of
+          Chiang Mai University.</p>
+      </section>
+      <section class="projects-grid">
+        
+        <!-- CHAPTER 1: The Remote Challenge -->
+        <article class="project-card chapter-card fade-in-up" id="chapter-1" onclick="toggleChapter(1)">
+          <div class="project-img-wrapper">
+            <div class="chapter-number">01</div>
+            <img src="./assets/Projact01.png" alt="Chapter 1: The Remote Challenge">
           </div>
-          <h2 class="project-title" data-en="Project Overview" data-th="ภาพรวมโครงการ">Project Overview</h2>
-          <p class="project-subtitle" data-en="Primary Care-Family Link Application" data-th="แอปพลิเคชันเชื่อมโยงการดูแลปฐมภูมิ-ครอบครัว">Primary Care-Family Link Application</p>
-          <p class="project-desc" data-en="The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families." data-th="โครงการ Thai Cleft Primary Care-Family Link Application เป็นการพัฒนาระบบแพลตฟอร์ม (Web & Mobile Application) เพื่อบูรณาการเครือข่ายการรักษาผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้า ในเขต 8 จังหวัดภาคเหนือ โดยเน้นแก้ปัญหาข้อจำกัดด้านภูมิศาสตร์และการเดินทางของผู้ป่วยในพื้นที่ห่างไกล ระบบจะเชื่อมโยงการทำงานตั้งแต่ระดับศูนย์การแพทย์เฉพาะทาง (SCFC) โรงพยาบาลต้นสังกัด ไปจนถึงโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) ที่เป็นหน่วยบริการปฐมภูมิ (Primary Care) และครอบครัวผู้ป่วย เพื่อให้สามารถค้นหา ส่งต่อ ติดตามการรักษา และลงพื้นที่เยี่ยมบ้านเชิงรุกได้อย่างไร้รอยต่อ">
-            The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform (Web & Mobile) developed to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand. Designed to overcome geographical barriers and transportation challenges for patients in remote areas, the system seamlessly connects specialized medical centers (SCFC), provincial hospitals, and Primary Care Units (PCU/Health Promoting Hospitals). This collaboration enables efficient case discovery, patient referrals, long-term follow-ups, and proactive home visits, ensuring a continuous and integrated care journey for both healthcare providers and patient families.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">UX Research</span>
-            <span class="project-tag">UI Design</span>
-            <span class="project-tag">Mobile App</span>
-            <span class="project-tag">Healthcare</span>
-            <span class="project-tag">Figma</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Sub slides / additional features of Thai Cleft Link as another row to show grid -->
-      <article class="project-card fade-in-up" style="animation-delay: 0.2s;">
-        <div class="project-info" style="order: 2;">
-          <div class="project-meta-top">
-            <span data-en="System Roles & Architecture" data-th="สิทธิ์ผู้ใช้งานและโครงสร้าง">System Roles & Architecture</span>
-          </div>
-          <h2 class="project-title" data-en="Comprehensive Roles" data-th="ครอบคลุมทุกบทบาท">Comprehensive Roles</h2>
-          <p class="project-subtitle" data-en="Tailored for every user" data-th="ออกแบบเฉพาะสำหรับทุกผู้ใช้">Tailored for every user</p>
-          <p class="project-desc" data-en="The Thai Cleft Primary Care-Family Link Application features six distinct user roles: 1) PCU/Health Center Staff, 2) Case Managers, 3) Hospital Personnel, 4) SCFC Officers, 5) Patients/Families, and 6) System Administrators (IT Admin). The system is developed across two primary platforms: Web and Mobile. The Mobile Application prioritizes a user-friendly and portable UI/UX design, tailored for frontline staff performing field visits and for patient families. Conversely, the Web Application is optimized for large-screen interfaces to facilitate comprehensive data dashboards and back-end management for SCFC officers and IT administrators." data-th="โครงการ Thai Cleft Primary Care-Family Link Application มีการออกแบบสิทธิ์ผู้ใช้งานทั้งหมด 6 บทบาท (Roles) ได้แก่ 1. เจ้าหน้าที่ รพ.สต. 2. Case Manager 3. เจ้าหน้าที่โรงพยาบาล 4. เจ้าหน้าที่ SCFC 5. ผู้ป่วย/ครอบครัว และ 6. ผู้บริหารระบบ (Admin IT) ระบบถูกออกแบบและพัฒนาใน 2 รูปแบบแพลตฟอร์มหลัก คือ Web Application และ Mobile Application โดย Mobile App เน้นการออกแบบ UI/UX ให้ใช้งานง่ายและพกพาสะดวก สำหรับกลุ่มผู้ปฏิบัติงานหน้างานหรือลงพื้นที่ และกลุ่มผู้ป่วย ส่วน Web App เน้นการออกแบบหน้าจอขนาดใหญ่เพื่อแสดงผล Dashboard สถิติภาพรวมและการจัดการระบบหลังบ้าน สำหรับเจ้าหน้าที่ SCFC และ Admin IT">
-            The Thai Cleft Primary Care-Family Link Application features six distinct user roles: 1) PCU/Health Center Staff, 2) Case Managers, 3) Hospital Personnel, 4) SCFC Officers, 5) Patients/Families, and 6) System Administrators (IT Admin). The system is developed across two primary platforms: Web and Mobile. The Mobile Application prioritizes a user-friendly and portable UI/UX design, tailored for frontline staff performing field visits and for patient families. Conversely, the Web Application is optimized for large-screen interfaces to facilitate comprehensive data dashboards and back-end management for SCFC officers and IT administrators.
-          </p>
-        </div>
-        <div class="project-img-wrapper" style="order: 1;">
-          <img src="./assets/projact02.png" alt="Thai Cleft Link Roles">
-        </div>
-      </article>
-      
-      <article class="project-card fade-in-up" style="animation-delay: 0.4s;">
-        <div class="project-img-wrapper">
-          <img src="./assets/projact03.png" alt="Thai Cleft Link Prototype">
-        </div>
-        <div class="project-info">
-          <div class="project-meta-top">
-            <span data-en="Testing & Validation" data-th="การทดสอบและตรวจสอบ">Testing & Validation</span>
-          </div>
-          <h2 class="project-title" data-en="Clickable Prototype" data-th="โปรโตไทป์จำลอง">Clickable Prototype</h2>
-          <p class="project-subtitle" data-en="Iterative Development" data-th="การพัฒนาแบบวนซ้ำ">Iterative Development</p>
-          <p class="project-desc" data-en="The development of a comprehensive platform, including both Web and Mobile Applications, is designed to support the healthcare network and patients. During the process, a high-fidelity 'Clickable Prototype' or Demo was created to present to frontline users. The primary objective of this demo is to allow users to experience the actual interface and verify whether the workflow aligns with their operational practices. Throughout the testing phase, the team meticulously gathers feedback and additional requirements directly from users. This valuable insight is used to refine and finalize the design, ensuring the system is fully optimized and truly meets user needs before being handed over to the development team for the final programming stage." data-th="การสร้างแพลตฟอร์มที่ครอบคลุมทั้งรูปแบบ Web Application และ Mobile Application เพื่อรองรับการทำงานของเครือข่ายบุคลากรทางการแพทย์และผู้ป่วย ในกระบวนการทำงานได้มีการจัดทำตัวจำลองหน้าจอเสมือนจริง (Clickable Prototype) หรือตัว Demo เพื่อนำไปนำเสนอให้กับกลุ่มผู้ใช้งานหน้างาน การสร้างตัว Demo นี้มีจุดประสงค์สำคัญเพื่อให้ผู้ใช้งานได้ทดลองกดใช้งานระบบจริงและตรวจสอบลำดับขั้นตอนการทำงาน (Flow) ว่าสอดคล้องกับแนวทางการปฏิบัติงานหรือไม่ ระหว่างการทดลองใช้งาน ทีมงานจะทำการรวบรวมข้อเสนอแนะรวมถึงเก็บข้อมูลความต้องการเพิ่มเติม (Requirements) อย่างละเอียดจากผู้ใช้งานโดยตรง ข้อมูลเหล่านี้จะถูกนำมาใช้ปรับปรุงแก้ไขการออกแบบระบบให้มีความสมบูรณ์และตอบโจทย์การทำงานมากที่สุดก่อนที่จะส่งมอบให้ทีมนักพัฒนาเข้าสู่ขั้นตอนการเขียนโปรแกรมจริงต่อไป">
-            The development of a comprehensive platform, including both Web and Mobile Applications, is designed to support the healthcare network and patients. During the process, a high-fidelity 'Clickable Prototype' or Demo was created to present to frontline users. The primary objective of this demo is to allow users to experience the actual interface and verify whether the workflow aligns with their operational practices. Throughout the testing phase, the team meticulously gathers feedback and additional requirements directly from users. This valuable insight is used to refine and finalize the design, ensuring the system is fully optimized and truly meets user needs before being handed over to the development team for the final programming stage.
-          </p>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- AI-Driven Problem Solving Section -->
-    <section class="ai-section fade-in-up" style="animation-delay: 0.5s;">
-      <div class="ai-section-header">
-        <span class="ai-section-eyebrow" data-en="Thai Cleft Link Project" data-th="โครงการ Thai Cleft Link">Thai Cleft Link Project</span>
-        <h2 class="ai-section-title">
-          <span data-en="AI-Driven" data-th="">AI-Driven</span> <em><span data-en="Problem Solving" data-th="">Problem Solving</span></em>
-          <span data-en="" data-th="การแก้ไขปัญหาด้วย <em>AI</em>"></span>
-        </h2>
-        <p class="ai-section-subtitle"
-           data-en="An AI-Augmented Workflow for Managing and Designing a Highly Complex, Multi-Role Healthcare Coordination Platform."
-           data-th="แนวคิดและการแก้ไขปัญหาด้วย AI Workflow ในการบริหารจัดการระบบประสานงานทางการแพทย์ที่มีความซับซ้อนสูง (Multi-role Healthcare Platform)">
-          An AI-Augmented Workflow for Managing and Designing a Highly Complex, Multi-Role Healthcare Coordination Platform.
-        </p>
-      </div>
-
-      <div class="ai-phases">
-
-        <!-- Phase 1 -->
-        <div class="ai-phase fade-in-up" style="animation-delay: 0.6s;">
-          <!-- Left: card -->
-          <div class="ai-phase-card">
-            <span class="ai-phase-label">Phase 01</span>
-            <h3 class="ai-phase-name"
-                data-en="Information Synthesis &amp; Scope Alignment"
-                data-th="Information Synthesis &amp; Scope Alignment">Information Synthesis &amp; Scope Alignment</h3>
-
-            <div class="ai-block">
-              <span class="ai-block-label challenge" data-en="Challenge" data-th="ปัญหา">Challenge</span>
-              <p class="ai-block-text"
-                 data-en="The project's Terms of Reference (TOR) and system flowcharts were highly complex, expansive, and involved intricate multi-role logic. Additionally, critical user feedback was scattered across numerous weekly stakeholder meeting recordings."
-                 data-th="เอกสารข้อกำหนดขอบเขตงาน (TOR) และ Flowchart ของระบบมีขนาดใหญ่ ฟังก์ชันการทำงานมีความซับซ้อนสูง และมีข้อมูล Feedback ที่กระจัดกระจายจากการประชุมหลายภาคส่วน">
-                The project's Terms of Reference (TOR) and system flowcharts were highly complex, expansive, and involved intricate multi-role logic. Additionally, critical user feedback was scattered across numerous weekly stakeholder meeting recordings.
-              </p>
+          <div class="project-info">
+            <div class="project-meta-top">
+              <span data-en="Chapter 01: The Remote Challenge" data-th="บทที่ 1: จุดเริ่มต้นและปัญหา">Chapter 01: The Remote Challenge</span>
             </div>
-
-            <div class="ai-block">
-              <span class="ai-block-label solution" data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</span>
-              <p class="ai-block-text"
-                 data-en="Established a Single Source of Truth by utilizing NotebookLM. I consolidated all raw data—ranging from the official TOR to audio recordings of client feedback sessions—into a centralized knowledge base."
-                 data-th="สร้าง Single Source of Truth โดยการใช้ NotebookLM รวบรวมและวิเคราะห์ข้อมูลดิบทั้งหมด ตั้งแต่เอกสาร TOR ไปจนถึงไฟล์บันทึกเสียงการประชุมในแต่ละสัปดาห์ เพื่อประมวลผลข้อมูลร่วมกันในที่เดียว">
-                Established a Single Source of Truth by utilizing NotebookLM. I consolidated all raw data—ranging from the official TOR to audio recordings of client feedback sessions—into a centralized knowledge base.
-              </p>
-            </div>
-
-            <div class="ai-block">
-              <span class="ai-block-label impact" data-en="Impact" data-th="ผลลัพธ์">Impact</span>
-              <ul class="ai-impact-list">
-                <li data-en="Drastically reduced the time required for manual information parsing and complex data synthesis."
-                    data-th="ลดเวลาในการสกัดและวิเคราะห์ข้อมูล (Information Parsing) ได้อย่างมหาศาล">
-                  Drastically reduced the time required for manual information parsing and complex data synthesis.
-                </li>
-                <li data-en="Eliminated feature leakage and misunderstanding by leveraging AI for instant, contextual QA regarding system requirements."
-                    data-th="ป้องกันการตกหล่นของฟังก์ชันสำคัญ (Feature Leakage) และลดความสับสนในการตีความระบบ">
-                  Eliminated feature leakage and misunderstanding by leveraging AI for instant, contextual QA regarding system requirements.
-                </li>
-                <li data-en="Enabled immediate deep-dive queries against cross-referenced AI resources to ensure absolute accuracy."
-                    data-th="สามารถสอบถามข้อมูลอ้างอิงเชิงลึกจาก AI เพื่อตรวจสอบความถูกต้องของระบบได้ทันที">
-                  Enabled immediate deep-dive queries against cross-referenced AI resources to ensure absolute accuracy.
-                </li>
-              </ul>
-            </div>
-
-            <div class="ai-tool-badges">
-              <span class="ai-badge">NotebookLM</span>
-              <span class="ai-badge">TOR Analysis</span>
-              <span class="ai-badge">Meeting Transcripts</span>
-              <span class="ai-badge">Knowledge Base</span>
+            <h2 class="project-title" data-en="The Remote Challenge" data-th="จุดเริ่มต้นและปัญหา">The Remote Challenge</h2>
+            <p class="project-subtitle" data-en="Geographical barriers & scope objectives" data-th="ข้อจำกัดด้านภูมิศาสตร์และการเดินทาง เขต 8 จังหวัดภาคเหนือ">Geographical barriers & scope objectives</p>
+            <p class="project-desc" 
+               data-en="When distance and mountain ranges become barriers to cleft lip and palate care across 8 Northern provinces of Thailand. We set out to overcome geographical barriers and transportation challenges for remote patients by seamlessly linking specialized care to frontline promotion units." 
+               data-th="ข้อจำกัดด้านภูมิศาสตร์และการเดินทางกลายเป็นอุปสรรคสำคัญสำหรับผู้ป่วยปากแหว่งเพดานโหว่ในเขต 8 จังหวัดภาคเหนือตอนบน นำไปสู่การริเริ่มแพลตฟอร์มบูรณาการเครือข่ายรักษาเพื่อช่วยเหลือคนไข้ในพื้นที่ห่างไกล">
+              When distance and mountain ranges become barriers to cleft lip and palate care across 8 Northern provinces of Thailand. We set out to overcome geographical barriers and transportation challenges for remote patients by seamlessly linking specialized care to frontline promotion units.
+            </p>
+            <div class="project-actions">
+              <span class="btn-read-more" data-en="Read Chapter Details →" data-th="อ่านเนื้อหาเจาะลึก →">Read Chapter Details →</span>
             </div>
           </div>
+        </article>
 
-          <!-- Center dot -->
-          <div class="ai-phase-dot">
-            <div class="ai-dot-circle">
-              <span class="ai-dot-num">01</span>
+        <!-- CHAPTER 2: Empathy & Multi-Role Complexity -->
+        <article class="project-card chapter-card fade-in-up" id="chapter-2" style="animation-delay: 0.1s;" onclick="toggleChapter(2)">
+          <div class="project-info" style="order: 2;">
+            <div class="project-meta-top">
+              <span data-en="Chapter 02: Empathy & Multi-Role Complexity" data-th="บทที่ 2: การตีความโจทย์และการทำวิจัย">Chapter 02: Empathy & Multi-Role Complexity</span>
+            </div>
+            <h2 class="project-title" data-en="Empathy & Multi-Role Complexity" data-th="การตีความโจทย์และการทำวิจัย">Empathy & Multi-Role Complexity</h2>
+            <p class="project-subtitle" data-en="Synthesizing 6 user roles & field requirements" data-th="ความท้าทายของระบบ Web & Mobile สำหรับผู้ใช้ 6 บทบาท">Synthesizing 6 user roles & field requirements</p>
+            <p class="project-desc"
+               data-en="Designing a comprehensive digital platform (Web & Mobile) that supports six distinct user roles with varying digital literacies. Discovering operational pain points and functional requirements through close field observations and cooperative client workshops."
+               data-th="สรุปความท้าทายของการออกแบบระบบ Web & Mobile Application ที่ต้องวิจัยพฤติกรรมและรองรับสิทธิ์ผู้ใช้งานที่เฉพาะตัวถึง 6 บทบาท (6 Roles) ควบคู่กับการลงพื้นที่สังเกตการณ์หน้างานจริง ณ โรงพยาบาลฝาง">
+              Designing a comprehensive digital platform (Web & Mobile) that supports six distinct user roles with varying digital literacies. Discovering operational pain points and functional requirements through close field observations and cooperative client workshops.
+            </p>
+            <div class="project-actions">
+              <span class="btn-read-more" data-en="Read Chapter Details →" data-th="อ่านเนื้อหาเจาะลึก →">Read Chapter Details →</span>
             </div>
           </div>
+          <div class="project-img-wrapper" style="order: 1;">
+            <div class="chapter-number">02</div>
+            <img src="./assets/projact02.png" alt="Chapter 2: Empathy & Multi-Role Complexity">
+          </div>
+        </article>
 
-          <!-- Right: spacer -->
-          <div class="ai-phase-spacer"></div>
-        </div>
-
-        <!-- Phase 2 -->
-        <div class="ai-phase fade-in-up" style="animation-delay: 0.7s;">
-          <!-- Left: spacer -->
-          <div class="ai-phase-spacer"></div>
-
-          <!-- Center dot -->
-          <div class="ai-phase-dot">
-            <div class="ai-dot-circle">
-              <span class="ai-dot-num">02</span>
+        <!-- CHAPTER 3: Designing with Intent -->
+        <article class="project-card chapter-card fade-in-up" id="chapter-3" style="animation-delay: 0.2s;" onclick="toggleChapter(3)">
+          <div class="project-img-wrapper">
+            <div class="chapter-number">03</div>
+            <img src="./assets/design system.png" alt="Chapter 3: Designing with Intent">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-top">
+              <span data-en="Chapter 03: Designing with Intent" data-th="บทที่ 3: เหตุผลเบื้องหลังงานออกแบบ">Chapter 03: Designing with Intent</span>
+            </div>
+            <h2 class="project-title" data-en="Designing with Intent" data-th="เหตุผลเบื้องหลังงานออกแบบ">Designing with Intent</h2>
+            <p class="project-subtitle" data-en="Dedicated UI/UX architectures & prototypes" data-th="การแยกดีไซน์ระบบให้ตอบโจทย์การทำงานหน้างานและหลังบ้าน">Dedicated UI/UX architectures & prototypes</p>
+            <p class="project-desc"
+               data-en="Separating layouts based on operational environments. A user-friendly, portable Mobile Application for frontline field operations and patient families, coupled with a desktop-optimized Web Application for large-screen administrative dashboards."
+               data-th="สรุปแนวคิดการแยกแพลตฟอร์มระหว่าง Mobile App ใช้งานง่ายพกพาสะดวกสำหรับลงพื้นที่หน้างาน และ Web App หน้าจอใหญ่ข้อมูลหนาแน่นสำหรับแพทย์และผู้ดูแลระบบ พร้อมการตรวจสอบความถูกต้องด้วย Clickable Prototype">
+              Separating layouts based on operational environments. A user-friendly, portable Mobile Application for frontline field operations and patient families, coupled with a desktop-optimized Web Application for large-screen administrative dashboards.
+            </p>
+            <div class="project-actions">
+              <span class="btn-read-more" data-en="Read Chapter Details →" data-th="อ่านเนื้อหาเจาะลึก →">Read Chapter Details →</span>
             </div>
           </div>
+        </article>
 
-          <!-- Right: card -->
-          <div class="ai-phase-card">
-            <span class="ai-phase-label">Phase 02</span>
-            <h3 class="ai-phase-name"
-                data-en="Agile Prototyping &amp; Parallel Design Workflows"
-                data-th="Agile Prototyping &amp; Parallel Design Workflows">Agile Prototyping &amp; Parallel Design Workflows</h3>
-
-            <div class="ai-block">
-              <span class="ai-block-label challenge" data-en="Challenge" data-th="ปัญหา">Challenge</span>
-              <p class="ai-block-text"
-                 data-en="Stakeholders required a granular, frame-by-frame UI review while simultaneously demanding interactive prototypes and system demos for user flow testing. Traditional linear workflows (Waterfall) would have created severe delivery bottlenecks."
-                 data-th="ลูกค้าต้องการตรวจงานแบบละเอียดหน้าต่อหน้า (Frame-by-Frame) แต่ในขณะเดียวกันก็จำเป็นต้องเห็น Interactive Prototype และระบบ Demo เพื่อทดสอบ User Flow ควบคู่กันไป ทำให้กระบวนการทำงานแบบเดิม (Waterfall) เกิดคอขวด">
-                Stakeholders required a granular, frame-by-frame UI review while simultaneously demanding interactive prototypes and system demos for user flow testing. Traditional linear workflows (Waterfall) would have created severe delivery bottlenecks.
-              </p>
+        <!-- CHAPTER 4: The AI-Driven Engine -->
+        <article class="project-card chapter-card fade-in-up" id="chapter-4" style="animation-delay: 0.3s;" onclick="toggleChapter(4)">
+          <div class="project-info" style="order: 2;">
+            <div class="project-meta-top">
+              <span data-en="Chapter 04: The AI-Driven Engine" data-th="บทที่ 4: กระบวนการทำงานรูปแบบใหม่">Chapter 04: The AI-Driven Engine</span>
             </div>
-
-            <div class="ai-block">
-              <span class="ai-block-label solution" data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</span>
-              <p class="ai-block-text"
-                 data-en="Implemented an Agile Design Workflow by leveraging Figma AI to generate interactive prototypes directly from wireframes. This enabled rapid asset duplication and real-time syncing within the Figma design space as updates occurred."
-                 data-th="เปลี่ยนมาใช้ Agile Design Workflow โดยนำ Figma AI มาช่วยแปลง Wireframe ให้เป็น Interactive Prototype โดยตรงใน Figma Design และใช้ความสามารถในการ Sync/Copy Design เพื่ออัปเดตหน้างานแบบ Real-time">
-                Implemented an Agile Design Workflow by leveraging Figma AI to generate interactive prototypes directly from wireframes. This enabled rapid asset duplication and real-time syncing within the Figma design space as updates occurred.
-              </p>
+            <h2 class="project-title" data-en="The AI-Driven Engine" data-th="กระบวนการทำงานรูปแบบใหม่">The AI-Driven Engine</h2>
+            <p class="project-subtitle" data-en="AI-augmented agile design workflow" data-th="การปฏิวัติขั้นตอนการออกแบบและควบคุมคุณภาพด้วย AI">AI-augmented agile design workflow</p>
+            <p class="project-desc"
+               data-en="Pioneering a modern Agile design workflow powered by advanced AI integration. Automating requirement synthesis with NotebookLM, wireframe prototyping with Figma AI, and source code discrepancy auditing with Google Gemini (Gems)."
+               data-th="สรุปภาพรวมเวิร์กโฟลว์รูปแบบใหม่ที่ประยุกต์ใช้เทคโนโลยี AI (NotebookLM / Gemini / Figma) ในการขับเคลื่อนการออกแบบและพัฒนา เพื่อบริหารจัดการระบบประสานงานสาธารณสุขที่มีความซับซ้อนสูงได้อย่างแม่นยำ">
+              Pioneering a modern Agile design workflow powered by advanced AI integration. Automating requirement synthesis with NotebookLM, wireframe prototyping with Figma AI, and source code discrepancy auditing with Google Gemini (Gems).
+            </p>
+            <div class="project-actions">
+              <span class="btn-read-more" data-en="Read Chapter Details →" data-th="อ่านเนื้อหาเจาะลึก →">Read Chapter Details →</span>
             </div>
+          </div>
+          <div class="project-img-wrapper" style="order: 1;">
+            <div class="chapter-number">04</div>
+            <img src="./assets/workflow03.png" alt="Chapter 4: The AI-Driven Engine">
+          </div>
+        </article>
 
-            <div class="ai-block">
-              <span class="ai-block-label impact" data-en="Impact" data-th="ผลลัพธ์">Impact</span>
-              <ul class="ai-impact-list">
-                <li data-en="Broke the traditional dependency where prototyping could only begin after final UI design approval."
-                    data-th="ทลายข้อจำกัดเดิมที่ต้องรอให้งาน UI Design เสร็จสมบูรณ์ 100% จึงจะเริ่มทำ Prototype ได้">
-                  Broke the traditional dependency where prototyping could only begin after final UI design approval.
-                </li>
-                <li data-en="Enabled parallel delivery of static screens and interactive demos, allowing for weekly client updates and faster feedback loops."
-                    data-th="สามารถส่งมอบงานออกแบบและส่งมอบตัว Demo ให้ลูกค้าทดสอบระบบ (User Testing) ได้แบบสัปดาห์ต่อสัปดาห์ (Weekly Updates)">
-                  Enabled parallel delivery of static screens and interactive demos, allowing for weekly client updates and faster feedback loops.
-                </li>
-                <li data-en="Accelerated the overall user testing phase by keeping design iterations synchronized with physical demo requirements."
-                    data-th="เร่งกระบวนการทดสอบระบบกับผู้ใช้จริง (User Testing) ให้เร็วขึ้นจากการที่ตัว Demo ซิงค์ตรงกับงานดีไซน์ตลอดเวลา">
-                  Accelerated the overall user testing phase by keeping design iterations synchronized with physical demo requirements.
-                </li>
-              </ul>
+        <!-- CHAPTER 5: Impact & Next Step -->
+        <article class="project-card chapter-card fade-in-up" id="chapter-5" style="animation-delay: 0.4s;" onclick="toggleChapter(5)">
+          <div class="project-img-wrapper">
+            <div class="chapter-number">05</div>
+            <img src="./assets/projact03.png" alt="Chapter 5: Impact & Next Step">
+          </div>
+          <div class="project-info">
+            <div class="project-meta-top">
+              <span data-en="Chapter 05: Impact & Next Step" data-th="บทที่ 5: ผลลัพธ์และการส่งต่อ">Chapter 05: Impact & Next Step</span>
             </div>
+            <h2 class="project-title" data-en="Impact & Next Step" data-th="ผลลัพธ์และการส่งต่อ">Impact & Next Step</h2>
+            <p class="project-subtitle" data-en="Modular frontend architecture & hand-off" data-th="ผลลัพธ์ความสำเร็จและการพอร์ตโค้ดที่พร้อมขยายผลต่อ">Modular frontend architecture & hand-off</p>
+            <p class="project-desc"
+               data-en="Delivering a production-ready Frontend codebase with strict modular architecture. Isolating presentation layouts from state management layers on GitHub, enabling immediate backend deployment across iOS, Android, and Web."
+               data-th="สรุปความสมบูรณ์ของระบบหลังจากผ่านการทดสอบ User Testing ด้วยตัวจำลองหน้าจอเสมือนจริง (Demo) และความสำเร็จในการส่งมอบ Frontend Code โครงสร้างโมดูลาร์บน GitHub ที่พร้อมนำไปเชื่อมต่อระบบหลังบ้านได้ทันที">
+              Delivering a production-ready Frontend codebase with strict modular architecture. Isolating presentation layouts from state management layers on GitHub, enabling immediate backend deployment across iOS, Android, and Web.
+            </p>
+            <div class="project-actions">
+              <span class="btn-read-more" data-en="Read Chapter Details →" data-th="อ่านเนื้อหาเจาะลึก →">Read Chapter Details →</span>
+            </div>
+          </div>
+        </article>
 
-            <div class="ai-tool-badges">
-              <span class="ai-badge">Figma AI</span>
-              <span class="ai-badge">Interactive Prototype</span>
-              <span class="ai-badge">Agile Workflow</span>
-              <span class="ai-badge">Weekly Sprints</span>
-            </div>
+      </section>
+
+      <div class="ai-divider"></div>
+
+      <!-- Call to Action -->
+      <section class="prototype-cta fade-in-up" style="animation-delay: 0.6s;">
+        <a href="https://bugle-boat-58594449.figma.site/" target="_blank" rel="noopener noreferrer" class="btn-prototype"
+          data-en="View Prototype" data-th="ดู prototype">View Prototype</a>
+        <p class="prototype-note"
+          data-en="Note: This is a functional prototype for user flow demonstration.<br>Certain roles are optimized for Web or Mobile displays specifically,<br>reflecting their intended real-world usage."
+          data-th="หมายเหตุ: Prototype นี้เป็นแบบจำลองเพื่อแสดง User Flow เท่านั้น<br>การแสดงผลบางบทบาท (Role) จะถูกจำกัดเฉพาะหน้าจอ Web หรือ Mobile App<br>ตามการใช้งานจริง">
+          Note: This is a functional prototype for user flow demonstration.<br>Certain roles are optimized for Web or
+          Mobile displays specifically,<br>reflecting their intended real-world usage.</p>
+      </section>
+    </div>
+
+    <div id="project-detail-view" style="display: none; opacity: 0; padding: 12rem 3rem 8rem;">
+      <div class="detail-container">
+        
+        <button class="btn-back" onclick="showListView()" data-en="← Back to Chapters" data-th="← ย้อนกลับ">← Back to Chapters</button>
+        
+        <!-- CHAPTER 1 DETAIL -->
+        <div class="chapter-detail-content" id="detail-chapter-1" style="display: none; opacity: 0;">
+          <div class="detail-header">
+            <span class="detail-chapter-label" data-en="Chapter 01" data-th="บทที่ 1">Chapter 01</span>
+            <h2 class="detail-title" data-en="The Remote Challenge" data-th="จุดเริ่มต้นและปัญหา">The Remote Challenge</h2>
+            <p class="detail-subtitle" data-en="Primary Care-Family Link Application" data-th="แอปพลิเคชันเชื่อมโยงการดูแลปฐมภูมิ-ครอบครัว">Primary Care-Family Link Application</p>
+          </div>
+          <div class="detail-body">
+            <h4 data-en="1. Background & Context" data-th="1. ความเป็นมาและบริบท">1. Background & Context</h4>
+            <p data-en="The Thai Cleft Primary Care-Family Link Application is a comprehensive digital platform developed under a total budget of ฿ 4.7M to integrate the care network for patients with cleft lip, cleft palate, and craniofacial deformities across 8 provinces in Northern Thailand (Chiang Mai, Chiang Rai, Lamphun, Lampang, Phrae, Nan, Phayao, and Mae Hong Son), with Chiang Mai University as our primary client. The project seamlessly links the Specialized Craniofacial Center (SCFC) of Chiang Mai University with provincial, community, and frontline Health Promoting Hospitals (รพ.สต.)."
+               data-th="โครงการ Thai Cleft Primary Care-Family Link Application ได้รับการสนับสนุนภายใต้งบประมาณรวม ฿ 4.7M เพื่อพัฒนาระบบเทคโนโลยีดิจิทัลประสานงานการดูแลผู้ป่วยปากแหว่งเพดานโหว่และความพิการบนใบหน้าในเขตพื้นที่ 8 จังหวัดภาคเหนือตอนบน (ได้แก่ เชียงใหม่ เชียงราย ลำพูน ลำปาง แพร่ น่าน พะเยา และแม่ฮ่องสอน) โดยเป็นการทำงานร่วมกันระหว่าง ศูนย์แก้ไขความพิการบนใบหน้าและศีรษะ มหาวิทยาลัยเชียงใหม่ (SCFC), โรงพยาบาลศูนย์, โรงพยาบาลชุมชน และโรงพยาบาลส่งเสริมสุขภาพตำบล (รพ.สต.) โดยมีมหาวิทยาลัยเชียงใหม่เป็นหน่วยงานลูกค้าหลัก"></p>
+            
+            <h4 data-en="2. The Core Problem & Challenges" data-th="2. รากเหง้าของปัญหาและอุปสรรค">2. The Core Problem & Challenges</h4>
+            <p data-en="Cleft lip and palate care is highly complex and requires long-term follow-up from birth to 18-20 years. Our research revealed three critical pain points:
+            1) Geographical Barrier: High mountain ranges and long distances (average 4-6 hours travel) preventing patients from visiting city centers.
+            2) The Paper-Based Chasm: Patient data was previously recorded in paper booklets that were easily damaged or lost.
+            3) Case Dropout: A staggering 32% drop-out rate in the old paper system due to the lack of proactive follow-ups."
+               data-th="เนื่องจากผู้ป่วยโรคปากแหว่งเพดานโหว่และช่องปากต้องการการรักษาดูแลระยะยาวตั้งแต่แรกเกิดจนถึงอายุ 18-20 ปี (ประกอบด้วยการผ่าตัดปิดปาก ผ่าตัดเพดาน ฝึกพูด จัดฟัน ทันตกรรม และการประเมินด้านจิตวิทยา) แต่อุปสรรคสำคัญมี 3 ประการหลัก:
+               1) อุปสรรคทางภูมิศาสตร์ (Geographical Barrier): ผู้ป่วยส่วนใหญ่ในเขต 8 จังหวัดอาศัยอยู่บนดอยสูงหรือพื้นที่ห่างไกล การเดินทางเข้ามารักษาในเมืองใหญ่ใช้เวลากว่า 4-6 ชั่วโมงและมีค่าเดินทางสูงมาก
+               2) อุปสรรคของระบบกระดาษ (The Paper-Based Chasm): แผนการนัดหมายและการป้อนโภชนาการถูกจดใส่สมุดกระดาษซึ่งมักสูญหายหรือเสียหายง่าย และไม่ถูกรายงานกลับไปยังหน่วยแพทย์ใกล้บ้าน
+               3) อัตราการหลุดออกนอกระบบการรักษา (Case Dropout): ในระบบเดิมมีอัตราการหลุดจากนัดรักษาสูงถึง 32% เนื่องจากขาดการบูรณาการระบบติดตามคนไข้เชิงรุกอย่างทั่วถึง"></p>
+
+            <h4 data-en="3. Design Goal" data-th="3. เป้าหมายเชิงยุทธศาสตร์การออกแบบ">3. Design Goal</h4>
+            <p data-en="Our design goal was to shift the care model from 'Reactive Care' (waiting for critical cases to travel to the city) to a cohesive 'Proactive family-centric care' ecosystem, acting as a three-way bridge: Primary Care (รพ.สต. finding cases & visiting homes) ↔ Community Hospital (general treatment & speech training) ↔ SCFC (specialized surgeries & master planning)."
+               data-th="มุ่งเน้นการปฏิวัติรูปแบบการรักษาจากเชิงรับ (Reactive Care) ที่รอให้ผู้ป่วยที่มีอาการหนักเดินทางมาหาที่เมืองใหญ่ เปลี่ยนผ่านสู่การดูแลผู้ป่วยเชิงรุกที่มีครอบครัวเป็นศูนย์กลางอย่างยั่งยืน (Proactive family-centric care) โดยระบบดิจิทัลจะทำหน้าที่เป็นสะพานเชื่อมโยงการทำงาน 3 ประสาน ได้แก่ รพ.สต. (ค้นหาคนไข้และเยี่ยมบ้าน) ↔ โรงพยาบาลชุมชน (รักษาทั่วไปและฝึกพูด) ↔ ศูนย์การแพทย์ SCFC (ผ่าตัดเฉพาะทางและดูแลภาพรวม)"></p>
           </div>
         </div>
 
-        <!-- Phase 3 -->
-        <div class="ai-phase fade-in-up" style="animation-delay: 0.8s;">
-          <!-- Left: card -->
-          <div class="ai-phase-card">
-            <span class="ai-phase-label">Phase 03</span>
-            <h3 class="ai-phase-name"
-                data-en="Requirement Tracking &amp; Cross-Platform Alignment"
-                data-th="Requirement Tracking &amp; Cross-Platform Alignment">Requirement Tracking &amp; Cross-Platform Alignment</h3>
-
-            <div class="ai-block">
-              <span class="ai-block-label challenge" data-en="Challenge" data-th="ปัญหา">Challenge</span>
-              <p class="ai-block-text"
-                 data-en="Due to the platform's large scale and diverse user roles, client requirements shifted frequently during live discussions, occasionally diverging from the original TOR. This created a high risk of misalignment between the latest feedback, UI designs, and the codebase on GitHub."
-                 data-th="ระบบมีผู้ใช้งานหลายบทบาท (Multi-role) และลูกค้ามีการปรับเปลี่ยนความต้องการ (Requirements) ตลอดเวลาตามสถานการณ์จริง ซึ่งบางครั้งอาจไม่ตรงกับเอกสาร TOR เดิม ทำให้เสี่ยงต่อการเกิดความคลาดเคลื่อนระหว่างงาน Design และ Code บน GitHub">
-                Due to the platform's large scale and diverse user roles, client requirements shifted frequently during live discussions, occasionally diverging from the original TOR. This created a high risk of misalignment between the latest feedback, UI designs, and the codebase on GitHub.
-              </p>
-            </div>
-
-            <div class="ai-block">
-              <span class="ai-block-label solution" data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</span>
-              <p class="ai-block-text"
-                 data-en="Architected an Automated Quality Gate by creating a custom Gemini Gem. This AI agent bridged the gap between NotebookLM (containing the latest meeting summaries) and GitHub (the codebase). The Gem automatically cross-referenced the current code against the latest client requirements."
-                 data-th="ออกแบบระบบตรวจสอบความถูกต้องอัตโนมัติ (Automated Quality Gate) โดยสร้าง Gemini Gem (Custom AI) ทำหน้าที่เชื่อมโยงข้อมูลระหว่าง NotebookLM (ข้อมูลสรุปการประชุมล่าสุด) และ GitHub (Codebase) เพื่อคอยตรวจสอบและเปรียบเทียบ Code ของระบบว่าตรงกับความต้องการล่าสุดของลูกค้าหรือไม่">
-                Architected an Automated Quality Gate by creating a custom Gemini Gem. This AI agent bridged the gap between NotebookLM (containing the latest meeting summaries) and GitHub (the codebase). The Gem automatically cross-referenced the current code against the latest client requirements.
-              </p>
-            </div>
-
-            <div class="ai-block">
-              <span class="ai-block-label impact" data-en="Impact" data-th="ผลลัพธ์">Impact</span>
-              <ul class="ai-impact-list">
-                <li data-en="Enabled continuous alignment and rapid conflict detection (Discrepancy Detection) between shifting requirements, designs, and production code."
-                    data-th="มีระบบช่วยตรวจจับความไม่สอดคล้อง (Discrepancy Detection) ระหว่าง Requirement, Design และ Code ได้ทันที">
-                  Enabled continuous alignment and rapid conflict detection (Discrepancy Detection) between shifting requirements, designs, and production code.
-                </li>
-                <li data-en="Ensured that the final implementation accurately fulfilled the stakeholders' evolving needs, despite ongoing changes."
-                    data-th="ช่วยให้ระบบพัฒนาไปในทิศทางที่ตอบโจทย์ความต้องการจริงของลูกค้าและผู้ใช้ (Stakeholders) ได้อย่างแม่นยำ แม้จะมีการเปลี่ยนแปลงตลอดเวลาก็ตาม">
-                  Ensured that the final implementation accurately fulfilled the stakeholders' evolving needs, despite ongoing changes.
-                </li>
-                <li data-en="Maintained absolute deployment integrity by keeping developer and designer pipelines continuously synchronized with live stakeholder inputs."
-                    data-th="รักษาความถูกต้องในการ Deploy ระบบ โดยควบคุมให้ทีม Developer และ Designer ทำงานซิงค์ตรงกับความต้องการล่าสุดอยู่เสมอ">
-                  Maintained absolute deployment integrity by keeping developer and designer pipelines continuously synchronized with live stakeholder inputs.
-                </li>
-              </ul>
-            </div>
-
-            <div class="ai-tool-badges">
-              <span class="ai-badge">Gemini Gem</span>
-              <span class="ai-badge">NotebookLM</span>
-              <span class="ai-badge">GitHub</span>
-              <span class="ai-badge">Quality Gate</span>
-            </div>
+        <!-- CHAPTER 2 DETAIL -->
+        <div class="chapter-detail-content" id="detail-chapter-2" style="display: none; opacity: 0;">
+          <div class="detail-header">
+            <span class="detail-chapter-label" data-en="Chapter 02" data-th="บทที่ 2">Chapter 02</span>
+            <h2 class="detail-title" data-en="Empathy & Multi-Role Complexity" data-th="การตีความโจทย์และการทำวิจัย">Empathy & Multi-Role Complexity</h2>
+            <p class="detail-subtitle" data-en="Tailored for every user role" data-th="ออกแบบอย่างครอบคลุมทุกบทบาทและความหลากหลาย">Tailored for every user role</p>
           </div>
-
-          <!-- Center dot -->
-          <div class="ai-phase-dot">
-            <div class="ai-dot-circle">
-              <span class="ai-dot-num">03</span>
+          <div class="detail-body">
+            <h4 data-en="1. User Research Methodology" data-th="1. กระบวนการศึกษาและทำความเข้าใจผู้ใช้">1. User Research Methodology</h4>
+            <p data-en="To understand actual field dynamics, our team conducted Contextual Inquiry and User Observation on-site at high-altitude hospitals like Fang Hospital and community health centers in Mae Ai. We then hosted a Co-design Workshop with healthcare professionals and patient families to synthesize personas and user requirements."
+               data-th="เพื่อศึกษาพฤติกรรมและการทำงานหน้างานของทีมแพทย์ในพื้นที่ห่างไกลอย่างลึกซึ้ง ทีมงานได้ลงพื้นที่จริงเพื่อทำการศึกษารูปแบบการทำงานเฉพาะบริบท (Contextual Inquiry) และการสังเกตการณ์ผู้ใช้งาน (User Observation) หน้างานจริง ณ โรงพยาบาลฝาง และ รพ.สต. ในกิ่งอำเภอแม่อาย พร้อมทั้งจัดประชุม Co-design Workshop ร่วมกับกลุ่มวิชาชีพสหคลินิก พยาบาล และครอบครัวผู้ป่วย เพื่อสังเคราะห์ข้อมูล Personas และออกแบบลำดับขั้นตอนการรักษา"></p>
+            
+            <!-- Research Flow Process Timeline -->
+            <div class="research-timeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.5rem; border-radius: 8px; transition: border-color 0.3s ease;">
+                <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--earth); line-height: 1; margin-bottom: 0.8rem;">01</div>
+                <strong style="color: var(--cream); display: block; font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.5rem;" data-en="Context Inquiry" data-th="ลงพื้นที่จริง">Context Inquiry</strong>
+                <p style="font-size: 0.8rem; margin: 0; line-height: 1.5;" data-en="Studying operational workflows under actual field conditions." data-th="ลงพื้นที่ศึกษาการทำงานหน้างานในเขตภาคเหนือตอนบน"></p>
+              </div>
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.5rem; border-radius: 8px;">
+                <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--earth); line-height: 1; margin-bottom: 0.8rem;">02</div>
+                <strong style="color: var(--cream); display: block; font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.5rem;" data-en="User Observation" data-th="สังเกตพฤติกรรม">User Observation</strong>
+                <p style="font-size: 0.8rem; margin: 0; line-height: 1.5;" data-en="Observing interactions and bottlenecks at Fang Hospital." data-th="สังเกตการณ์การใช้งานจริง ณ โรงพยาบาลฝาง และ รพ.สต. แม่อาย"></p>
+              </div>
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.5rem; border-radius: 8px;">
+                <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--earth); line-height: 1; margin-bottom: 0.8rem;">03</div>
+                <strong style="color: var(--cream); display: block; font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.5rem;" data-en="Co-Design" data-th="เวิร์กชอปร่วมกัน">Co-Design</strong>
+                <p style="font-size: 0.8rem; margin: 0; line-height: 1.5;" data-en="Co-design workshops with clinicians and families." data-th="ประชุมเชิงปฏิบัติการร่วมกับสหวิชาชีพและครอบครัวคนไข้"></p>
+              </div>
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.5rem; border-radius: 8px;">
+                <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--earth); line-height: 1; margin-bottom: 0.8rem;">04</div>
+                <strong style="color: var(--cream); display: block; font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.5rem;" data-en="Synthesis" data-th="สังเคราะห์โจทย์">Synthesis</strong>
+                <p style="font-size: 0.8rem; margin: 0; line-height: 1.5;" data-en="Synthesizing requirements into 6 distinct target personas." data-th="แปลงข้อจำกัดและความต้องการสู่ฟังก์ชันการทำงานจริง"></p>
+              </div>
             </div>
-          </div>
 
-          <!-- Right: spacer -->
-          <div class="ai-phase-spacer"></div>
+            <h4 data-en="2. The 6 User Personas &amp; Pain Points" data-th="2. การวิเคราะห์กลุ่มผู้ใช้ทั้ง 6 บทบาท">2. The 6 User Personas &amp; Pain Points</h4>
+            <p data-en="To design an effective clinical workflow, we separated access control and interface strategies for the six user roles across the platform:" data-th="เพื่อขับเคลื่อนระบบประสานงานที่มีประสิทธิภาพสูงสุด เราได้ออกแบบการทำงานที่แบ่งแยกตามสิทธิ์และสภาพแวดล้อมจริงของผู้ใช้งานทั้งหมด 6 บทบาท (Roles) ดังนี้:"></p>
+            
+            <div class="detail-table-wrapper">
+              <table class="detail-table">
+                <thead>
+                  <tr>
+                    <th data-en="User Role" data-th="บทบาทผู้ใช้">User Role</th>
+                    <th data-en="Operational Environment" data-th="สภาพแวดล้อมที่ใช้งาน">Operational Environment</th>
+                    <th data-en="Core Pain Point" data-th="Pain Points สำคัญ">Core Pain Point</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong data-en="1. PCU Staff (รพ.สต.)" data-th="1. เจ้าหน้าที่ รพ.สต.">1. PCU Staff (รพ.สต.)</strong></td>
+                    <td data-en="Field visits, outdoor, remote areas, low connectivity." data-th="ลงพื้นที่เยี่ยมบ้าน, กลางแจ้ง, อับสัญญาณมือถือ">Field visits, outdoor, remote areas, low connectivity.</td>
+                    <td data-en="Small screen, aging user base, weak internet." data-th="มือถือหน้าจอเล็ก, ผู้ใช้งานมีอายุ, สัญญาณเน็ตช้า">Small screen, aging user base, weak internet.</td>
+                  </tr>
+                  <tr>
+                    <td><strong data-en="2. Hospital Staff" data-th="2. Hospital Staff">2. Hospital Staff</strong></td>
+                    <td data-en="Hospital desk, high phone call frequency." data-th="โต๊ะทำงานในโรงพยาบาล, มีสายเรียกเข้าตลอดเวลา">Hospital desk, high phone call frequency.</td>
+                    <td data-en="Paperwork overload, loose coordinate chains on Line groups lead to missed data." data-th="งานเอกสารล้นมือ, ต้องประสานงานหลายฝ่ายผ่านไลน์กลุ่มซึ่งข้อมูลตกหล่นง่าย">Paperwork overload, loose coordinate chains on Line groups lead to missed data.</td>
+                  </tr>
+                  <tr>
+                    <td><strong data-en="3. Case Manager" data-th="3. Case Manager">3. Case Manager</strong></td>
+                    <td data-en="Attending physician overseeing patient cases, hospital desk, clinical settings." data-th="แพทย์ผู้ดูแลเคสคนไข้นั้นๆ, โต๊ะทำงานในโรงพยาบาล, คลินิกตรวจ">Attending physician overseeing patient cases, hospital desk, clinical settings.</td>
+                    <td data-en="Managing patient referrals, home visits, and coordinating care with PCU staff and Hospital Staff." data-th="จัดการส่งตัว เยี่ยมบ้าน ประสานงานกับ รพ.สต. และ Hospital Staff">Managing patient referrals, home visits, and coordinating care with PCU staff and Hospital Staff.</td>
+                  </tr>
+                  <tr>
+                    <td><strong data-en="4. SCFC Officers" data-th="4. เจ้าหน้าที่ SCFC (มช.)">4. SCFC Officers</strong></td>
+                    <td data-en="Craniofacial specialized center, CMU." data-th="ศูนย์การแพทย์เฉพาะทาง มหาวิทยาลัยเชียงใหม่">Craniofacial specialized center, CMU.</td>
+                    <td data-en="Incomplete referral data, highly complex surgical scheduling queues." data-th="ข้อมูลเคสส่งตัวมาไม่ครบถ้วน, การวางแผนจัดคิวผ่าตัดมีความซับซ้อนสูง">Incomplete referral data, highly complex surgical scheduling queues.</td>
+                  </tr>
+                  <tr>
+                    <td><strong data-en="5. Patients &amp; Families" data-th="5. ผู้ป่วยและครอบครัว">5. Patients &amp; Families</strong></td>
+                    <td data-en="Remote rural homes, language barriers (ethnic groups)." data-th="บ้านพักอาศัย, มีอุปสรรคทางภาษาและอ่านเขียน (กลุ่มชาติพันธุ์)">Remote rural homes, language barriers (ethnic groups).</td>
+                    <td data-en="Forgets clinical appointments, lacks knowledge on specialized feeding care." data-th="ไม่เข้าใจวิธีกายภาพดูแลช่องปาก, ลืมวันนัดหมาย, ไม่รู้วิธีป้อนนมทารกที่ถูกสุขลักษณะ">Forgets clinical appointments, lacks knowledge on specialized feeding care.</td>
+                  </tr>
+                  <tr>
+                    <td><strong data-en="6. IT Administrators" data-th="6. ผู้บริหารระบบ (Admin IT)">6. IT Administrators</strong></td>
+                    <td data-en="Server rooms, technical admin dashboard." data-th="ห้องทำงานระบบเทคโนโลยีสารสนเทศ">Server rooms, technical admin dashboard.</td>
+                    <td data-en="Complex data compliance requirements (PDPA) & area-based authorization." data-th="การควบคุมความปลอดภัยข้อมูลส่วนบุคคล (PDPA) และสิทธิ์การเข้าถึงข้อมูลรายพื้นที่">Complex data compliance requirements (PDPA) & area-based authorization.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 data-en="3. Key Discovery from Field Work" data-th="3. ข้อมูลจากการสังเกตการณ์จริง ณ โรงพยาบาลฝาง">3. Key Discovery from Field Work</h4>
+            <p data-en="Key observations from our fieldwork at Fang Hospital directly inspired the design of a dual-channel chat system to ensure communication security and clinical utility:<br>1) Patient-Inclusive Channel: Connecting PCU staff (รพ.สต.), Hospital Staff, Case Manager, and the Patient/Family to collectively coordinate care and actively update recovery status.<br>2) Patient-Exclusive Channel: Connecting only clinical staff for confidential consultations regarding sensitive diagnostics or treatment details that are psychologically restricted and not yet suitable to share with the patient."
+               data-th="ข้อมูลจริงจากการลงพื้นที่สังเกตการณ์ ณ โรงพยาบาลฝาง นำไปสู่การปรับปรุงและออกแบบระบบแชทการสนทนาที่แบ่งออกเป็น 2 กลุ่มอย่างชัดเจน เพื่อความปลอดภัยทางการแพทย์และประสิทธิภาพสูงสุดในการทำงาน:<br>1. กลุ่มที่มี รพ.สต., Hospital Staff, Case Manager และผู้ป่วย เพื่อร่วมมืออัปเดตข้อมูลและประสานการดูแลผู้ป่วยด้วยความมีส่วนร่วมของทุกฝ่าย<br>2. กลุ่มที่ไม่มีผู้ป่วย เพื่อให้ทีมสหวิชาชีพและแพทย์ใช้ปรึกษาหารือ แลกเปลี่ยนข้อมูลเชิงลึกเฉพาะทางและการวินิจฉัยโรคของผู้ป่วย เนื่องจากมีข้อจำกัดและประเด็นเปราะบางที่ยังไม่อยากให้ผู้ป่วยรับรู้โดยตรง"></p>
+          </div>
         </div>
 
-      </div><!-- /.ai-phases -->
-    </section>
+        <!-- CHAPTER 3 DETAIL -->
+        <div class="chapter-detail-content" id="detail-chapter-3" style="display: none; opacity: 0;">
+          <div class="detail-header">
+            <span class="detail-chapter-label" data-en="Chapter 03" data-th="บทที่ 3">Chapter 03</span>
+            <h2 class="detail-title" data-en="Designing with Intent" data-th="เหตุผลเบื้องหลังงานออกแบบ">Designing with Intent</h2>
+            <p class="detail-subtitle" data-en="Tailored layout and usability strategy" data-th="การแยกสถาปัตยกรรมและเหตุผลการออกแบบรายแพลตฟอร์ม">Tailored layout and usability strategy</p>
+          </div>
+          <div class="detail-body">
+            <h4 data-en="1. Mobile Application Design Strategy" data-th="1. การออกแบบ Mobile Application (รพ.สต. &amp; ครอบครัว)">1. Mobile Application Design Strategy</h4>
+            <p data-en="The Mobile App is dedicated to frontline operations, applying classic usability laws to mitigate high physical and cognitive stress:" data-th="การลงพื้นที่ของ รพ.สต. และกลุ่มคนไข้มีข้อจำกัดด้านสิ่งแวดล้อมสูง การออกแบบ Mobile App จึงอ้างอิงหลักจิตวิทยาการใช้งานเพื่อลดความเครียดและข้อผิดพลาดอย่างชัดเจน:"></p>
+            <ul>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="Fitts's Law &amp; Touch Target Optimization:" data-th="การขยายพื้นที่สัมผัสปุ่มตาม Fitts's Law:">Fitts's Law &amp; Touch Target Optimization:</strong>
+                <span data-en=" Interactive buttons are designed with a minimum of 48dp x 48dp (WCAG 2.1 standard) but expanded to 56dp for critical tasks, enabling precise single-thumb tapping even while walking or holding a patient." data-th=" ออกแบบพื้นที่ปุ่มกดหลักให้มีขนาดสัมผัสขั้นต่ำ 48dp x 48dp และขยายเพิ่มถึง 56dp ในปุ่มสำคัญ เพื่อให้ผู้ใช้สามารถกดบันทึกด้วยนิ้วโป้งมือเดียวได้อย่างแม่นยำแม้ในขณะอุ้มเด็กเคลื่อนไหว"></span>
+              </li>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="Appointment Scheduling Notifications:" data-th="ระบบแจ้งเตือนเมื่อถึงกำหนดวันนัดหมาย:">Appointment Scheduling Notifications:</strong>
+                <span data-en=" Automated alert system that triggers when patient appointments are due, notifying both PCU staff (รพ.สต.) and the patient/family in real-time to ensure attendance and follow-ups." data-th=" ระบบแจ้งเตือนเมื่อถึงกำหนดวันนัดหมายที่ผู้ป่วยต้องเข้ารับการตรวจตามวันเวลา โดยแจ้งเตือนความคืบหน้าให้ทราบพร้อมกันทั้งทาง รพ.สต. และผู้ป่วย/ครอบครัว"></span>
+              </li>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="Navigation Mapping &amp; Home Visit Updates:" data-th="การแสดงแผนที่นำทางและอัปเดตข้อมูลบ้านผู้ป่วย:">Navigation Mapping &amp; Home Visit Updates:</strong>
+                <span data-en=" Displays the patient's house coordinates with a direct, clickable Google Maps link for route navigation, enabling PCU staff to seamlessly update patient household conditions during field home visits." data-th=" แสดงตำแหน่งพิกัดและแผนที่บ้านผู้ป่วยโดยลิงก์เข้ากับ Google Maps เพื่อใช้นำทางได้ทันทีเมื่อกด และรองรับการบันทึกหรืออัปเดตข้อมูลสภาพแวดล้อมที่บ้านได้ตลอดเวลา ในกรณีที่ รพ.สต. ต้องลงพื้นที่ไปเยี่ยมบ้านผู้ป่วย"></span>
+              </li>
+            </ul>
+            
+            <h4 data-en="2. Responsive Design Strategy (Hospital Staff &amp; Case Manager &amp; SCFC)" data-th="2. การออกแบบ responsive (Hospital Staff &amp; Case Manager &amp; SCFC)">2. Responsive Design Strategy (Hospital Staff &amp; Case Manager &amp; SCFC)</h4>
+            <p data-en="The system is optimized for fluid responsive transitions to assist clinical staff across various devices and screen sizes:" data-th="ระบบรองรับการแสดงผลแบบมีประสิทธิภาพและยืดหยุ่น (Responsive Design) เพื่อสนับสนุนการทำงานของสหวิชาชีพในทุกอุปกรณ์อย่างลงตัว:"></p>
+            <ul>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="Fluid 3-Column Layout:" data-th="การจัดวางหน้าจอแบบ 3 คอลัมน์ยืดหยุ่น:">Fluid 3-Column Layout:</strong>
+                <span data-en=" Arranges workflows into three distinct panes that adjust dynamically for tablet and desktop displays, helping Hospital Staff, Case Managers, and SCFC doctors coordinate seamlessly." data-th=" การจัดแบ่งหน้าจอเป็น 3 คอลัมน์ที่รองรับการปรับขนาดโดยอัตโนมัติบนแท็บเล็ตและเดสก์ท็อป ช่วยให้ Hospital Staff, Case Manager และแพทย์ SCFC สลับการทำงานได้อย่างไร้รอยต่อ"></span>
+              </li>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="Zero-Click Context Previews:" data-th="การลดการคลิกซ้ำซ้อนด้วย Zero-Click Redundancy:">Zero-Click Context Previews:</strong>
+                <span data-en=" Employs responsive hover states and touch popovers to preview patient information without switching pages, optimized for both desktop mouse and tablet touch interactions." data-th=" ใช้การพรีวิวแบบป๊อปอัปลอยตัว (Hover Previews) เพื่อตรวจสอบประวัติการรักษาและสถานะเคสโดยไม่ต้องเปลี่ยนหน้าจอ รองรับทั้งระบบเมาส์และทัชสกรีน"></span>
+              </li>
+            </ul>
 
-    <div class="ai-divider"></div>
+            <h4 data-en="3. Web Application Design Strategy (AdminIT)" data-th="3. การออกแบบ Web Application (AdminIT)">3. Web Application Design Strategy (AdminIT)</h4>
+            <p data-en="The administrative portal is engineered for high data integrity, strict access control, and robust back-office management:" data-th="ระบบ Web App สำหรับผู้ดูแลระบบไอที เน้นการจัดเก็บข้อมูลหลังบ้านที่ถูกต้อง ปลอดภัย และมีระบบควบคุมสิทธิ์ที่เข้มงวด:"></p>
+            <ul>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="Role-Based Access Control (RBAC):" data-th="การควบคุมสิทธิ์เข้าถึงตามบทบาท (RBAC):">Role-Based Access Control (RBAC):</strong>
+                <span data-en=" Restricts clinical and personal data access strictly according to authorized IT admin roles, ensuring compliance with PDPA guidelines." data-th=" กำหนดระดับการเข้าถึงข้อมูลตามสิทธิ์ผู้ใช้งานเฉพาะบุคคล เพื่อควบคุมความปลอดภัยของข้อมูลส่วนบุคคลของคนไข้และรองรับมาตรฐาน PDPA อย่างเข้มงวด"></span>
+              </li>
+              <li style="margin-bottom: 1rem;">
+                <strong data-en="System Integrity Monitoring:" data-th="ระบบติดตามการทำงานและความปลอดภัยหลังบ้าน:">System Integrity Monitoring:</strong>
+                <span data-en=" Centralized administrative interface to monitor server health, audit system logs, and ensure seamless database compliance across regional healthcare channels." data-th=" มีแดชบอร์ดตรวจสอบสถานะระบบหลังบ้าน บันทึกประวัติประวัติการใช้งาน (Audit Logs) และดูแลความสมบูรณ์ของฐานข้อมูลส่วนกลางตลอดเวลา"></span>
+              </li>
+            </ul>
 
-    <!-- Call to Action -->
-    <section class="prototype-cta fade-in-up" style="animation-delay: 0.6s;">
-      <a href="https://bugle-boat-58594449.figma.site/" target="_blank" rel="noopener noreferrer" class="btn-prototype" data-en="View Prototype" data-th="ดู prototype">View Prototype</a>
-      <p class="prototype-note" data-en="Note: This is a functional prototype for user flow demonstration.<br>Certain roles are optimized for Web or Mobile displays specifically,<br>reflecting their intended real-world usage." data-th="หมายเหตุ: Prototype นี้เป็นแบบจำลองเพื่อแสดง User Flow เท่านั้น<br>การแสดงผลบางบทบาท (Role) จะถูกจำกัดเฉพาะหน้าจอ Web หรือ Mobile App<br>ตามการใช้งานจริง">Note: This is a functional prototype for user flow demonstration.<br>Certain roles are optimized for Web or Mobile displays specifically,<br>reflecting their intended real-world usage.</p>
-    </section>
+            <h4 data-en="4. Design System &amp; Color Psychology" data-th="4. จิตวิทยาการใช้โทนสีและระบบดีไซน์ (Design System &amp; Color Psychology)">4. Design System &amp; Color Psychology</h4>
+            <p data-en="Reflecting Chiang Mai University's (CMU) official royal purple signature branding, the platform is structured around a unified Design System using a premium violet and lavender-grey palette to foster security, institutional trust, and user comfort:" data-th="เพื่อความกลมกลืนและสะท้อนเอกลักษณ์อันภาคภูมิใจของมหาวิทยาลัยเชียงใหม่ (มช.) ซึ่งเป็นหน่วยงานเจ้าของโครงการที่ใช้สีม่วงเป็นโทนหลัก แพลตฟอร์มนี้จึงได้รับการพัฒนาภายใต้ระบบดีไซน์ (Design System) ที่ประยุกต์ใช้กลุ่มโทนสีม่วงของ มช. ในการสื่อสารข้อมูลดังนี้:"></p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0;">
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.2rem; border-radius: 6px; text-align: center;">
+                <div style="width: 30px; height: 30px; background: #49358E; border-radius: 50%; margin: 0 auto 0.8rem;"></div>
+                <strong style="color: #F8F6F0; display: block; font-size: 0.85rem;">Royal Purple (#49358E)</strong>
+                <span style="font-size: 0.75rem; color: rgba(245, 240, 232, 0.5);" data-en="Primary CMU signature brand purple, reflecting institutional authority." data-th="สีม่วงแบรนด์หลัก มช. สะท้อนความเป็นสถาบันทางการแพทย์และการโอบอุ้มเชิงรุก">Primary CMU signature brand purple, reflecting institutional authority.</span>
+              </div>
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.2rem; border-radius: 6px; text-align: center;">
+                <div style="width: 30px; height: 30px; background: #7066A9; border-radius: 50%; margin: 0 auto 0.8rem;"></div>
+                <strong style="color: #F8F6F0; display: block; font-size: 0.85rem;">Accent Purple (#7066A9)</strong>
+                <span style="font-size: 0.75rem; color: rgba(245, 240, 232, 0.5);" data-en="Supportive medium accent for active buttons, tabs, and icons." data-th="สีม่วงลาเวนเดอร์ ใช้แต่งปุ่มลัด สัญลักษณ์ หรือแท็บควบคุมที่พร้อมใช้งาน">Supportive medium accent for active buttons, tabs, and icons.</span>
+              </div>
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.2rem; border-radius: 6px; text-align: center;">
+                <div style="width: 30px; height: 30px; background: #37286A; border-radius: 50%; margin: 0 auto 0.8rem;"></div>
+                <strong style="color: #F8F6F0; display: block; font-size: 0.85rem;">Deep Violet (#37286A)</strong>
+                <span style="font-size: 0.75rem; color: rgba(245, 240, 232, 0.5);" data-en="Secondary dark brand violet, securing solid layout structures." data-th="สีม่วงเข้มฐานระบบ ใช้แบ่งพื้นที่โครงสร้างและข้อความเพื่อความมั่นคงและชัดเจน">Secondary dark brand violet, securing solid layout structures.</span>
+              </div>
+              <div style="background: rgba(245, 240, 232, 0.02); border: 1px solid rgba(245, 240, 232, 0.08); padding: 1.2rem; border-radius: 6px; text-align: center;">
+                <div style="width: 30px; height: 30px; background: #D2CEE7; border-radius: 50%; margin: 0 auto 0.8rem;"></div>
+                <strong style="color: #F8F6F0; display: block; font-size: 0.85rem;">Soft Lilac (#D2CEE7)</strong>
+                <span style="font-size: 0.75rem; color: rgba(245, 240, 232, 0.5);" data-en="Light lilac background, reducing reading fatigue on long screens." data-th="สีม่วงพาสเทลอ่อน ใช้แต่งส่วนพรีวิว บอร์ดข้อมูลย่อย เพื่อลดอาการล้าของสายตา">Light lilac background, reducing reading fatigue on long screens.</span>
+              </div>
+            </div>
+
+            <h4 data-en="5. Clickable Prototype Workflow Validation" data-th="5. การสร้าง Clickable Prototype ตรวจสอบลำดับการทำงาน">5. Clickable Prototype Workflow Validation</h4>
+            <p data-en="To guarantee a reliable deployment, we structured a high-fidelity interactive Clickable Prototype / Demo. Before coding commenced, we ran usability testing with clinicians, ensuring every screen transition, form input, and referral logic (Flow) strictly validated against established healthcare practices and regional guidelines."
+               data-th="กระบวนการสร้างและประเมินงานออกแบบนี้ ได้มีการนำเสนอตัวจำลองหน้าจอใช้งานเสมือนจริง (Clickable Prototype) หรือตัว Demo ไปให้กลุ่มสหวิชาชีพและพยาบาลได้ทดลองกดเพื่อประเมินความสอดคล้อง (Workflow Validation) ทำการตรวจสอบทุกลำดับขั้นตอนความสัมพันธ์ (Flow) ให้ถูกต้องตามแบบมาตรฐานระบบส่งต่อก่อนนำไปเขียนโปรแกรม"></p>
+          </div>
+        </div>
+
+        <!-- CHAPTER 4 DETAIL -->
+        <div class="chapter-detail-content" id="detail-chapter-4" style="display: none; opacity: 0;">
+          <div class="detail-header">
+            <span class="detail-chapter-label" data-en="Chapter 04" data-th="บทที่ 4">Chapter 04</span>
+            <h2 class="detail-title" data-en="The AI-Driven Engine" data-th="กระบวนการทำงานรูปแบบใหม่">The AI-Driven Engine</h2>
+            <p class="detail-subtitle" data-en="Managing clinical complexity via AI integration" data-th="การประยุกต์ใช้ปัญญาประดิษฐ์ในเวิร์กโฟลว์การทำงานยุคใหม่">Managing clinical complexity via AI integration</p>
+          </div>
+          <div class="detail-body">
+            
+            <h4 data-en="Phase 01: Information Synthesis &amp; Scope Alignment" data-th="ระยะที่ 1: การสกัดข้อมูลและรวบรวมข้อตกลงขอบเขตงาน (Information Synthesis &amp; Scope Alignment)">Phase 01: Information Synthesis &amp; Scope Alignment</h4>
+            <div class="detail-grid">
+              <div class="detail-card">
+                <h5 data-en="Challenge" data-th="ความท้าทาย">Challenge</h5>
+                <p data-en="The official Terms of Reference (TOR) guidelines and system flowcharts were highly complex, expansive, and involved intricate multi-role logic. Additionally, critical user feedback was scattered across numerous weekly stakeholder meeting recordings."
+                   data-th="เอกสารข้อกำหนดขอบเขตงาน (TOR) และ Flowchart ของระบบมีความซับซ้อนและขนาดใหญ่มาก และมีข้อมูลความคิดเห็นที่กระจัดกระจายจากการจดและบันทึกเสียงการประชุมรายสัปดาห์ในหลายภาคส่วน"></p>
+              </div>
+              <div class="detail-card">
+                <h5 data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</h5>
+                <p data-en="Established a secure private knowledge base by utilizing NotebookLM. We consolidated all raw information—from the official TOR guidelines to audio records of stakeholder feedback—into a centralized Single Source of Truth."
+                   data-th="สร้างระบบคลังข้อมูลกลางแบบปลอดภัยโดยการใช้ NotebookLM รวบรวมเอกสาร TOR และบันทึกถอดความรวมถึงไฟล์เสียงบันทึกการประชุมเพื่อวิเคราะห์เชิงวิชาการร่วมกันในที่เดียว"></p>
+              </div>
+              <div class="detail-card">
+                <h5 data-en="Impact" data-th="ผลลัพธ์">Impact</h5>
+                <p data-en="Drastically reduced the time required for manual data synthesis and parsing. By leveraging context-aware AI for instant Q&amp;A, we completely eliminated feature leakage (Feature Leakage) or misalignments."
+                   data-th="ลดระยะเวลาในการกรองข้อมูลเชิงเทคนิคและสกัดแผนความต้องการลงอย่างมหาศาล ป้องกันไม่ให้ฟังก์ชันการทำงานที่สำคัญในขอบเขตงานตกหล่น (Feature Leakage) ได้อย่างสมบูรณ์แบบ"></p>
+              </div>
+            </div>
+
+            <h4 data-en="Phase 02: Agile Prototyping &amp; Parallel Design Workflows" data-th="ระยะที่ 2: โปรโตไทป์ความเร็วสูงและการออกแบบคู่ขนาน (Agile Prototyping &amp; Parallel Design Workflows)">Phase 02: Agile Prototyping &amp; Parallel Design Workflows</h4>
+            <div class="detail-grid">
+              <div class="detail-card">
+                <h5 data-en="Challenge" data-th="ความท้าทาย">Challenge</h5>
+                <p data-en="Stakeholders demanded a granular, frame-by-frame UI review while simultaneously requiring fully functional interactive prototypes and demo systems for user flow testing. Traditional linear waterfall methods would cause massive delivery bottlenecks."
+                   data-th="ลูกค้าต้องการตรวจงานหน้าจอแบบละเอียดหน้าต่อหน้า (Frame-by-Frame) แต่ขณะเดียวกันก็ต้องนำระบบ Demo ไปทดสอบ User Flow ควบคู่กันไป หากใช้กระบวนการออกแบบแบบเดิม (Waterfall) จะสร้างคอขวดที่ล่าช้า"></p>
+              </div>
+              <div class="detail-card">
+                <h5 data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</h5>
+                <p data-en="Shifted to an Agile Design Workflow by leveraging Figma AI / Figma Make to generate interactive prototypes directly from wireframes, maintaining instant asset sync."
+                   data-th="เปลี่ยนมาใช้ระบบ Agile Design Workflow โดยใช้ Figma AI และเครื่องมือ Figma Make ในการช่วยขึ้นโครงร่างแบบจัดลำดับ Wireframe สู่ Interactive Prototype ที่พร้อมกดได้จริงและเชื่อมต่อกันทันที"></p>
+              </div>
+              <div class="detail-card">
+                <h5 data-en="Impact" data-th="ผลลัพธ์">Impact</h5>
+                <p data-en="Broke the dependency of waiting for UI finalization to begin prototyping, enabling parallel development of layouts and weekly sprints (Weekly Sprints)."
+                   data-th="ทลายข้อจำกัดการรอดีไซน์สมบูรณ์แบบเสร็จ 100% สามารถออกแบบและส่งมอบตัว Demo เพื่อทดสอบและตรวจงานกับลูกค้าได้แบบสัปดาห์ต่อสัปดาห์ (Weekly Sprints)"></p>
+              </div>
+            </div>
+
+            <h4 data-en="Phase 03: Requirement Tracking &amp; Cross-Platform Alignment" data-th="ระยะที่ 3: ระบบควบคุมความสอดคล้องและการส่งโค้ด (Requirement Tracking &amp; Cross-Platform Alignment)">Phase 03: Requirement Tracking &amp; Cross-Platform Alignment</h4>
+            <div class="detail-grid">
+              <div class="detail-card">
+                <h5 data-en="Challenge" data-th="ความท้าทาย">Challenge</h5>
+                <p data-en="Evolving requests from field test sessions and live clinician workshops created a high risk of mismatch between approved design and the active codebase on GitHub."
+                   data-th="ความต้องการของลูกค้าและผู้ใช้ที่มีการปรับเปลี่ยนอย่างรวดเร็วหน้างานจริงหลังการทดสอบระบบ สร้างความเสี่ยงสูงที่ความสามารถของระบบและโค้ดหน้าบ้านบน GitHub จะไม่ตรงกัน"></p>
+              </div>
+              <div class="detail-card">
+                <h5 data-en="AI Solution" data-th="วิธีการใช้ AI">AI Solution</h5>
+                <p data-en="Architected an Automated Quality Gate by creating a custom Gemini Gem that audited the active GitHub repository branches against the target requirements defined in NotebookLM."
+                   data-th="ออกแบบระบบตรวจสอบความถูกต้องโดยอัตโนมัติ (Automated Quality Gate) โดยสร้าง Gemini Gem (Custom AI) คอยสแกนตรวจสอบวิเคราะห์ซอร์สโค้ดใน GitHub ร่วมกับข้อกำหนด PRD ในคลังความรู้"></p>
+              </div>
+              <div class="detail-card">
+                <h5 data-en="Impact" data-th="ผลลัพธ์">Impact</h5>
+                <p data-en="Ensured continuous alignment and enabled instant discrepancy detection (Discrepancy Detection) to strictly validate that the delivered Frontend code (React, TypeScript, Tailwind CSS) matches approved specs."
+                   data-th="ช่วยตรวจจับความไม่สอดคล้องทางฟังก์ชันและดีไซน์ (Discrepancy Detection) ได้ทันที และควบคุมความถูกต้องในการส่งมอบโค้ดส่วน Frontend (React, TypeScript, Tailwind CSS) ได้อย่างไร้จุดผิดเพี้ยน"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHAPTER 5 DETAIL -->
+        <div class="chapter-detail-content" id="detail-chapter-5" style="display: none; opacity: 0;">
+          <div class="detail-header">
+            <span class="detail-chapter-label" data-en="Chapter 05" data-th="บทที่ 5">Chapter 05</span>
+            <h2 class="detail-title" data-en="Impact &amp; Next Step" data-th="ผลลัพธ์และการส่งต่อ">Impact &amp; Next Step</h2>
+            <p class="detail-subtitle" data-en="Production-ready frontend hand-off" data-th="ความสำเร็จของการทำระบบส่งมอบและการเขียนโปรแกรมเชิงโมดูล">Production-ready frontend hand-off</p>
+          </div>
+          <div class="detail-body">
+            <h4 data-en="1. System Validation through Demo Testing" data-th="1. ความสมบูรณ์ของระบบผ่านการทดสอบ User Testing">1. System Validation through Demo Testing</h4>
+            <p data-en="By compiling a complete high-fidelity Demo / Clickable Prototype of the entire system, we conducted extensive usability testing and validated system flows directly with clinicians and frontline health workers, ensuring the digital system perfectly mirrors operational practices before development."
+               data-th="จากการสร้างระบบจำลองหน้าจอใช้งานจริงและพัฒนาตัว Demo ที่คลิกใช้งานได้จริง เราได้นำไปผ่านการทำ User Testing และตรวจรับรองลำดับขั้นตอนการประสานงานเคสจริงกับสหวิชาชีพและเจ้าหน้าที่หน้างาน ทำให้ระบบมีความแม่นยำ ปลอดภัย และตรงตามข้อตกลงทุกประการก่อนการพัฒนาแอปพลิเคชันหลัก"></p>
+            
+            <h4 data-en="2. Production-Ready Frontend &amp; Modular Code on GitHub" data-th="2. โครงสร้างซอร์สโค้ดที่เป็นระเบียบ (Modular Architecture) บน GitHub">2. โครงสร้างซอร์สโค้ดที่เป็นระเบียบ (Modular Architecture) บน GitHub</h4>
+            <p data-en="Under the Frontend Development phase, we structured a functional prototype with a clean, modular architecture (Modular Architecture) on GitHub. We emphasized a strict Separation of Concerns, completely decoupling Page Layouts, atomic UI Components, and Data layers (Data Management).<br>Once finalized and approved, this production-ready frontend code was pushed to GitHub. This architectural modularity allows software engineering teams to immediately link the frontend to backend services on iOS, Android, and Web platforms without needing to rebuild or code the interfaces from scratch, minimizing communication gaps and eliminating redundant developmental tasks."
+               data-th="สำหรับส่วนงาน Frontend Development เราได้จัดทำโครงสร้างโค้ดหน้าบ้านที่มีสัดส่วนโมดูลาร์เป็นระเบียบชัดเจน (Modular Architecture) มีการแยกชั้นการทำงานของ Components, Pages และการจำลองจัดการฐานข้อมูล (Data Management) ออกจากกันอย่างเข้มงวดเป็นหมวดหมู่ และนำซอร์สโค้ดที่พร้อมใช้งานจริง (Production-ready) อัปโหลดขึ้นคลังเก็บโค้ดบน GitHub เพื่อช่วยให้ทีมนักพัฒนาระบบสามารถหยิบโครงสร้างส่วนแสดงผลนี้ ไปพัฒนาเชื่อมต่อกับระบบ API หลังบ้านบนแพลตฟอร์ม iOS, Android และ Web ได้ทันที ช่วยลดการเขียนสไตล์ซ้ำซ้อน ลดข้อผิดพลาดในการแปลความหมายของดีไซน์ และดำเนินงานได้เสร็จสิ้นอย่างรวดเร็วแม่นยำ"></p>
+            <p data-en="However, in the production-ready system, each user group logs in to access a role-based interface where distinct UI layouts are rendered dynamically according to their permissions (Role-based UI Rendering). Consequently, the development team must systematically partition business logic and modularize source code by user roles. This systematic segregation simplifies backend API integration across iOS, Android, and Web platforms."
+               data-th="อย่างไรก็ตาม ในระบบที่พร้อมใช้งานจริง (Production-ready) ผู้ใช้แต่ละกลุ่มจะเข้าสู่ระบบผ่านการ Login และระบบจะทำการจำแนกสิทธิ์เพื่อแสดงผลหน้า UI ที่แตกต่างกันโดยสิ้นเชิงตามบทบาท (Role-based UI Rendering) ฉะนั้นในส่วนของซอร์สโค้ด ทีมพัฒนาระบบจึงจำเป็นต้องมีการแยก Logic และการจัดกลุ่มโค้ดแยกตามสิทธิ์ของผู้ใช้งานออกจากกันอย่างเป็นระบบ เพื่อช่วยลดความซับซ้อนในการเชื่อมต่อกับ API หลังบ้านบนแพลตฟอร์ม iOS, Android และ Web"></p>
+          </div>
+        </div>
+
+      </div><!-- /.detail-container -->
+    </div>
+
+    <!-- Custom Chapter Trigger SPA Script -->
+    <script>
+      function toggleChapter(id) {
+        const listView = document.getElementById('projects-list-view');
+        const detailView = document.getElementById('project-detail-view');
+        
+        // Hide all chapter detail contents
+        document.querySelectorAll('.chapter-detail-content').forEach(el => {
+          el.style.display = 'none';
+          el.style.opacity = '0';
+        });
+        
+        // Show selected chapter detail content
+        const activeDetail = document.getElementById('detail-chapter-' + id);
+        if (activeDetail) {
+          activeDetail.style.display = 'block';
+          setTimeout(() => {
+            activeDetail.style.opacity = '1';
+          }, 50);
+        }
+        
+        listView.style.opacity = '0';
+        setTimeout(() => {
+          listView.style.display = 'none';
+          detailView.style.display = 'block';
+          setTimeout(() => {
+            detailView.style.opacity = '1';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 50);
+        }, 400);
+      }
+
+      function showListView() {
+        const listView = document.getElementById('projects-list-view');
+        const detailView = document.getElementById('project-detail-view');
+        
+        detailView.style.opacity = '0';
+        setTimeout(() => {
+          detailView.style.display = 'none';
+          listView.style.display = 'block';
+          setTimeout(() => {
+            listView.style.opacity = '1';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 50);
+        }, 400);
+      }
+    </script>
   </main>
 
   <div id="footer-placeholder"></div>
   <script src="./assets/js/main.js"></script>
 </body>
+
 </html>
