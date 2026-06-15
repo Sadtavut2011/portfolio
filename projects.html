@@ -49,7 +49,8 @@
       background: rgba(245, 240, 232, 0.02);
       border: 1px solid rgba(245, 240, 232, 0.08);
       border-radius: 8px;
-      overflow: hidden;
+      /* Changed overflow to visible so Thai tone marks above text aren't clipped */
+      overflow: visible;
       transition: border-color 0.4s ease, transform 0.4s ease;
     }
 
@@ -66,6 +67,7 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
+      border-radius: 8px 0 0 8px;
     }
 
     .project-img-wrapper img {
@@ -97,6 +99,17 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      /* Ensure Thai diacritics above baseline are not clipped */
+      padding-top: 0.3em;
+      overflow: visible;
+    }
+
+    html[lang="th"] .project-meta-top {
+      font-family: var(--font-thai);
+      font-size: 0.75rem;
+      text-transform: none;
+      letter-spacing: 0.05em;
+      line-height: 1.8;
     }
 
     .project-meta-top::after {
@@ -111,12 +124,16 @@
       font-size: clamp(1.4rem, 2.2vw, 2rem);
       font-weight: 300;
       color: var(--cream);
-      line-height: 1.2;
+      line-height: 1.4;
       margin-bottom: 0;
       padding-bottom: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      /* Removed white-space:nowrap so Thai tone marks (ไม้เอก etc.) display correctly */
+    }
+
+    /* Thai language: use Sarabun font with taller line-height for diacritics */
+    html[lang="th"] .project-title {
+      font-family: var(--font-thai);
+      line-height: 1.6;
     }
 
     .project-desc {
@@ -126,7 +143,13 @@
       color: rgba(245, 240, 232, 0.6);
       margin-top: 0;
       margin-bottom: 2.5rem;
-      min-height: 18rem;
+      /* Removed fixed min-height so all cards render consistently
+         across both EN and TH text lengths */
+    }
+
+    html[lang="th"] .project-desc {
+      font-family: var(--font-thai);
+      line-height: 2.0;
     }
 
     .project-tags {
