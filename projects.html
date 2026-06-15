@@ -108,19 +108,15 @@
 
     .project-title {
       font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
       font-weight: 300;
       color: var(--cream);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-subtitle {
-      font-family: var(--font-serif);
-      font-style: italic;
-      color: var(--earth);
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      line-height: 1.2;
+      margin-bottom: 0;
+      padding-bottom: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .project-desc {
@@ -128,6 +124,7 @@
       font-size: 0.9rem;
       line-height: 1.8;
       color: rgba(245, 240, 232, 0.6);
+      margin-top: 0;
       margin-bottom: 2.5rem;
       min-height: 18rem;
     }
@@ -764,7 +761,6 @@
               <span data-en="Chapter 01: The Remote Challenge" data-th="บทที่ 1: จุดเริ่มต้นและปัญหา">Chapter 01: The Remote Challenge</span>
             </div>
             <h2 class="project-title" data-en="The Remote Challenge" data-th="จุดเริ่มต้นและปัญหา">The Remote Challenge</h2>
-            <p class="project-subtitle" data-en="Geographical barriers & scope objectives" data-th="ข้อจำกัดด้านภูมิศาสตร์และการเดินทาง เขต 8 จังหวัดภาคเหนือ">Geographical barriers & scope objectives</p>
             <p class="project-desc" 
                data-en="When distance and mountain ranges become barriers to cleft lip and palate care across 8 Northern provinces of Thailand. We set out to overcome geographical barriers and transportation challenges for remote patients by seamlessly linking specialized care to frontline promotion units." 
                data-th="ข้อจำกัดด้านภูมิศาสตร์และการเดินทางกลายเป็นอุปสรรคสำคัญสำหรับผู้ป่วยปากแหว่งเพดานโหว่ในเขต 8 จังหวัดภาคเหนือตอนบน นำไปสู่การริเริ่มแพลตฟอร์มบูรณาการเครือข่ายรักษาเพื่อช่วยเหลือคนไข้ในพื้นที่ห่างไกล">
@@ -783,7 +779,6 @@
               <span data-en="Chapter 02: Empathy & Multi-Role Complexity" data-th="บทที่ 2: การตีความโจทย์และการทำวิจัย">Chapter 02: Empathy & Multi-Role Complexity</span>
             </div>
             <h2 class="project-title" data-en="Empathy & Multi-Role Complexity" data-th="การตีความโจทย์และการทำวิจัย">Empathy & Multi-Role Complexity</h2>
-            <p class="project-subtitle" data-en="Synthesizing 6 user roles & field requirements" data-th="ความท้าทายของระบบ Web & Mobile สำหรับผู้ใช้ 6 บทบาท">Synthesizing 6 user roles & field requirements</p>
             <p class="project-desc"
                data-en="Designing a comprehensive digital platform (Web & Mobile) that supports six distinct user roles with varying digital literacies. Discovering operational pain points and functional requirements through close field observations and cooperative client workshops."
                data-th="สรุปความท้าทายของการออกแบบระบบ Web & Mobile Application ที่ต้องวิจัยพฤติกรรมและรองรับสิทธิ์ผู้ใช้งานที่เฉพาะตัวถึง 6 บทบาท (6 Roles) ควบคู่กับการลงพื้นที่สังเกตการณ์หน้างานจริง ณ โรงพยาบาลฝาง">
@@ -810,7 +805,6 @@
               <span data-en="Chapter 03: Designing with Intent" data-th="บทที่ 3: เหตุผลเบื้องหลังงานออกแบบ">Chapter 03: Designing with Intent</span>
             </div>
             <h2 class="project-title" data-en="Designing with Intent" data-th="เหตุผลเบื้องหลังงานออกแบบ">Designing with Intent</h2>
-            <p class="project-subtitle" data-en="Dedicated UI/UX architectures & prototypes" data-th="การแยกดีไซน์ระบบให้ตอบโจทย์การทำงานหน้างานและหลังบ้าน">Dedicated UI/UX architectures & prototypes</p>
             <p class="project-desc"
                data-en="Separating layouts based on operational environments. A user-friendly, portable Mobile Application for frontline field operations and patient families, coupled with a desktop-optimized Web Application for large-screen administrative dashboards."
                data-th="สรุปแนวคิดการแยกแพลตฟอร์มระหว่าง Mobile App ใช้งานง่ายพกพาสะดวกสำหรับลงพื้นที่หน้างาน และ Web App หน้าจอใหญ่ข้อมูลหนาแน่นสำหรับแพทย์และผู้ดูแลระบบ พร้อมการตรวจสอบความถูกต้องด้วย Clickable Prototype">
@@ -829,7 +823,7 @@
               <span data-en="Chapter 04: The AI-Driven Engine" data-th="บทที่ 4: กระบวนการทำงานรูปแบบใหม่">Chapter 04: The AI-Driven Engine</span>
             </div>
             <h2 class="project-title" data-en="The AI-Driven Engine" data-th="กระบวนการทำงานรูปแบบใหม่">The AI-Driven Engine</h2>
-            <p class="project-subtitle" data-en="AI-augmented agile design workflow" data-th="การปฏิวัติขั้นตอนการออกแบบและควบคุมคุณภาพด้วย AI">AI-augmented agile design workflow</p>
+
             <p class="project-desc"
                data-en="Pioneering a modern Agile design workflow powered by advanced AI integration. Automating requirement synthesis with NotebookLM, wireframe prototyping with Figma AI, and source code discrepancy auditing with Google Gemini (Gems)."
                data-th="สรุปภาพรวมเวิร์กโฟลว์รูปแบบใหม่ที่ประยุกต์ใช้เทคโนโลยี AI (NotebookLM / Gemini / Figma) ในการขับเคลื่อนการออกแบบและพัฒนา เพื่อบริหารจัดการระบบประสานงานสาธารณสุขที่มีความซับซ้อนสูงได้อย่างแม่นยำ">
